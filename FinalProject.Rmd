@@ -42,7 +42,7 @@ The first data set is obtained by using the Application Programming Interface (A
 
 As an indicator of closed innovation, city-level patent registration data is used from the Organization for Economic Co-operation and Development[^OECD]. This study uses Patent Cooperation Treaty (PCT) patent applications per 10,000 inhabitants on the city-level. From the same database, GDP, employment and environmental data are used as additional variables which could prove significant in explaining differences in innovation. The *R* [@CiteR] package *rsdmx* [@R-rsdmx] is necessary for obtaining the OECD dataset.
 
-All data obtained via the GitHub API and OECD database can be linked to individual cities (n=120) in a total of 15 countries, allowing for an analysis on the regional level. The code used for gathering and cleaning the data is stored in a separate .R file and can be accessed [here](https://github.com/oliverbott/Assignment3/blob/master/Data_Gathering.R).
+All data obtained via the GitHub API and OECD database can be linked to individual cities (n=120) in a total of 15 countries, allowing for an analysis on the regional level. The code used for gathering and cleaning the data is stored in a separate .R file and can be accessed [here](https://github.com/oliverbott/Final_Project/blob/master/Data/Data_Gathering.R).
 
 
 ```{r, include=FALSE, warning=FALSE, error=FALSE, message=FALSE}
@@ -53,7 +53,7 @@ library(RCurl)
 options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
 
 # Create dynamic link to Dataset.csv created through the Data_Gathering.R
-x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Dataset.csv')
+x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Data/Dataset.csv')
 dataset <- read.csv(text = x)
 
 # Clean dataset
