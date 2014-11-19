@@ -16,7 +16,7 @@ bibliography:
 
 ```{r echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
 # Set working directory. Change as needed
-setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Assignment_3/Assignment3/')
+setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project/')
 
 # Load packages and create BibTeX file
 # Note: must have repmis, rsdmx, httr, dplyr and rjson packages installed
@@ -53,7 +53,7 @@ library(RCurl)
 options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
 
 # Create dynamic link to Dataset.csv created through the Data_Gathering.R
-x <- getURL('https://raw.githubusercontent.com/oliverbott/Assignment3/master/Dataset.csv')
+x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Dataset.csv')
 dataset <- read.csv(text = x)
 
 # Clean dataset
