@@ -7,6 +7,9 @@ location <- geocode(places)
 
 location2 <- data.frame(location, places)
 
+colnames(location2) <- c("lon" , "lat" , "METRO_ID") # Rename columns
+
+datasetmain <- merge(dataset , location2 , by=c("METRO_ID")) # Merge location vectors with main data set
 
 
 
