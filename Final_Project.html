@@ -1,0 +1,78 @@
+---
+title: 'Open vs. closed innovation: using online network data to measure innovation'
+author: "Benjamin Snow and Oliver Bott"
+date: "20 November 2014"
+output:
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
+  html_document:
+    fig_caption: yes
+    number_sections: no
+---
+
+```{r echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+# Set working directory. Change as needed
+setwd('C:/Users/o.bott/Downloads/Final_Project/')
+
+```
+
+# Background
+
+This research project examines the potential benefit of using open knowledge data in the form of collaborative online network data as an innovation indicator. By doing so, this work critically assesses current innovation indicators, namely patent data, in the hope of offering new alternatives for measuring and understanding innovation. The stated research question is:  *To what extent can open innovation network data add to the measurement of innovation performance?*
+
+
+```{r, include=FALSE}
+# Load Dataset.csv from repository
+library(RCurl)
+
+# Set SSL certs globally
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+
+# Create dynamic link to Dataset.csv created through the Data_Gathering.R
+x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Data/Dataset.csv')
+dataset <- read.csv(text = x)
+
+# Clean dataset
+dataset$row.names <- NULL
+dataset$X <- NULL
+
+# Turn follower numbers to per 10.000 from 500.000
+dataset$nofollowing <- dataset$nofollowing/50
+dataset$medfollowing <- dataset$medfollowing/50
+dataset$hifollowing <- dataset$hifollowing/50
+
+# To log the variable nofollowing delete Kofu and Numazu, rows 62 and 90
+dataset[-c(62, 90), ]
+dataset <- dataset[-c(62, 90), ]
+
+# Further, to log the variables medfollowing and hifollowing also delete these rows of these cities
+dataset[-c(39, 45, 46, 59, 62, 73, 80, 114, 118, 119), ]
+dataset <- dataset[-c(39, 45, 46, 59, 62, 73, 80, 114, 118, 119), ]
+
+```
+
+```{r, fig.caption='Figure caption', echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+library(knitr)
+
+# Create table with info on variables
+Variables <- c('Patents', 'GDP', 'Population', 'Greenspace', 
+               'Employment', 'Pollution', 'No Following', 
+               '1-24 Following', '>25 Following')
+Explanation <- c('PCT patents per 10,000 population', 'GDP per capita', 
+                 'Total urban population', 'Green area per capita in square metres', 
+                 'Employment of metropolitan area as % of national value', 
+                 'Annual average of pop exposure to air pollution PM2,5 in µg/m³', 
+                 'GitHub users per 10,000 population', 
+                 'GitHub users per 10,000 population', 
+                 'GitHub users per 10,000 population')
+Source <- c('OECD (2008)', 'OECD (2008)', 'OECD (2008)', 'OECD (2008)', 'OECD (2008)', 
+            'OECD (2005)', 'GitHub (2014)', 'GitHub (2014)','GitHub (2014)')
+
+
+# Combine
+limtab <- data.frame(Variables, Explanation, Source)
+
+knitr::kable(limtab)
+
+```
