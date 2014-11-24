@@ -1,14 +1,14 @@
 ---
-title: 'Mapping Exercise'
+title: "Mapping Exercise"
 author: "Oliver Bott"
 date: "14 November 2014"
 output:
-  pdf_document:
-    fig_caption: yes
-    number_sections: yes
   html_document:
     fig_caption: yes
     number_sections: no
+  pdf_document:
+    fig_caption: yes
+    number_sections: yes
 ---
 
 ```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
@@ -82,6 +82,28 @@ library(maps)
 map("world", fill=TRUE, col="#f7f7f7", bg="#f7f7f7", ylim=c(-60, 90), mar=c(0,0,0,0))
 points(datasetfinal$lon, datasetfinal$lat, col="#de2d26", pch=16)
 
+#Option 2: DOESNT WORK
+#map <- get_map(location="Europe", zoom=4)
+#mapPoints <- ggmap(map) + geom_points(aes(x = lon, y = lat, size = sqrt(Patents)), data(datasetfinal, alpha = .5)
+                                      
+#Option3 - this actually works TAKEN FROM http://blog.revolutionanalytics.com/2012/07/making-beautiful-maps-in-r-with-ggmap.html
+map.center <- geocode("Europe")
+SHmap <- qmap(c(lon=map.center$lon, lat=map.center$lat), source="google", zoom=4)
+SHmap + geom_point(
+  aes(x=datasetfinal$lon, y=datasetfinal$lat), data=visdat)
+
+#Option4 - nope
+#G <- gvisGeoChart(datasetfinal, "METRO_ID", "Patents", "hifollowing",
+#                options=list(projection="kavrayskiy-vii",
+#                             colorAxis="{colors:['#91BFDB', '#FC8D59']}"))
+#plot(G)
+
+#G <- gvisGeoChart(datasetfinal, "METRO_ID", "Patents", "hifollowing",
+#                   options=list(displayMode="Markers", 
+#                   colorAxis="{colors:['purple', 'red', 'orange', 'grey']}",
+#                   backgroundColor="lightblue"), chartid="EQ")
+#plot(G)
+
 ```
 
 ```{r}
@@ -90,18 +112,19 @@ points(datasetfinal$lon, datasetfinal$lat, col="#de2d26", pch=16)
 # Create dataframe with variables of interest
 visdat <- data.frame(datasetfinal$METRO_ID, datasetfinal$Patents, datasetfinal$hifollowing)
 
-# First try
+# First try - does not work
 library(googleVis)
 scat1 <- gvisScatterChart(visdat)
 print(scat1, tag = 'Scatterplot')
 
-# Another try
+# Another try - does not work
 scat2 <- gvisScatterChart(visdat, options=list(legend="none",
                  lineWidth=2, pointSize=0,
                  title="Title", vAxis="{title:'weight (lbs)'}",
                  hAxis="{title:'height (in)'}", width=300, height=300))
  
 plot(scat2)
+
 
 ```
 
