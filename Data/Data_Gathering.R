@@ -1,5 +1,5 @@
 # Set working directory
-setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Assignment3/')
+setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project')
 
 require("devtools")
 library("rsdmx")
@@ -345,17 +345,44 @@ location_counts$oneFollowers <- location_counts$oneFollowers-location_counts$twe
 colnames(location_counts) <- c("METRO_ID" , "nofollowing" , "medfollowing" , "hifollowing")
 
 # Merge all OECD and API data set
-dataset <- merge(oecd , location_counts , by=c("METRO_ID"))                 
+datasetpre <- merge(oecd , location_counts , by=c("METRO_ID"))                 
 
 # Change total counts into counts per population
-dataset$nofollowing <- dataset$nofollowing/dataset$Population
-dataset$nofollowing <- dataset$nofollowing*500000
+datasetpre$nofollowing <- datasetpre$nofollowing/datasetpre$Population
+datasetpre$nofollowing <- datasetpre$nofollowing*10000
 
-dataset$medfollowing <- dataset$medfollowing/dataset$Population
-dataset$medfollowing <- dataset$medfollowing*500000
+datasetpre$medfollowing <- datasetpre$medfollowing/datasetpre$Population
+datasetpre$medfollowing <- datasetpre$medfollowing*10000
 
-dataset$hifollowing <- dataset$hifollowing/dataset$Population
-dataset$hifollowing <- dataset$hifollowing*500000
+datasetpre$hifollowing <- datasetpre$hifollowing/datasetpre$Population
+datasetpre$hifollowing <- datasetpre$hifollowing*10000
+
+
+
+# Get location info via ggmap
+
+library(ggmap)
+
+places <- c('Vienna', 'Graz', 'Linz', 'Brussels', 'Antwerp', 'Ghent', 'Liege', 'Berlin', 'Hamburg', 'Munich', 'Cologne', 'Frankfurt', 'Essen', 'Stuttgart', 'Leipzig', 'Dresden', 'Dortmund', 'Dusseldorf', 'Bremen', 'Hanover', 'Bochum', 'Freiburg', 'Augsburg', 'Bonn', 'Karlsruhe', 'Duisburg', 'Mannheim', 'Aachen', 'Copenhagen', 'Tallinn', 'Madrid', 'Barcelona', 'Valencia', 'Seville', 'Zaragoza', 'Malaga', 'Palmas', 'Bilbao', 'Helsinki', 'Paris', 'Lyon', 'Toulouse', 'Strasbourg', 'Bordeaux', 'Nantes', 'Lille', 'Montpellier', 'Rennes', 'Grenoble', 'Toulon', 'Marseille', 'Nice', 'Rouen', 'Rome', 'Milan', 'Naples', 'Turin', 'Palermo', 'Genova', 'Florence', 'Bari', 'Bologna', 'Catania', 'Venice', 'Mito', 'Tokyo', 'Kofu', 'Nagoya', 'Numazu', 'Osaka', 'Okayama', 'Kurashiki', 'Fukuyama', 'Hiroshima', 'Takamatsu', 'Monterrey', 'Irapuato', 'Hague', 'Amsterdam', 'Rotterdam', 'Utrecht', 'Eindhoven', 'Oslo', 'Lisbon', 'Porto', 'Stockholm', 'Gothenburg', 'Malmo', 'Seattle', 'Portland', 'Minneapolis', 'Milwaukee', 'Madison', 'Buffalo', 'Albany', 'Detroit', 'Boston', 'Chicago', 'Providence', 'Toledo', 'Cleveland', 'Omaha', 'Akron', 'Pittsburgh', 'Harrisburg', 'Philadelphia', 'Columbus', 'Denver', 'Indianapolis', 'Dayton', 'Baltimore', 'Cincinnati', 'Washington', 'Louisville', 'Wichita', 'Richmond', 'Fresno', 'Nashville', 'Tulsa', 'Raleigh', 'Charlotte', 'Albuquerque', 'Memphis', 'Columbia', 'Atlanta', 'Phoenix', 'Dallas', 'Charleston', 'Tucson', 'Austin', 'Jacksonville', 'Houston', 'Orlando', 'Tampa', 'Miami')
+
+location <- geocode(places)
+
+location2 <- data.frame(location, places)
+
+colnames(location2) <- c("lon" , "lat" , "METRO_ID") # Rename columns
+
+dataset <- merge(datasetpre , location2 , by=c("METRO_ID")) # Merge location vectors with main data set
+
+
+
+# Clean data set for potential log transformations
+
+dataset[-c(62, 90), ]
+dataset <- dataset[-c(62, 90), ]
+
+# Further, to log the variables medfollowing and hifollowing also delete these rows of these cities
+dataset[-c(39, 45, 46, 59, 62, 73, 80, 114, 118, 119), ]
+dataset <- dataset[-c(39, 45, 46, 59, 62, 73, 80, 114, 118, 119), ]
 
 
 
