@@ -15,6 +15,8 @@ output:
 # Set working directory. Change as needed
 setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project/')
 
+# file in same directory under html_document css
+
 ```
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
@@ -94,8 +96,11 @@ points(datasetfinal$lon, datasetfinal$lat, col="#de2d26", pch=16)
 map.center <- geocode("Europe")
 SHmap <- qmap(c(lon=map.center$lon, lat=map.center$lat), source="google", zoom=4)
 SHmap + geom_point(aes(x=lon, y=lat), data=datasetfinal) + 
-        geom_point(aes(x = lon, y = lat, size = sqrt(Patents)), 
-                   data = datasetfinal, alpha = .5)
+        geom_point(aes(x = lon, y = lat, color=Patents, size=20), 
+                   data = datasetfinal)
+
+# color look up in slides
+# change 
 
 #Option4 - nope
 #G <- gvisGeoChart(datasetfinal, "METRO_ID", "Patents", "hifollowing",
@@ -161,7 +166,6 @@ n1
 # Possible to add a best fit line?
 d1 <- dPlot(
   Patents ~ hifollowing,
-  groups = c("METRO_ID"),
   data = datasetfinal,
   type = "bubble", height=800,
   width=1000,
@@ -175,6 +179,7 @@ d1
 ```
 
 ```{r}
-
+reshape2 - command melt
+tidier
 ```
 
