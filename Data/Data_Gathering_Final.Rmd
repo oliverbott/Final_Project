@@ -689,9 +689,6 @@ dataset$twentyFollowers <- dataset$twentyFollowers*10000
 dataset$thirtyFollowers <- dataset$thirtyFollowers/dataset$Population
 dataset$thirtyFollowers <- dataset$thirtyFollowers*10000
 
-dataset$thirtyFollowers <- dataset$thirtyFollowers/dataset$Population
-dataset$thirtyFollowers <- dataset$thirtyFollowers*10000
-
 dataset$fortyFollowers <- dataset$fortyFollowers/dataset$Population
 dataset$fortyFollowers <- dataset$fortyFollowers*10000
 
@@ -713,6 +710,18 @@ dataset$ninetyFollowers <- dataset$ninetyFollowers*10000
 dataset$hundredFollowers <- dataset$hundredFollowers/dataset$Population
 dataset$hundredFollowers <- dataset$hundredFollowers*10000
 
+
+# Change follower numbers into categories
+dataset$oneFollowers <- dataset$zeroFollowers-dataset$tenFollowers # 1-9 followers
+dataset$tenFollowers <- dataset$tenFollowers-dataset$twentyFollowers # 10-19 followers
+dataset$twentyFollowers <- dataset$twentyFollowers-dataset$thirtyFollowers # 20-29 followers
+dataset$thirtyFollowers <- dataset$thirtyFollowers-dataset$fortyFollowers # 30-39 followers
+dataset$fortyFollowers <- dataset$fortyFollowers-dataset$fiftyFollowers # 40-49 followers
+dataset$fiftyFollowers <- dataset$fiftyFollowers-dataset$sixtyFollowers # 50-59 followers
+dataset$sixtyFollowers <- dataset$sixtyFollowers-dataset$seventyFollowers # 60-69 followers
+dataset$seventyFollowers <- dataset$seventyFollowers-dataset$eightyFollowers # 70-79 followers
+dataset$eightyFollowers <- dataset$eightyFollowers-dataset$ninetyFollowers # 80-89 followers
+dataset$ninetyFollowers <- dataset$ninetyFollowers-dataset$hundredFollowers # 90-99 followers
 ```
 
 

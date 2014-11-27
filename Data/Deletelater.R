@@ -27,8 +27,3 @@ dataset$seventyFollowers <- dataset$seventyFollowers-dataset$eightyFollowers # 7
 dataset$eightyFollowers <- dataset$eightyFollowers-dataset$ninetyFollowers # 80-89 followers
 dataset$ninetyFollowers <- dataset$ninetyFollowers-dataset$hundredFollowers # 90-99 followers
 
-# Merge OECD with GitHub API datasets
-
-dataset <- merge(oecd2 , api , by=c("METRO_ID"))
-
-write.csv(dataset, file = "dataset.csv")
