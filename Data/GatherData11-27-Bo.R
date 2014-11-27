@@ -221,7 +221,7 @@ location_countsF <- merge(location_counts6 , location_counts7 , by=c("METRO_ID")
 location_countsG <- merge(location_countsF , location_counts8 , by=c("METRO_ID"))
 location_countsH <- merge(location_countsG , location_counts9 , by=c("METRO_ID"))
 location_countsI <- merge(location_countsH , location_counts10 , by=c("METRO_ID"))
-location_countsJ <- merge(location_countsH , location_counts11 , by=c("METRO_ID"))
+location_countsJ <- merge(location_countsI , location_counts11 , by=c("METRO_ID"))
      
      
 # Save dataframe as .csv file to save computing time
