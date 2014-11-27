@@ -1,5 +1,5 @@
 # Set working directory
-setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project')
+setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub ClonecFinal_Project/Data/')
 
 require("devtools")
 library("rsdmx")
@@ -36,7 +36,7 @@ for (i in locations){
   user_counts0 <- c(user_counts0, user_counts_temp0)
   
   # Sleep R for 7 seconds so you don't overload the API
-  Sys.sleep(2); message('-')
+  Sys.sleep(7); message('-')
 }
 
 # Combine locations and user counts data
@@ -68,7 +68,7 @@ for (i in locations){
   user_counts1 <- c(user_counts1, user_counts_temp1)
   
   # Sleep R for 7 seconds so you don't overload the API
-  Sys.sleep(2); message('-')
+  Sys.sleep(7); message('-')
 }
 
 # Combine locations and user counts data
@@ -102,7 +102,7 @@ for (i in locations){
   user_counts2 <- c(user_counts2, user_counts_temp2)
   
   # Sleep R for 7 seconds so you don't overload the API
-  Sys.sleep(2); message('-')
+  Sys.sleep(7); message('-')
 }
 
 # Combine locations and user counts data
@@ -136,7 +136,7 @@ for (i in locations){
   user_counts3 <- c(user_counts3, user_counts_temp3)
   
   # Sleep R for 7 seconds so you don't overload the API
-  Sys.sleep(2); message('-')
+  Sys.sleep(7); message('-')
 }
 
 # Combine locations and user counts data
@@ -170,7 +170,7 @@ for (i in locations){
   user_counts4 <- c(user_counts4, user_counts_temp4)
   
   # Sleep R for 7 seconds so you don't overload the API
-  Sys.sleep(2); message('-')
+  Sys.sleep(7); message('-')
 }
 
 # Combine locations and user counts data
@@ -205,7 +205,7 @@ for (i in locations){
   user_counts5 <- c(user_counts5, user_counts_temp5)
   
   # Sleep R for 7 seconds so you don't overload the API
-  Sys.sleep(2); message('-')
+  Sys.sleep(7); message('-')
 }
 
 # Combine locations and user counts data
@@ -220,8 +220,9 @@ colnames(location_counts5) <- c("METRO_ID" , "fortyFollowers")
 location_countsA <- merge(location_counts0 , location_counts1 , by=c("METRO_ID"))
 location_countsB <- merge(location_countsA , location_counts2 , by=c("METRO_ID"))
 location_countsC <- merge(location_countsB , location_counts3 , by=c("METRO_ID"))
-location_counts <- merge(location_countsC , location_counts4 , by=c("METRO_ID"))
+location_countsD <- merge(location_countsC , location_counts4 , by=c("METRO_ID"))
+location_countsE <- merge(location_countsD , location_counts5 , by=c("METRO_ID"))
      
      
 # Save dataframe as .csv file to save computing time
-write.csv(dataset, file = "Gathering0-40.csv")
+write.csv(location_countsE, file = "Gathering0-40.csv")
