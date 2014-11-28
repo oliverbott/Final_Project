@@ -48,4 +48,5 @@ datasetdummy <- merge(dataset2 , dummyframe , by=c("METRO_ID"))
 # Save as .csv
 
 write.csv(dataset, file = "datasetdummy.csv")
+# Sync and done.
 
