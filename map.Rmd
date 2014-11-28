@@ -179,7 +179,8 @@ d1
 ```
 
 ```{r}
-#reshape2 - command melt
-#tidyr
+
+
+
 ```
 
