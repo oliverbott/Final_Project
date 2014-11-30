@@ -14,6 +14,7 @@ gather50to100 <- read.csv(text = y)
 
 
 
+
 # Change follower numbers into categories
 
 dataset$oneFollowers <- dataset$zeroFollowers-dataset$tenFollowers # 1-9 followers
@@ -31,6 +32,8 @@ dataset$ninetyFollowers <- dataset$ninetyFollowers-dataset$hundredFollowers # 90
 
 # Reshape city and follower data
 
+dataset$X <- NULL
+
 follow <- dataset
 
 follow$Patents <- NULL
@@ -47,6 +50,11 @@ colnames(follow) <- c("METRO_ID" , "0" , "10" , "20" , "30", "40", "50", "60", "
 
 
 # Melt into long format
+
+library(ggplot2)
+library(dplyr)
+library(reshape2)
+
 follow <- melt(follow)
 head(follow)
 
@@ -63,10 +71,9 @@ ob1 <- summarize (follow, sum(Value))
 qplot(follow$Value, binwidth=1)
 qplot(ob1$Value, binwidth=10)
 
+colnames(ob1) <- c("Variable" , "Value")
 hist(ob1$Value)
 
-
-colnames(ob1) <- c("Variable" , "Value")
 qplot(ob1$Variable)
 
 barplot(ob1$Value, main="Follower Distribution", 
@@ -106,9 +113,31 @@ follow <- group_by(follow, Variable)
 
 
 #################### Third attempt - rCharts
+# Use this once the dummies are in place
+
+hairbasic <- as.data.frame(HairEyeColor)
+
+library(rCharts)
 
 hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
 n1 <- nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, type = "multiBarChart")
 n1$print("chart3")
+
+# First try
+hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
+n1 <- nPlot(Value ~ Variable, group = "", data = ob1, type = "multiBarChart")
+n1$print("chart3")
+
+
+#################### Some other bar charts
+
+
+library(Rcpp)
+require(devtools)
+#install_github('ramnathv/rNVD3')
+
+require(rNVD3)
+bar1 <- nvd3Plot(~Value, data = ob1, type = "discreteBarChart", width = 200)
+bar1$printChart("chart1")
 
 
