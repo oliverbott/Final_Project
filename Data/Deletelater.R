@@ -123,10 +123,22 @@ hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
 n1 <- nPlot(Freq ~ Hair, group = "Eye", data = hair_eye_male, type = "multiBarChart")
 n1$print("chart3")
 
-# First try
-hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
-n1 <- nPlot(Value ~ Variable, group = "", data = ob1, type = "multiBarChart")
-n1$print("chart3")
+# First try with datasetdummy 
+
+follow <- datasetdummy
+
+follow$Patents <- NULL
+follow$GDP <- NULL
+follow$Population <- NULL
+follow$Pollution <- NULL
+follow$Greenspace <- NULL
+follow$Employment <- NULL
+follow$lon <- NULL
+follow$lat <- NULL
+
+colnames(follow) <- c("METRO_ID" , "0" , "10" , "20" , "30", "40", "50", "60", "70", "80", "90", "100" , "110" , "US" , "DE" , "FR" , "JP")
+follow <- group_by(follow, US)
+us <- summarize (follow, sum(US))
 
 
 #################### Some other bar charts
