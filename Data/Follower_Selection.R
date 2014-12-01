@@ -1,5 +1,5 @@
 # Set working directory
-setwd('C:/Users/...')
+setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project/Data/')
 
 #install.packages("RCurl")
 library(RCurl)
@@ -26,37 +26,42 @@ dataset$zeroFollowers <- NULL
 # Rename variables for melting
 
 colnames(dataset) <- c("METRO_ID" , "1" , "10" , "20" , "30", "40", "50", "60", "70", "80", "90", "100" , "US" , "DE" , "FR" , "JP")
+# 1 means 1-9 followers, 10 equals 10-19 followers etc.
 
-
-#### Our approach so far - not great####
-
+# Use country dummies to group cities
   #install.packages("dplyr")
   #install.packages("reshape2")
   library(dplyr)
   library(reshape2)
 
-  follow <- dataset
+attach(dataset)
+aggdata <-aggregate(dataset, by=list(US, DE, FR, JP), 
+                    FUN=mean, na.rm=TRUE)
+aggdata$US <- NULL
+aggdata$DE <- NULL
+aggdata$FR <- NULL
+aggdata$JP <- NULL
 
-  follow$US <- NULL
-  follow$DE <- NULL
-  follow$FR <- NULL
-  follow$JP <- NULL
+country <- c("Other", "US", "DE", "FR", "JP")
+aggdata <- data.frame(country, aggdata)
 
-  # Turn dataframe horizontally
-  follow <- melt(follow)
-  head(follow)
+aggdata$Group.1 <- NULL
+aggdata$Group.2 <- NULL
+aggdata$Group.3 <- NULL
+aggdata$Group.4 <- NULL
+aggdata$METRO_ID <- NULL
 
-  colnames(follow) <- c("METRO_ID" , "Variable" , "Value")
+colnames(aggdata) <- c("Country" , "1" , "10" , "20" , "30", "40", "50", "60", "70", "80", "90", "100")
 
-  follow[,"Value"] <- as.numeric(follow[,"Value"])
-  follow[,"Variable"] <- as.numeric(follow[,"Variable"])
+print(aggdata)
+detach(dataset)
 
-  follow <- group_by(follow, Variable)
-  A1 <- summarize (follow, sum(Value))
-  colnames(A1) <- c("Variable" , "Value")
+# Turn dataframe horizontally
+aggdata <- melt(aggdata)
+head(aggdata)
 
-  # The barplot - very basic (have not been able to add Variable info)
-  barplot(A1$Value, main="Follower Distribution", 
-          xlab="Follower number categories")
+n1 <- nPlot(value ~ variable, group = "Country", data = aggdata, type = "multiBarChart")
+n1$print("chart3")
 
+# How to show this in R?
 
