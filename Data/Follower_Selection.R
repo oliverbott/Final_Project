@@ -60,6 +60,9 @@ detach(dataset)
 aggdata <- melt(aggdata)
 head(aggdata)
 
+   #install.packages("rCharts")
+library(rCharts)
+
 n1 <- nPlot(value ~ variable, group = "Country", data = aggdata, type = "multiBarChart")
 n1$print("chart3")
 
