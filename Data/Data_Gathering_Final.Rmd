@@ -722,6 +722,17 @@ dataset$sixtyFollowers <- dataset$sixtyFollowers-dataset$seventyFollowers # 60-6
 dataset$seventyFollowers <- dataset$seventyFollowers-dataset$eightyFollowers # 70-79 followers
 dataset$eightyFollowers <- dataset$eightyFollowers-dataset$ninetyFollowers # 80-89 followers
 dataset$ninetyFollowers <- dataset$ninetyFollowers-dataset$hundredFollowers # 90-99 followers
+
+# Rename columns
+colnames(location_counts11) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "Followers" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" )
+
+# Make new variable with over 20 followers per 10,000 population
+over20 <- subset(dataset, select = c("METRO_ID","20"))
+colnames(over20) <- c("METRO_ID" , "hifol")
+
+dataset <- merge(dataset , over20 , by=c("METRO_ID"))
+dataset$hifol <- dataset$hifol/dataset$Population
+dataset$hifol <- dataset$hifol*10000
 ```
 
 
