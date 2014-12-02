@@ -8,6 +8,19 @@ output: html_document
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 ```{r}
+# Set working directory
+setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project/Data/')
+
+library(RCurl)
+
+# Load .csv from GitHub repository
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+
+# Create dynamic link to Dataset.csv created through the Data_Gathering.R
+x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Data/Dataset.csv')
+dataset <- read.csv(text = x)
+dataset$X <- NULL
+colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "Followers" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "hifol")
 
 ```
 
@@ -15,6 +28,7 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 ```
 
+The following justifies the follower range we take.
 ```{r}
 # Follower selection barchart
 
@@ -70,3 +84,16 @@ barchart(value ~ variable, groups=Country, df, auto.key = list(columns = 4),
                       title="District", cex.title=1),
          par.strip.text=list(col="white", font=2),)
 ```
+
+Now comes the 3 maps.
+```{r}
+library(ggmap)
+library(maptools)
+library(maps)
+map.center <- geocode("Europe")
+SHmap <- qmap(c(lon=map.center$lon, lat=map.center$lat), source="google", zoom=4)
+SHmap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=Patents, size=20), 
+                   data = dataset)
+```
+

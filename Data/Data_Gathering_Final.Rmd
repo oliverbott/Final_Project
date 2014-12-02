@@ -673,6 +673,12 @@ dataset <- merge(oecd2 , api , by=c("METRO_ID"))
 ```{r}
 # Clean dataset for analysis
 
+# Make new variable with over 20 followers per 10,000 population
+over20 <- subset(dataset, select = c("METRO_ID","twentyFollowers"))
+colnames(over20) <- c("METRO_ID" , "hifol")
+
+dataset <- merge(dataset , over20 , by=c("METRO_ID"))
+
 # Change total counts into counts per population
 dataset$zeroFollowers <- dataset$zeroFollowers/dataset$Population
 dataset$zeroFollowers <- dataset$zeroFollowers*10000
@@ -710,6 +716,9 @@ dataset$ninetyFollowers <- dataset$ninetyFollowers*10000
 dataset$hundredFollowers <- dataset$hundredFollowers/dataset$Population
 dataset$hundredFollowers <- dataset$hundredFollowers*10000
 
+dataset$hifol <- dataset$hifol/dataset$Population
+dataset$hifol <- dataset$hifol*10000
+
 
 # Change follower numbers into categories
 dataset$oneFollowers <- dataset$zeroFollowers-dataset$tenFollowers # 1-9 followers
@@ -724,21 +733,14 @@ dataset$eightyFollowers <- dataset$eightyFollowers-dataset$ninetyFollowers # 80-
 dataset$ninetyFollowers <- dataset$ninetyFollowers-dataset$hundredFollowers # 90-99 followers
 
 # Rename columns
-colnames(location_counts11) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "Followers" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" )
+colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "Followers" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "hifol")
 
-# Make new variable with over 20 followers per 10,000 population
-over20 <- subset(dataset, select = c("METRO_ID","20"))
-colnames(over20) <- c("METRO_ID" , "hifol")
 
-dataset <- merge(dataset , over20 , by=c("METRO_ID"))
-dataset$hifol <- dataset$hifol/dataset$Population
-dataset$hifol <- dataset$hifol*10000
 ```
 
 
 ```{r}
 # Save as .csv
 write.csv(dataset, file = "dataset.csv")
-
 ```
 
