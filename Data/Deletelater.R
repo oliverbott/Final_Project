@@ -141,6 +141,33 @@ follow <- group_by(follow, US)
 us <- summarize (follow, sum(US))
 
 
+######## Old follow bar plot
+
+follow <- dataset
+
+follow$US <- NULL
+follow$DE <- NULL
+follow$FR <- NULL
+follow$JP <- NULL
+
+# Turn dataframe horizontally
+follow <- melt(follow)
+head(follow)
+
+colnames(follow) <- c("METRO_ID" , "Variable" , "Value")
+
+follow[,"Value"] <- as.numeric(follow[,"Value"])
+follow[,"Variable"] <- as.numeric(follow[,"Variable"])
+
+follow <- group_by(follow, Variable)
+A1 <- summarize (follow, mean(Value))
+colnames(A1) <- c("Variable" , "Value")
+
+# The barplot - very basic (have not been able to add Variable info)
+barplot(A1$Value, main="Follower Distribution", 
+        xlab="Follower number categories")
+
+
 #################### Some other bar charts
 
 

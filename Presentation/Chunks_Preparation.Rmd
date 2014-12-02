@@ -1,0 +1,72 @@
+---
+title: "Presentation Chunks"
+author: "Oliver Bott"
+date: "Tuesday, December 02, 2014"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+# Follower selection barchart
+
+new <- dataset
+new_2 <- reshape(new, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+
+new_2 <- subset(new_2, value>0)
+new_2$id <- NULL 
+new_2$value <- NULL
+new_2$Country <- as.factor(new_2$Country)
+x_2 <- split(new_2, new_2$Country)
+x_3 <- lapply(x_2, function (x) sapply(x, mean))
+x_3 <- data.frame(x_3)
+x_3 <- na.omit(x_3)
+
+df <- reshape(x_3, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+variable <- c(1,10,20,30,40,50,60,70,80,90,100, 
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100)
+df <- data.frame(df, variable)
+df$id <- NULL 
+df$variable <- as.factor(df$variable)
+
+# Set color scheme
+library(RColorBrewer)
+myColours <- brewer.pal(6,"Set3")
+
+my.settings <- list(
+  superpose.polygon=list(col=myColours[3:6], border="transparent"),
+  strip.background=list(col=myColours[6]),
+  strip.border=list(col="black")
+)
+
+require(lattice)
+barchart(value ~ variable, groups=Country, df, auto.key = list(columns = 4), 
+         main="Follower counts in different countries", xlab="Follower category", 
+         ylab="Frequency", par.settings = my.settings, scales=list(alternating=1),
+         uto.key=list(space="top", columns=4, 
+                      points=FALSE, rectangles=TRUE,
+                      title="District", cex.title=1),
+         par.strip.text=list(col="white", font=2),)
+```

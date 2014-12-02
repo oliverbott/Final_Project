@@ -65,6 +65,7 @@ head(aggdata)
 library(ggplot2)
 ggplot(data=aggdata, aes(x=variable, y=value)) + geom_bar(stat="identity")
 
+
 # rCharts interactive plot
   #install.packages("rCharts")
 library(rCharts)
@@ -74,7 +75,7 @@ n1 <- nPlot(value ~ variable, group = "Country",
 n1$print("chart3")
 
 # How to show this in R/browser/presentation?
-n1
+n1$show('iframesrc', cdn = TRUE)
 
 
 
