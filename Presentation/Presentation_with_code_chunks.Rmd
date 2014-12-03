@@ -54,20 +54,20 @@ add_lib_assets("NVD3", cdn = TRUE, css = "http://rawgithub.com/ramnathv/rCharts/
 ## What are we doing here?
 
 How many groups in this class have done something:
+
 - interesting
 - creative
 - **innovative**
 
-## 
+Why is innovation important?
 
-Understanding innovation is **really** important:
 - economic growth
 - sustainability
 - education
 
-## Innovation in Innovation
+How is innovation measured?
 
-For the last few decades, measured through **patents**
+- For the last few decades, measured through **patents**
 
 ## Why Patents
 
@@ -95,82 +95,6 @@ Wanted to see if there is a relationship between classical innovation, and open 
 We pulled and cleaned follower data, patent data, and some other variables for 120 cities to see if we can find a relationship between follower and patent data, and these and 'explanatory' variables
 
 ## Finding Innovation
-
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-# Follower selection barchart
-fol <- dataset
-
-fol$X <- NULL
-fol$Patents <- NULL
-fol$GDP <- NULL
-fol$Population <- NULL
-fol$Pollution <- NULL
-fol$Greenspace <- NULL
-fol$Employment <- NULL
-fol$lon <- NULL
-fol$lat <- NULL
-fol$Followers <- NULL
-fol$hifol <- NULL
-
-# Rename variables for melting
-colnames(fol) <- c("METRO_ID" , "1" , "10" , "20" , "30", "40", "50", 
-                       "60", "70", "80", "90", "100" , "US" , "DE" , "FR" , "JP")
-  # 1 means 1-9 followers, 10 equals 10-19 followers etc.
-
-new <- fol
-new_2 <- reshape(new, 
-                 varying = c("US", "DE", "FR", "JP"), 
-                 v.names = "value",
-                 timevar = "Country", 
-                 times = c("US", "DE", "FR", "JP"), 
-                 new.row.names = 1:1000,
-                 direction = "long")
-
-new_2 <- subset(new_2, value>0)
-new_2$id <- NULL 
-new_2$value <- NULL
-new_2$Country <- as.factor(new_2$Country)
-x_2 <- split(new_2, new_2$Country)
-x_3 <- lapply(x_2, function (x) sapply(x, mean))
-x_3 <- data.frame(x_3)
-x_3 <- na.omit(x_3)
-
-df <- reshape(x_3, 
-                 varying = c("US", "DE", "FR", "JP"), 
-                 v.names = "value",
-                 timevar = "Country", 
-                 times = c("US", "DE", "FR", "JP"), 
-                 new.row.names = 1:1000,
-                 direction = "long")
-variable <- c(1,10,20,30,40,50,60,70,80,90,100, 
-              1,10,20,30,40,50,60,70,80,90,100,
-              1,10,20,30,40,50,60,70,80,90,100,
-              1,10,20,30,40,50,60,70,80,90,100)
-df <- data.frame(df, variable)
-df$id <- NULL 
-df$variable <- as.factor(df$variable)
-
-# Set color scheme
-library(RColorBrewer)
-myColours <- brewer.pal(6,"Set3")
-
-my.settings <- list(
-  superpose.polygon=list(col=myColours[3:6], border="transparent"),
-  strip.background=list(col=myColours[6]),
-  strip.border=list(col="black")
-)
-
-require(lattice)
-barchart(value ~ variable, groups=Country, df, auto.key = list(columns = 4), 
-         main="Follower counts in different countries", xlab="Follower category", 
-         ylab="Frequency per 10,000 population", par.settings = my.settings, scales=list(alternating=1),
-         uto.key=list(space="top", columns=4, 
-                      points=FALSE, rectangles=TRUE,
-                      title="District", cex.title=1),
-         par.strip.text=list(col="white", font=2),)
-```
-
-## Or
 
 This is an alternative interactive plot.
 
@@ -239,10 +163,12 @@ n1$print("chart3")
 
 # Map of European cities
 europe.center <- geocode("Europe")
-eumap <- qmap(c(lon=europe.center$lon, lat=europe.center$lat), source='google', zoom=4)
+eumap <- qmap(c(lon=europe.center$lon, lat=europe.center$lat), source = 'google', color="bw", zoom=4)
 eumap + geom_point(aes(x=lon, y=lat), data=dataset) + 
-        geom_point(aes(x = lon, y = lat, color=Patents, size=20), 
-                   data = dataset)
+        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+#guide legend = false or something
+# + guides(size=FALSE)
 ```
 
 ## City overview - Japan
@@ -250,10 +176,10 @@ eumap + geom_point(aes(x=lon, y=lat), data=dataset) +
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Map of Japanese cities
 japan.center <- geocode("Japan")
-japanmap <- qmap(c(lon=japan.center$lon, lat=japan.center$lat), source='google', zoom=5)
+japanmap <- qmap(c(lon=japan.center$lon, lat=japan.center$lat), source='google', color="bw", zoom=5)
 japanmap + geom_point(aes(x=lon, y=lat), data=dataset) + 
-        geom_point(aes(x = lon, y = lat, color=Patents, size=20), 
-                   data = dataset)
+        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
 ## City overview - America
@@ -261,10 +187,10 @@ japanmap + geom_point(aes(x=lon, y=lat), data=dataset) +
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Map of American cities
 america.center <- geocode("Cuba")
-americamap <- qmap(c(lon=america.center$lon, lat=america.center$lat), source='google', zoom=3)
+americamap <- qmap(c(lon=america.center$lon, lat=america.center$lat), source='google', color="bw", zoom=3)
 americamap + geom_point(aes(x=lon, y=lat), data=dataset) + 
-        geom_point(aes(x = lon, y = lat, color=Patents, size=20), 
-                   data = dataset)
+        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        scale_colour_gradient(low="2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
 ## Correlation?
@@ -276,12 +202,12 @@ americamap + geom_point(aes(x=lon, y=lat), data=dataset) +
 $logP_{i} = {\beta}_0 +{\beta}_1 logF_{i} + {\beta}_2 logControls_{i} +{\epsilon}_{i}$
 
 
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
 # Regression table with stargazer
 
 # For log delete 0 follower categories: new datasetlog
 datasetlog <- dataset
-datasetlog[-c(45, 59, 62, 63, 73, 81, 90, 116, 121), ]
+#datasetlog[-c(45, 59, 62, 63, 73, 81, 90, 116, 121), ]
 datasetlog <- datasetlog[-c(45, 59, 62, 63, 73, 81, 90, 116, 121), ]
 
 # Create country interaction
@@ -296,65 +222,16 @@ P2 <- lm(log(Patents) ~ log(hifol) + log(GDP) + log(Population) +
 P3 <- lm(log(Patents) ~ log(hifol) + log(GDP) + log(Population) + 
            log(Greenspace) + log(Employment) + log(Pollution) + USfol + DEfol + FRfol + JPfol, data = datasetlog)
 
-labelsP <- c('(Intercept)', 'Over 20 Followers', 'GDP', 'Population', 'Greenspace', 'Employment', 'Pollution', 'US' , 'DE' , 'FR' , 'JP')
+labelsP <- c('Over 20 Followers', 'GDP', 'Population', 'Greenspace', 'Employment', 'Pollution', 'US' , 'DE' , 'FR' , 'JP', '(Intercept)')
+```
 
-stargazer::stargazer(P1, P2, covariate.labels = labelsP,
+## Regression output
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+stargazer::stargazer(P1, P2, P3, covariate.labels = labelsP,
   title = 'Regression Estimates of Patent Activity',
   digits = 2, type ='html', single.row=TRUE)
 ```
-
-## More Visuals
-
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-# Scatterplot
-
-countryset <- data.frame (id=1:132)
-
-countryset$METRO_ID <- c('Vienna', 'Graz', 'Linz', 'Brussels', 'Antwerp', 'Ghent', 'Liege', 'Berlin', 'Hamburg', 'Munich', 'Cologne', 'Frankfurt', 'Essen', 'Stuttgart', 'Leipzig', 'Dresden', 'Dortmund', 'Dusseldorf', 'Bremen', 'Hanover', 'Bochum', 'Freiburg', 'Augsburg', 'Bonn', 'Karlsruhe', 'Duisburg', 'Mannheim', 'Aachen', 'Copenhagen', 'Tallinn', 'Madrid', 'Barcelona', 'Valencia', 'Seville', 'Zaragoza', 'Malaga', 'Palmas', 'Bilbao', 'Helsinki', 'Paris', 'Lyon', 'Toulouse', 'Strasbourg', 'Bordeaux', 'Nantes', 'Lille', 'Montpellier', 'Rennes', 'Grenoble', 'Toulon', 'Marseille', 'Nice', 'Rouen', 'Rome', 'Naples', 'Turin', 'Palermo', 'Genova', 'Florence', 'Bologna', 'Catania', 'Venice', 'Mito', 'Tokyo', 'Kofu', 'Nagoya', 'Numazu', 'Osaka', 'Okayama', 'Kurashiki', 'Fukuyama', 'Hiroshima', 'Takamatsu', 'Monterrey', 'Irapuato', 'Hague', 'Amsterdam', 'Rotterdam', 'Utrecht', 'Oslo', 'Lisbon', 'Porto', 'Stockholm', 'Gothenburg', 'Malmo', 'Seattle', 'Portland', 'Minneapolis', 'Milwaukee', 'Madison', 'Buffalo', 'Albany', 'Detroit', 'Boston', 'Chicago', 'Providence', 'Toledo', 'Cleveland', 'Omaha', 'Akron', 'Pittsburgh', 'Harrisburg', 'Philadelphia', 'Columbus', 'Denver', 'Indianapolis', 'Dayton', 'Baltimore', 'Cincinnati', 'Washington', 'Louisville',  'Wichita', 'Richmond', 'Fresno', 'Nashville', 'Tulsa', 'Raleigh', 'Charlotte', 'Albuquerque', 'Memphis', 'Columbia', 'Atlanta', 'Phoenix',  'Dallas', 'Charleston', 'Tucson', 'Austin', 'Jacksonville', 'Houston', 'Orlando', 'Tampa', 'Miami')
-countryset$id <- NULL
-
-countryset$Country <- c('Austria', 'Austria', 'Austria', 'Belgium', 'Belgium', 'Belgium', 'Belgium', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Denmark', 'Estonia', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Finland', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Mexico', 'Mexico', 'Netherlands', 'Netherlands', 'Netherlands', 'Netherlands', 'Norway', 'Portugal', 'Portugal', 'Sweden', 'Sweden', 'Sweden', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States',  'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States',  'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States')
-
-datasetscat <- merge(dataset , countryset , by=c("METRO_ID")) 
-
-d1 <- dPlot(
-  Patents ~ hifol,
-  groups = c("METRO_ID", "Country"),
-  data = datasetscat,
-  type = "bubble",height=800,
-  width=1000,
-  bounds = list(x=60, y=25, width=400, height=350)
-)
-d1$xAxis( type = "addMeasureAxis" )
-d1$yAxis( type = "addMeasureAxis" )
-d1$legend(
-  x = 465,
-  y = 0,
-  width = 50,
-  height = 200,
-  horizontalAlign = "left"
-)
-d1$show('iframesrc', cdn = TRUE)
-```
-
-## Implications
-
-**Preliminarily** using open data is a potentially innovative way of measuring innovation (see what we did there?)
-
-Could be used in the future for 
-
-##
-
-##
-
-##
-
-
-
-
-
-
-
 
 
 ## Alternative scatterplot
@@ -376,3 +253,9 @@ n2$xAxis(axisLabel = "Sepal.Width")  # add x axis label
 n2$yAxis(axisLabel = "Sepal.Length")
 n2$print("nvd3Scatter")
 ```
+
+## Implications
+
+**Preliminarily** using open data is a potentially innovative way of measuring innovation (see what we did there?)
+
+Could be used in the future for 
