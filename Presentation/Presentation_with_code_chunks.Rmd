@@ -51,7 +51,40 @@ add_lib_assets <- function(lib, cdn = F, css = NULL) {
 add_lib_assets("NVD3", cdn = TRUE, css = "http://rawgithub.com/ramnathv/rCharts/master/inst/libraries/nvd3/css/rNVD3.css")
 ```
 
-## Slide one
+## What are we doing here?
+
+How many groups in this class have done something:
+- interesting
+- creative
+- **innovative**
+
+## 
+
+Understanding innovation is **really** important:
+- economic growth
+- sustainability
+- education
+
+## Innovation in Innovation
+
+For the last few decades, measured through **patents**
+
+## Why Patents
+
+Patents were used because:
+- defined moment and place in time (registration)
+- a legal claim of a new idea
+- same 'innovation' can't be claimed twice
+
+## But:
+
+Intuitively, seems many innovations are taking place which aren't being patented
+
+## Open Innovation
+
+Focusing on software innovation
+
+
 
 ## Follower selection
 
