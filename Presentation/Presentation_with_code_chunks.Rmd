@@ -1,5 +1,5 @@
 ---
-title: "Test"
+title: "Open vs. Closed Innovation"
 author: "Oliver Bott"
 date: "Wednesday, December 03, 2014"
 output: ioslides_presentation
@@ -28,10 +28,11 @@ dataset$X <- NULL
 colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "Followers" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "hifol")
 ```
 
+## Slide one
 
-## R Markdown
+## Follower selection
 
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This plot shows how we choose the cutoff.
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Follower selection barchart
@@ -107,6 +108,17 @@ barchart(value ~ variable, groups=Country, df, auto.key = list(columns = 4),
          par.strip.text=list(col="white", font=2),)
 ```
 
+## Slide with Plot
+
+A similar plot would be nice to have for the follower selection
+Why doesnt it show up?
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
+n2 <- nPlot(Freq ~ Hair, group = 'Eye', data = hair_eye_male, type = 'multiBarChart')
+n2$print('chart 1', include_assets = TRUE)
+```
+
 ## City overview - Europe
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
@@ -176,17 +188,12 @@ stargazer::stargazer(P1, P2, covariate.labels = labelsP,
   digits = 2, type ='html', single.row=TRUE)
 ```
 
-## Slide with Plot
 
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
-n2 <- nPlot(Freq ~ Hair, group = 'Eye', data = hair_eye_male, type = 'multiBarChart')
-n2$print('chart 1', include_assets = TRUE)
-```
 
 ## Scatterplot slide
 
 Here comes the scatterplot.
+Why doesnt it show?
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Scatterplot
@@ -217,5 +224,5 @@ d1$legend(
   height = 200,
   horizontalAlign = "left"
 )
-n2
+n2$show('iframesrc', cdn = TRUE)
 ```
