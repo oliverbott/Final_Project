@@ -190,7 +190,7 @@ america.center <- geocode("Cuba")
 americamap <- qmap(c(lon=america.center$lon, lat=america.center$lat), source='google', color="bw", zoom=3)
 americamap + geom_point(aes(x=lon, y=lat), data=dataset) + 
         geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
-        scale_colour_gradient(low="2c7fb8", high="#f03b20") + guides(size=FALSE)
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
 ## Correlation?
