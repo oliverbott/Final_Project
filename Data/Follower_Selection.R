@@ -37,24 +37,13 @@ colnames(dataset) <- c("METRO_ID" , "1" , "10" , "20" , "30", "40", "50",
 attach(dataset)
 aggdata <-aggregate(dataset, by=list(US, DE, FR, JP), 
                     FUN=mean, na.rm=TRUE)
-aggdata$US <- NULL
-aggdata$DE <- NULL
-aggdata$FR <- NULL
-aggdata$JP <- NULL
-
 country <- c("Other", "US", "DE", "FR", "JP")
 aggdata <- data.frame(country, aggdata)
 
-aggdata$Group.1 <- NULL
-aggdata$Group.2 <- NULL
-aggdata$Group.3 <- NULL
-aggdata$Group.4 <- NULL
-aggdata$METRO_ID <- NULL
+aggdata=aggdata[,-c(2:15,27:31)]
 
 colnames(aggdata) <- c("Country" , "1" , "10" , "20" , "30", "40", "50", 
                        "60", "70", "80", "90", "100")
-
-print(aggdata)
 detach(dataset)
 
 # Turn dataframe horizontally
@@ -70,7 +59,7 @@ ggplot(data=aggdata, aes(x=variable, y=value)) + geom_bar(stat="identity")
   #install.packages("rCharts")
 library(rCharts)
 
-n1 <- nPlot(value ~ variable, group = "Country", 
+n1 <- nPlot(variable ~ value, group = "Country", 
             data = aggdata, type = "multiBarChart")
 n1$print("chart3")
 

@@ -154,6 +154,10 @@ americamap + geom_point(aes(x=lon, y=lat), data=dataset) +
                    data = dataset)
 ```
 
+## Correlation?
+
+- Maybe add correlation matrix here. Use it?
+
 ## Slide with R Code and Output
 
 - Our regression model:
