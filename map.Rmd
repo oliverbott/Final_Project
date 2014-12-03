@@ -94,10 +94,10 @@ points(datasetfinal$lon, datasetfinal$lat, col="#de2d26", pch=16)
                                       
 #Option3 - this actually works TAKEN FROM http://blog.revolutionanalytics.com/2012/07/making-beautiful-maps-in-r-with-ggmap.html
 map.center <- geocode("Europe")
-SHmap <- qmap(c(lon=map.center$lon, lat=map.center$lat), source="google", zoom=4)
-SHmap + geom_point(aes(x=lon, y=lat), data=datasetfinal) + 
+SHmap <- qmap(c(lon=map.center$lon, lat=map.center$lat), source="google", maptype = 'toner', source = 'stamen', zoom=4)
+SHmap + geom_point(aes(x=lon, y=lat), data=dataset) + 
         geom_point(aes(x = lon, y = lat, color=Patents, size=20), 
-                   data = datasetfinal)
+                   data = dataset)
 
 # color look up in slides
 # change 
