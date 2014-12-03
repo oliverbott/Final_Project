@@ -82,13 +82,19 @@ Intuitively, seems many innovations are taking place which aren't being patented
 
 ## Open Innovation
 
-Focusing on software innovation
+Focused on software innovation
+Used Github API
+Used **follower** numbers
 
+## Goal
 
+Wanted to see if there is a relationship between classical innovation, and open innovation
 
-## Follower selection
+## Data
 
-This plot shows how we choose the cutoff.
+We pulled and cleaned follower data, patent data, and some other variables for 120 cities to see if we can find a relationship between follower and patent data, and these and 'explanatory' variables
+
+## Finding Innovation
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Follower selection barchart
@@ -164,7 +170,7 @@ barchart(value ~ variable, groups=Country, df, auto.key = list(columns = 4),
          par.strip.text=list(col="white", font=2),)
 ```
 
-## Slide with Plot
+## Or
 
 This is an alternative interactive plot.
 
@@ -265,9 +271,7 @@ americamap + geom_point(aes(x=lon, y=lat), data=dataset) +
 
 - Maybe add correlation matrix here. Use it?
 
-## Slide with R Code and Output
-
-- Our regression model:
+## Nerd Slide: Our Model
 
 $logP_{i} = {\beta}_0 +{\beta}_1 logF_{i} + {\beta}_2 logControls_{i} +{\epsilon}_{i}$
 
@@ -299,12 +303,7 @@ stargazer::stargazer(P1, P2, covariate.labels = labelsP,
   digits = 2, type ='html', single.row=TRUE)
 ```
 
-
-
-## Scatterplot slide
-
-Here comes the scatterplot.
-Why doesnt it show?
+## More Visuals
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Scatterplot
@@ -337,6 +336,26 @@ d1$legend(
 )
 d1$show('iframesrc', cdn = TRUE)
 ```
+
+## Implications
+
+**Preliminarily** using open data is a potentially innovative way of measuring innovation (see what we did there?)
+
+Could be used in the future for 
+
+##
+
+##
+
+##
+
+
+
+
+
+
+
+
 
 ## Alternative scatterplot
 
