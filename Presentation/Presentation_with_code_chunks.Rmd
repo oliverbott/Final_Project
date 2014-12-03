@@ -28,6 +28,29 @@ dataset$X <- NULL
 colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "Followers" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "hifol")
 ```
 
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# This code is needed to use the rCharts
+
+## utility function to add required assets such as CSS and JS libraries
+add_lib_assets <- function(lib, cdn = F, css = NULL) {
+    assets = get_assets(get_lib(lib), cdn = cdn)
+    if (!is.null(css)) {
+        assets$css = c(assets$css, css)
+    }
+    styles <- lapply(assets$css, function(style) {
+        sprintf("<link rel='stylesheet' href=%s>", style)
+    })
+
+    scripts <- lapply(assets$jshead, function(script) {
+        sprintf("<script type='text/javascript' src=%s></script>", script)
+    })
+    cat(paste(c(styles, scripts), collapse = "\n"))
+}
+
+# get assets from online repositories
+add_lib_assets("NVD3", cdn = TRUE, css = "http://rawgithub.com/ramnathv/rCharts/master/inst/libraries/nvd3/css/rNVD3.css")
+```
+
 ## Slide one
 
 ## Follower selection
@@ -110,13 +133,64 @@ barchart(value ~ variable, groups=Country, df, auto.key = list(columns = 4),
 
 ## Slide with Plot
 
-A similar plot would be nice to have for the follower selection
-Why doesnt it show up?
+This is an alternative interactive plot.
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-hair_eye_male <- subset(as.data.frame(HairEyeColor), Sex == "Male")
-n2 <- nPlot(Freq ~ Hair, group = 'Eye', data = hair_eye_male, type = 'multiBarChart')
-n2$print('chart 1', include_assets = TRUE)
+
+fol <- dataset
+
+fol$X <- NULL
+fol$Patents <- NULL
+fol$GDP <- NULL
+fol$Population <- NULL
+fol$Pollution <- NULL
+fol$Greenspace <- NULL
+fol$Employment <- NULL
+fol$lon <- NULL
+fol$lat <- NULL
+fol$Followers <- NULL
+fol$hifol <- NULL
+
+# Rename variables for melting
+colnames(fol) <- c("METRO_ID" , "1" , "10" , "20" , "30", "40", "50", 
+                       "60", "70", "80", "90", "100" , "US" , "DE" , "FR" , "JP")
+  # 1 means 1-9 followers, 10 equals 10-19 followers etc.
+
+new <- fol
+new_2 <- reshape(new, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+
+new_2 <- subset(new_2, value>0)
+new_2$id <- NULL 
+new_2$value <- NULL
+new_2$Country <- as.factor(new_2$Country)
+x_2 <- split(new_2, new_2$Country)
+x_3 <- lapply(x_2, function (x) sapply(x, mean))
+x_3 <- data.frame(x_3)
+x_3 <- na.omit(x_3)
+
+df <- reshape(x_3, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+variable <- c(1,10,20,30,40,50,60,70,80,90,100, 
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100)
+df <- data.frame(df, variable)
+df$id <- NULL 
+df$variable <- as.factor(df$variable)
+
+n1 <- nPlot(value ~ variable, group = "Country", data = df, type = "multiBarChart")
+n1$print("chart3")
 ```
 
 ## City overview - Europe
@@ -228,5 +302,5 @@ d1$legend(
   height = 200,
   horizontalAlign = "left"
 )
-n2$show('iframesrc', cdn = TRUE)
+d1$show('iframesrc', cdn = TRUE)
 ```

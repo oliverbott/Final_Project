@@ -87,6 +87,16 @@
           </hgroup>
   </slide>
 
+<link rel='stylesheet' href=//cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.15-beta/nv.d3.min.css> <link rel='stylesheet' href=http://rawgithub.com/ramnathv/rCharts/master/inst/libraries/nvd3/css/rNVD3.css>
+
+<script type='text/javascript' src=//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js></script>
+
+<script type='text/javascript' src=//d3js.org/d3.v3.min.js></script>
+
+<script type='text/javascript' src=//cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.15-beta/nv.d3.min.js></script>
+
+<script type='text/javascript' src=//nvd3.org/assets/lib/fisheye.js></script>
+
 <slide class=''><hgroup><h2>Slide one</h2></hgroup><article  id="slide-one">
 
 </article></slide><slide class=''><hgroup><h2>Follower selection</h2></hgroup><article  id="follower-selection">
@@ -97,142 +107,246 @@
 
 </article></slide><slide class=''><hgroup><h2>Slide with Plot</h2></hgroup><article  id="slide-with-plot">
 
-<p>A similar plot would be nice to have for the follower selection Why doesnt it show up?</p>
+<p>This is an alternative interactive plot.</p>
 
-<link rel='stylesheet' href=C:/Users/a6p/Documents/R/win-library/3.1/rCharts/libraries/nvd3/css/nv.d3.css> <link rel='stylesheet' href=C:/Users/a6p/Documents/R/win-library/3.1/rCharts/libraries/nvd3/css/rNVD3.css>
-
-<script type='text/javascript' src=C:/Users/a6p/Documents/R/win-library/3.1/rCharts/libraries/nvd3/js/jquery-1.8.2.min.js></script>
-
-<script type='text/javascript' src=C:/Users/a6p/Documents/R/win-library/3.1/rCharts/libraries/nvd3/js/d3.v3.min.js></script>
-
-<script type='text/javascript' src=C:/Users/a6p/Documents/R/win-library/3.1/rCharts/libraries/nvd3/js/nv.d3.min-new.js></script>
-
-<script type='text/javascript' src=C:/Users/a6p/Documents/R/win-library/3.1/rCharts/libraries/nvd3/js/fisheye.js></script>
-
-<style>
-  .rChart {
-    display: block;
-    margin-left: auto; 
-    margin-right: auto;
-    width: 800px;
-    height: 400px;
-  }  
-  </style>
-
-<div id="chart 1" class="rChart nvd3">
+<div id="chart3" class="rChart nvd3">
 </div>
 
 <script type='text/javascript'>
  $(document).ready(function(){
-      drawchart 1()
+      drawchart3()
     });
-    function drawchart 1(){  
+    function drawchart3(){  
       var opts = {
- "dom": "chart 1",
+ "dom": "chart3",
 "width":    800,
 "height":    400,
-"x": "Hair",
-"y": "Freq",
-"group": "Eye",
+"x": "variable",
+"y": "value",
+"group": "Country",
 "type": "multiBarChart",
-"id": "chart 1" 
+"id": "chart3" 
 },
         data = [
  {
- "Hair": "Black",
-"Eye": "Brown",
-"Sex": "Male",
-"Freq":             32 
+ "Country": "US",
+"value":  3.18437285397,
+"variable": "1" 
 },
 {
- "Hair": "Brown",
-"Eye": "Brown",
-"Sex": "Male",
-"Freq":             53 
+ "Country": "US",
+"value": 0.3432615959187,
+"variable": "10" 
 },
 {
- "Hair": "Red",
-"Eye": "Brown",
-"Sex": "Male",
-"Freq":             10 
+ "Country": "US",
+"value": 0.1313374841779,
+"variable": "20" 
 },
 {
- "Hair": "Blond",
-"Eye": "Brown",
-"Sex": "Male",
-"Freq":              3 
+ "Country": "US",
+"value": 0.06245432881662,
+"variable": "30" 
 },
 {
- "Hair": "Black",
-"Eye": "Blue",
-"Sex": "Male",
-"Freq":             11 
+ "Country": "US",
+"value": 0.0359903726321,
+"variable": "40" 
 },
 {
- "Hair": "Brown",
-"Eye": "Blue",
-"Sex": "Male",
-"Freq":             50 
+ "Country": "US",
+"value": 0.02042092152072,
+"variable": "50" 
 },
 {
- "Hair": "Red",
-"Eye": "Blue",
-"Sex": "Male",
-"Freq":             10 
+ "Country": "US",
+"value": 0.01697925609424,
+"variable": "60" 
 },
 {
- "Hair": "Blond",
-"Eye": "Blue",
-"Sex": "Male",
-"Freq":             30 
+ "Country": "US",
+"value": 0.01322277236686,
+"variable": "70" 
 },
 {
- "Hair": "Black",
-"Eye": "Hazel",
-"Sex": "Male",
-"Freq":             10 
+ "Country": "US",
+"value": 0.009520387118242,
+"variable": "80" 
 },
 {
- "Hair": "Brown",
-"Eye": "Hazel",
-"Sex": "Male",
-"Freq":             25 
+ "Country": "US",
+"value": 0.00557216438812,
+"variable": "90" 
 },
 {
- "Hair": "Red",
-"Eye": "Hazel",
-"Sex": "Male",
-"Freq":              7 
+ "Country": "US",
+"value": 0.05727247439478,
+"variable": "100" 
 },
 {
- "Hair": "Blond",
-"Eye": "Hazel",
-"Sex": "Male",
-"Freq":              5 
+ "Country": "DE",
+"value": 2.033293010876,
+"variable": "1" 
 },
 {
- "Hair": "Black",
-"Eye": "Green",
-"Sex": "Male",
-"Freq":              3 
+ "Country": "DE",
+"value": 0.2393042656704,
+"variable": "10" 
 },
 {
- "Hair": "Brown",
-"Eye": "Green",
-"Sex": "Male",
-"Freq":             15 
+ "Country": "DE",
+"value": 0.08675025215792,
+"variable": "20" 
 },
 {
- "Hair": "Red",
-"Eye": "Green",
-"Sex": "Male",
-"Freq":              7 
+ "Country": "DE",
+"value": 0.04211265245315,
+"variable": "30" 
 },
 {
- "Hair": "Blond",
-"Eye": "Green",
-"Sex": "Male",
-"Freq":              8 
+ "Country": "DE",
+"value": 0.02740323044738,
+"variable": "40" 
+},
+{
+ "Country": "DE",
+"value": 0.01917052726741,
+"variable": "50" 
+},
+{
+ "Country": "DE",
+"value": 0.01069312811142,
+"variable": "60" 
+},
+{
+ "Country": "DE",
+"value": 0.008535134978622,
+"variable": "70" 
+},
+{
+ "Country": "DE",
+"value": 0.006352717084487,
+"variable": "80" 
+},
+{
+ "Country": "DE",
+"value": 0.004582292191156,
+"variable": "90" 
+},
+{
+ "Country": "DE",
+"value": 0.02489257126133,
+"variable": "100" 
+},
+{
+ "Country": "FR",
+"value": 2.268110116196,
+"variable": "1" 
+},
+{
+ "Country": "FR",
+"value": 0.2242837858823,
+"variable": "10" 
+},
+{
+ "Country": "FR",
+"value": 0.06503387493737,
+"variable": "20" 
+},
+{
+ "Country": "FR",
+"value": 0.03488101618878,
+"variable": "30" 
+},
+{
+ "Country": "FR",
+"value": 0.01770892122812,
+"variable": "40" 
+},
+{
+ "Country": "FR",
+"value": 0.01770462954318,
+"variable": "50" 
+},
+{
+ "Country": "FR",
+"value": 0.006081826616771,
+"variable": "60" 
+},
+{
+ "Country": "FR",
+"value": 0.006648208912725,
+"variable": "70" 
+},
+{
+ "Country": "FR",
+"value": 0.001734618274289,
+"variable": "80" 
+},
+{
+ "Country": "FR",
+"value": 0.002165222936102,
+"variable": "90" 
+},
+{
+ "Country": "FR",
+"value": 0.01963644779418,
+"variable": "100" 
+},
+{
+ "Country": "JP",
+"value": 0.1620919639766,
+"variable": "1" 
+},
+{
+ "Country": "JP",
+"value": 0.02455179489288,
+"variable": "10" 
+},
+{
+ "Country": "JP",
+"value": 0.008624996697498,
+"variable": "20" 
+},
+{
+ "Country": "JP",
+"value": 0.006122641105739,
+"variable": "30" 
+},
+{
+ "Country": "JP",
+"value": 0.002157959392383,
+"variable": "40" 
+},
+{
+ "Country": "JP",
+"value": 0.001725120642035,
+"variable": "50" 
+},
+{
+ "Country": "JP",
+"value": 0.001476549582856,
+"variable": "60" 
+},
+{
+ "Country": "JP",
+"value": 0.00163792435997,
+"variable": "70" 
+},
+{
+ "Country": "JP",
+"value": 0.000606363928631,
+"variable": "80" 
+},
+{
+ "Country": "JP",
+"value": 0.0006855474932863,
+"variable": "90" 
+},
+{
+ "Country": "JP",
+"value": 0.004948242063833,
+"variable": "100" 
 } 
 ]
   
@@ -694,192 +808,236 @@ F Statistic
 &lt;meta charset = 'utf-8'&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.15-beta/nv.d3.min.css'&gt;
     
-    &lt;script src='//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js' type='text/javascript'&gt;&lt;/script&gt;
     &lt;script src='//d3js.org/d3.v3.min.js' type='text/javascript'&gt;&lt;/script&gt;
-    &lt;script src='//cdnjs.cloudflare.com/ajax/libs/nvd3/1.1.15-beta/nv.d3.min.js' type='text/javascript'&gt;&lt;/script&gt;
-    &lt;script src='//nvd3.org/assets/lib/fisheye.js' type='text/javascript'&gt;&lt;/script&gt;
+    &lt;script src='//dimplejs.org/dist/dimple.v2.1.0.min.js' type='text/javascript'&gt;&lt;/script&gt;
     
     &lt;style&gt;
     .rChart {
       display: block;
       margin-left: auto; 
       margin-right: auto;
-      width: 800px;
-      height: 400px;
+      width: 1000px;
+      height: 800px;
     }  
     &lt;/style&gt;
     
   &lt;/head&gt;
   &lt;body &gt;
     
-    &lt;div id = 'chart 1' class = 'rChart nvd3'&gt;&lt;/div&gt;    
-    &lt;script type='text/javascript'&gt;
- $(document).ready(function(){
-      drawchart 1()
-    });
-    function drawchart 1(){  
-      var opts = {
- &quot;dom&quot;: &quot;chart 1&quot;,
-&quot;width&quot;:    800,
-&quot;height&quot;:    400,
-&quot;x&quot;: &quot;Hair&quot;,
-&quot;y&quot;: &quot;Freq&quot;,
-&quot;group&quot;: &quot;Eye&quot;,
-&quot;type&quot;: &quot;multiBarChart&quot;,
-&quot;id&quot;: &quot;chart 1&quot; 
+    &lt;div id = 'chart2cc64f226b' class = 'rChart dimple'&gt;&lt;/div&gt;    
+    &lt;script type=&quot;text/javascript&quot;&gt;
+  var opts = {
+ &quot;dom&quot;: &quot;chart2cc64f226b&quot;,
+&quot;width&quot;:   1000,
+&quot;height&quot;:    800,
+&quot;xAxis&quot;: {
+ &quot;type&quot;: &quot;addMeasureAxis&quot;,
+&quot;showPercent&quot;: false 
 },
-        data = [
- {
- &quot;Hair&quot;: &quot;Black&quot;,
-&quot;Eye&quot;: &quot;Brown&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             32 
+&quot;yAxis&quot;: {
+ &quot;type&quot;: &quot;addMeasureAxis&quot;,
+&quot;showPercent&quot;: false 
 },
-{
- &quot;Hair&quot;: &quot;Brown&quot;,
-&quot;Eye&quot;: &quot;Brown&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             53 
+&quot;zAxis&quot;: [],
+&quot;colorAxis&quot;: [],
+&quot;defaultColors&quot;: [],
+&quot;layers&quot;: [],
+&quot;legend&quot;: {
+ &quot;x&quot;:    465,
+&quot;y&quot;:      0,
+&quot;width&quot;:     50,
+&quot;height&quot;:    200,
+&quot;horizontalAlign&quot;: &quot;left&quot; 
 },
-{
- &quot;Hair&quot;: &quot;Red&quot;,
-&quot;Eye&quot;: &quot;Brown&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             10 
+&quot;x&quot;: &quot;hifol&quot;,
+&quot;y&quot;: &quot;Patents&quot;,
+&quot;groups&quot;: [ &quot;METRO_ID&quot;, &quot;Country&quot; ],
+&quot;type&quot;: &quot;bubble&quot;,
+&quot;bounds&quot;: {
+ &quot;x&quot;:     60,
+&quot;y&quot;:     25,
+&quot;width&quot;:    400,
+&quot;height&quot;:    350 
 },
-{
- &quot;Hair&quot;: &quot;Blond&quot;,
-&quot;Eye&quot;: &quot;Brown&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:              3 
+&quot;id&quot;: &quot;chart2cc64f226b&quot; 
 },
-{
- &quot;Hair&quot;: &quot;Black&quot;,
-&quot;Eye&quot;: &quot;Blue&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             11 
-},
-{
- &quot;Hair&quot;: &quot;Brown&quot;,
-&quot;Eye&quot;: &quot;Blue&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             50 
-},
-{
- &quot;Hair&quot;: &quot;Red&quot;,
-&quot;Eye&quot;: &quot;Blue&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             10 
-},
-{
- &quot;Hair&quot;: &quot;Blond&quot;,
-&quot;Eye&quot;: &quot;Blue&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             30 
-},
-{
- &quot;Hair&quot;: &quot;Black&quot;,
-&quot;Eye&quot;: &quot;Hazel&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             10 
-},
-{
- &quot;Hair&quot;: &quot;Brown&quot;,
-&quot;Eye&quot;: &quot;Hazel&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             25 
-},
-{
- &quot;Hair&quot;: &quot;Red&quot;,
-&quot;Eye&quot;: &quot;Hazel&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:              7 
-},
-{
- &quot;Hair&quot;: &quot;Blond&quot;,
-&quot;Eye&quot;: &quot;Hazel&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:              5 
-},
-{
- &quot;Hair&quot;: &quot;Black&quot;,
-&quot;Eye&quot;: &quot;Green&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:              3 
-},
-{
- &quot;Hair&quot;: &quot;Brown&quot;,
-&quot;Eye&quot;: &quot;Green&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:             15 
-},
-{
- &quot;Hair&quot;: &quot;Red&quot;,
-&quot;Eye&quot;: &quot;Green&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:              7 
-},
-{
- &quot;Hair&quot;: &quot;Blond&quot;,
-&quot;Eye&quot;: &quot;Green&quot;,
-&quot;Sex&quot;: &quot;Male&quot;,
-&quot;Freq&quot;:              8 
-} 
-]
+    data = [{&quot;METRO_ID&quot;:&quot;Aachen&quot;,&quot;Patents&quot;:3.76,&quot;GDP&quot;:28089.46,&quot;Population&quot;:581472,&quot;Greenspace&quot;:246.6,&quot;Employment&quot;:0.69,&quot;Pollution&quot;:18.5,&quot;lon&quot;:6.0838868,&quot;lat&quot;:50.7753455,&quot;Followers&quot;:3.42234879753453,&quot;1&quot;:2.85482362005393,&quot;10&quot;:0.275163722414837,&quot;20&quot;:0.120384128556491,&quot;30&quot;:0.0171977326509273,&quot;40&quot;:0.0171977326509273,&quot;50&quot;:0.0343954653018546,&quot;60&quot;:0.0343954653018546,&quot;70&quot;:0.0343954653018546,&quot;80&quot;:0.0343954653018546,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.292361455065764,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Akron&quot;,&quot;Patents&quot;:2.09,&quot;GDP&quot;:35580.47,&quot;Population&quot;:542004,&quot;Greenspace&quot;:1285.57,&quot;Employment&quot;:0.18,&quot;Pollution&quot;:16.35,&quot;lon&quot;:-81.5190053,&quot;lat&quot;:41.0814447,&quot;Followers&quot;:0.959402513634586,&quot;1&quot;:0.738001933565066,&quot;10&quot;:0.129150338373887,&quot;20&quot;:0.0369000966782533,&quot;30&quot;:0,&quot;40&quot;:0.0184500483391267,&quot;50&quot;:0.0184500483391266,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0184500483391266,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0922502416956332,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Albany&quot;,&quot;Patents&quot;:2,&quot;GDP&quot;:37696.66,&quot;Population&quot;:829004,&quot;Greenspace&quot;:1932.18,&quot;Employment&quot;:0.27,&quot;Pollution&quot;:11.23,&quot;lon&quot;:-73.7562317,&quot;lat&quot;:42.6525793,&quot;Followers&quot;:1.44752015671818,&quot;1&quot;:1.26658013712841,&quot;10&quot;:0.0723760078359091,&quot;20&quot;:0.0603133398632576,&quot;30&quot;:0.024125335945303,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0.0120626679726515,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0120626679726515,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.108564011753864,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Albuquerque&quot;,&quot;Patents&quot;:0.73,&quot;GDP&quot;:38059.97,&quot;Population&quot;:852670,&quot;Greenspace&quot;:71.24,&quot;Employment&quot;:0.27,&quot;Pollution&quot;:8.55,&quot;lon&quot;:-106.609991,&quot;lat&quot;:35.110703,&quot;Followers&quot;:1.7122685212333,&quot;1&quot;:1.44252758980614,&quot;10&quot;:0.093822932670318,&quot;20&quot;:0.0586393329189487,&quot;30&quot;:0.0234557331675795,&quot;40&quot;:0.0234557331675795,&quot;50&quot;:0.0117278665837897,&quot;60&quot;:0.0117278665837897,&quot;70&quot;:0.0117278665837897,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0351835997513692,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.175917998756846,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Amsterdam&quot;,&quot;Patents&quot;:1.18,&quot;GDP&quot;:40064.41,&quot;Population&quot;:2317340,&quot;Greenspace&quot;:219.26,&quot;Employment&quot;:14.13,&quot;Pollution&quot;:22.57,&quot;lon&quot;:4.8951679,&quot;lat&quot;:52.3702157,&quot;Followers&quot;:6.70164930480637,&quot;1&quot;:5.32938627909586,&quot;10&quot;:0.608456247249001,&quot;20&quot;:0.289124599756618,&quot;30&quot;:0.129458776010426,&quot;40&quot;:0.0733599730725746,&quot;50&quot;:0.0388376328031277,&quot;60&quot;:0.0388376328031277,&quot;70&quot;:0.0172611701347234,&quot;80&quot;:0.0129458776010426,&quot;90&quot;:0.0388376328031277,&quot;100&quot;:0.125143483476745,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.763806778461512,&quot;Country&quot;:&quot;Netherlands&quot;},{&quot;METRO_ID&quot;:&quot;Antwerp&quot;,&quot;Patents&quot;:1.08,&quot;GDP&quot;:38605.43,&quot;Population&quot;:1040008,&quot;Greenspace&quot;:318.68,&quot;Employment&quot;:10.29,&quot;Pollution&quot;:23.02,&quot;lon&quot;:4.4024643,&quot;lat&quot;:51.2194475,&quot;Followers&quot;:1.46152721902139,&quot;1&quot;:1.24999038468935,&quot;10&quot;:0.115383727817478,&quot;20&quot;:0.0384612426058261,&quot;30&quot;:0.00961531065145652,&quot;40&quot;:0.0192306213029131,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0.00961531065145653,&quot;90&quot;:0,&quot;100&quot;:0.0192306213029131,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0961531065145653,&quot;Country&quot;:&quot;Belgium&quot;},{&quot;METRO_ID&quot;:&quot;Atlanta&quot;,&quot;Patents&quot;:1.27,&quot;GDP&quot;:42352.45,&quot;Population&quot;:4202262,&quot;Greenspace&quot;:111.1,&quot;Employment&quot;:1.42,&quot;Pollution&quot;:16.2,&quot;lon&quot;:-84.3879824,&quot;lat&quot;:33.7489954,&quot;Followers&quot;:4.22153592517554,&quot;1&quot;:3.6004418572664,&quot;10&quot;:0.326014893883342,&quot;20&quot;:0.0999461718474479,&quot;30&quot;:0.071390122748177,&quot;40&quot;:0.0356950613740885,&quot;50&quot;:0.016657695307908,&quot;60&quot;:0.0142780245496354,&quot;70&quot;:0.00951868303309027,&quot;80&quot;:0.00475934151654513,&quot;90&quot;:0.00713901227481771,&quot;100&quot;:0.0356950613740885,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.295079174025798,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Augsburg&quot;,&quot;Patents&quot;:2.1,&quot;GDP&quot;:33635.88,&quot;Population&quot;:594054,&quot;Greenspace&quot;:751.96,&quot;Employment&quot;:0.78,&quot;Pollution&quot;:20.83,&quot;lon&quot;:10.89779,&quot;lat&quot;:48.3705449,&quot;Followers&quot;:1.19517754278231,&quot;1&quot;:0.892174785457214,&quot;10&quot;:0.151501378662546,&quot;20&quot;:0.0673339460722426,&quot;30&quot;:0.0336669730361213,&quot;40&quot;:0,&quot;50&quot;:0.0505004595541819,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.151501378662546,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Austin&quot;,&quot;Patents&quot;:2.68,&quot;GDP&quot;:48858.72,&quot;Population&quot;:1608564,&quot;Greenspace&quot;:172.01,&quot;Employment&quot;:0.51,&quot;Pollution&quot;:9.67,&quot;lon&quot;:-97.7430608,&quot;lat&quot;:30.267153,&quot;Followers&quot;:17.6679323918725,&quot;1&quot;:14.3357678028353,&quot;10&quot;:1.56661469484584,&quot;20&quot;:0.609239047995604,&quot;30&quot;:0.273535899100067,&quot;40&quot;:0.236235549222785,&quot;50&quot;:0.118117774611393,&quot;60&quot;:0.111901049631846,&quot;70&quot;:0.0746006997545637,&quot;80&quot;:0.0497337998363758,&quot;90&quot;:0.0435170748568288,&quot;100&quot;:0.248668999181879,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:1.76554989419134,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Baltimore&quot;,&quot;Patents&quot;:1.32,&quot;GDP&quot;:61804.14,&quot;Population&quot;:1939607,&quot;Greenspace&quot;:1000.03,&quot;Employment&quot;:0.68,&quot;Pollution&quot;:20.65,&quot;lon&quot;:-76.6121893,&quot;lat&quot;:39.2903848,&quot;Followers&quot;:2.88718281590033,&quot;1&quot;:2.2942792019208,&quot;10&quot;:0.283562597990211,&quot;20&quot;:0.0618682031978643,&quot;30&quot;:0.0773352539973303,&quot;40&quot;:0.0464011523983983,&quot;50&quot;:0.0257784179991101,&quot;60&quot;:0.0154670507994661,&quot;70&quot;:0.0206227343992881,&quot;80&quot;:0.0154670507994661,&quot;90&quot;:0,&quot;100&quot;:0.0464011523983982,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.309341015989322,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Barcelona&quot;,&quot;Patents&quot;:0.93,&quot;GDP&quot;:33874.36,&quot;Population&quot;:3594393,&quot;Greenspace&quot;:2.45,&quot;Employment&quot;:8.69,&quot;Pollution&quot;:14.88,&quot;lon&quot;:2.1734035,&quot;lat&quot;:41.3850639,&quot;Followers&quot;:4.44581324301488,&quot;1&quot;:3.6334368556805,&quot;10&quot;:0.447919857400123,&quot;20&quot;:0.155798211269608,&quot;30&quot;:0.0695527728882178,&quot;40&quot;:0.0472958855639881,&quot;50&quot;:0.0166926654931723,&quot;60&quot;:0.019474776408701,&quot;70&quot;:0.0166926654931723,&quot;80&quot;:0.00278211091552871,&quot;90&quot;:0.00556422183105743,&quot;100&quot;:0.0306032200708159,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.364456529934262,&quot;Country&quot;:&quot;Spain&quot;},{&quot;METRO_ID&quot;:&quot;Berlin&quot;,&quot;Patents&quot;:1.76,&quot;GDP&quot;:29518.57,&quot;Population&quot;:4363940,&quot;Greenspace&quot;:207.68,&quot;Employment&quot;:5.2,&quot;Pollution&quot;:20.32,&quot;lon&quot;:13.404954,&quot;lat&quot;:52.5200066,&quot;Followers&quot;:9.80306786986072,&quot;1&quot;:7.43135790134603,&quot;10&quot;:1.09534044922707,&quot;20&quot;:0.437677878247639,&quot;30&quot;:0.245191272107316,&quot;40&quot;:0.146656461821198,&quot;50&quot;:0.107700839149942,&quot;60&quot;:0.0549961731829494,&quot;70&quot;:0.0595791876148618,&quot;80&quot;:0.0366641154552996,&quot;90&quot;:0.0229150721595622,&quot;100&quot;:0.164988519548848,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:1.27636951928762,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Bilbao&quot;,&quot;Patents&quot;:0.39,&quot;GDP&quot;:34422.73,&quot;Population&quot;:989856,&quot;Greenspace&quot;:212.52,&quot;Employment&quot;:2.26,&quot;Pollution&quot;:10.61,&quot;lon&quot;:-2.9349852,&quot;lat&quot;:43.2630126,&quot;Followers&quot;:1.05065787346846,&quot;1&quot;:0.79809588465393,&quot;10&quot;:0.191947111499046,&quot;20&quot;:0.0202049591051628,&quot;30&quot;:0.0101024795525814,&quot;40&quot;:0.0101024795525814,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0.0101024795525814,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0101024795525814,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0606148773154883,&quot;Country&quot;:&quot;Spain&quot;},{&quot;METRO_ID&quot;:&quot;Bochum&quot;,&quot;Patents&quot;:1.12,&quot;GDP&quot;:30195.18,&quot;Population&quot;:658177,&quot;Greenspace&quot;:27.07,&quot;Employment&quot;:0.78,&quot;Pollution&quot;:23.78,&quot;lon&quot;:7.2162363,&quot;lat&quot;:51.4818445,&quot;Followers&quot;:0.622932736938544,&quot;1&quot;:0.531771848606074,&quot;10&quot;:0.03038696277749,&quot;20&quot;:0,&quot;30&quot;:0,&quot;40&quot;:0.0455804441662349,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0.015193481388745,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0607739255549799,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Bologna&quot;,&quot;Patents&quot;:1.55,&quot;GDP&quot;:38091.72,&quot;Population&quot;:736403,&quot;Greenspace&quot;:190.64,&quot;Employment&quot;:1.47,&quot;Pollution&quot;:24.1,&quot;lon&quot;:11.3426163,&quot;lat&quot;:44.494887,&quot;Followers&quot;:1.90113293943669,&quot;1&quot;:1.71101964549302,&quot;10&quot;:0.135795209959764,&quot;20&quot;:0.0135795209959764,&quot;30&quot;:0.0407385629879292,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0543180839839056,&quot;Country&quot;:&quot;Italy&quot;},{&quot;METRO_ID&quot;:&quot;Bonn&quot;,&quot;Patents&quot;:2.07,&quot;GDP&quot;:38812.14,&quot;Population&quot;:743893,&quot;Greenspace&quot;:116.29,&quot;Employment&quot;:0.88,&quot;Pollution&quot;:20.14,&quot;lon&quot;:7.0982068,&quot;lat&quot;:50.73743,&quot;Followers&quot;:2.75577267160734,&quot;1&quot;:2.39281724656637,&quot;10&quot;:0.25541307688068,&quot;20&quot;:0.0403283805601074,&quot;30&quot;:0.0134427935200358,&quot;40&quot;:0.0403283805601074,&quot;50&quot;:0.0134427935200358,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.107542348160286,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Bordeaux&quot;,&quot;Patents&quot;:0.89,&quot;GDP&quot;:29560.46,&quot;Population&quot;:1096729,&quot;Greenspace&quot;:1349.14,&quot;Employment&quot;:1.75,&quot;Pollution&quot;:13.4,&quot;lon&quot;:-0.57918,&quot;lat&quot;:44.837789,&quot;Followers&quot;:2.83570508302416,&quot;1&quot;:2.48922021757426,&quot;10&quot;:0.164124409949951,&quot;20&quot;:0.0729441821999783,&quot;30&quot;:0.0364720910999892,&quot;40&quot;:0.0182360455499946,&quot;50&quot;:0.0364720910999892,&quot;60&quot;:0,&quot;70&quot;:0.00911802277499729,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.00911802277499729,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.182360455499946,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Boston&quot;,&quot;Patents&quot;:6.1,&quot;GDP&quot;:50324.49,&quot;Population&quot;:3616814,&quot;Greenspace&quot;:87.66,&quot;Employment&quot;:1.24,&quot;Pollution&quot;:11.51,&quot;lon&quot;:-71.0597732,&quot;lat&quot;:42.3584308,&quot;Followers&quot;:8.01534167916846,&quot;1&quot;:6.53890412943546,&quot;10&quot;:0.727159317565128,&quot;20&quot;:0.235013467654129,&quot;30&quot;:0.160362130869876,&quot;40&quot;:0.0940053870616515,&quot;50&quot;:0.0525324221815112,&quot;60&quot;:0.0276486432534269,&quot;70&quot;:0.0276486432534269,&quot;80&quot;:0.0221189146027415,&quot;90&quot;:0.00829459297602808,&quot;100&quot;:0.121654030315078,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.749278232167869,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Bremen&quot;,&quot;Patents&quot;:0.88,&quot;GDP&quot;:38125.37,&quot;Population&quot;:1024841,&quot;Greenspace&quot;:1424.72,&quot;Employment&quot;:1.01,&quot;Pollution&quot;:18.05,&quot;lon&quot;:8.8016937,&quot;lat&quot;:53.0792962,&quot;Followers&quot;:2.02958312557753,&quot;1&quot;:1.74661240133835,&quot;10&quot;:0.185394612432563,&quot;20&quot;:0.048788055903306,&quot;30&quot;:0.0195152223613224,&quot;40&quot;:0.0097576111806612,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0.00975761118066119,&quot;100&quot;:0.00975761118066119,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.097576111806612,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Brussels&quot;,&quot;Patents&quot;:1.24,&quot;GDP&quot;:45709.9,&quot;Population&quot;:2436174,&quot;Greenspace&quot;:303.11,&quot;Employment&quot;:21.78,&quot;Pollution&quot;:23.13,&quot;lon&quot;:4.3517103,&quot;lat&quot;:50.8503396,&quot;Followers&quot;:1.52698452573585,&quot;1&quot;:1.29711588745303,&quot;10&quot;:0.147772696038953,&quot;20&quot;:0.0328383768975451,&quot;30&quot;:0.0164191884487725,&quot;40&quot;:0.00820959422438628,&quot;50&quot;:0.00820959422438627,&quot;60&quot;:0.00410479711219314,&quot;70&quot;:0.00410479711219313,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.00820959422438627,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0820959422438627,&quot;Country&quot;:&quot;Belgium&quot;},{&quot;METRO_ID&quot;:&quot;Buffalo&quot;,&quot;Patents&quot;:1.21,&quot;GDP&quot;:33529.23,&quot;Population&quot;:1142342,&quot;Greenspace&quot;:2311.87,&quot;Employment&quot;:0.37,&quot;Pollution&quot;:16.93,&quot;lon&quot;:-78.8783689,&quot;lat&quot;:42.8864468,&quot;Followers&quot;:2.13596278522544,&quot;1&quot;:1.83832862662845,&quot;10&quot;:0.16632497098067,&quot;20&quot;:0.0350157833643515,&quot;30&quot;:0.0350157833643515,&quot;40&quot;:0,&quot;50&quot;:0.00875394584108787,&quot;60&quot;:0.0175078916821757,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0350157833643515,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.131309187616318,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Catania&quot;,&quot;Patents&quot;:0.23,&quot;GDP&quot;:18246.96,&quot;Population&quot;:620503,&quot;Greenspace&quot;:35.63,&quot;Employment&quot;:0.79,&quot;Pollution&quot;:12.86,&quot;lon&quot;:15.0830304,&quot;lat&quot;:37.5078772,&quot;Followers&quot;:0.531826598743278,&quot;1&quot;:0.499594683667927,&quot;10&quot;:0.0161159575376751,&quot;20&quot;:0,&quot;30&quot;:0.0161159575376751,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0161159575376751,&quot;Country&quot;:&quot;Italy&quot;},{&quot;METRO_ID&quot;:&quot;Charleston&quot;,&quot;Patents&quot;:0.62,&quot;GDP&quot;:39554.74,&quot;Population&quot;:639308,&quot;Greenspace&quot;:473.77,&quot;Employment&quot;:0.2,&quot;Pollution&quot;:10.89,&quot;lon&quot;:-79.9310512,&quot;lat&quot;:32.7764749,&quot;Followers&quot;:3.61328186101222,&quot;1&quot;:2.78426048164578,&quot;10&quot;:0.516183123001746,&quot;20&quot;:0.109493389727643,&quot;30&quot;:0.0469257384547041,&quot;40&quot;:0.0156419128182347,&quot;50&quot;:0.0156419128182347,&quot;60&quot;:0.0312838256364694,&quot;70&quot;:0.0312838256364694,&quot;80&quot;:0.0156419128182347,&quot;90&quot;:0,&quot;100&quot;:0.0469257384547041,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.312838256364694,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Charlotte&quot;,&quot;Patents&quot;:1.02,&quot;GDP&quot;:39155.43,&quot;Population&quot;:1219694,&quot;Greenspace&quot;:836.32,&quot;Employment&quot;:0.39,&quot;Pollution&quot;:15.14,&quot;lon&quot;:-80.8431267,&quot;lat&quot;:35.2270869,&quot;Followers&quot;:3.1647282023196,&quot;1&quot;:2.64000642784174,&quot;10&quot;:0.28695722041758,&quot;20&quot;:0.0737889995359492,&quot;30&quot;:0.0409938886310829,&quot;40&quot;:0.0327951109048663,&quot;50&quot;:0.00819877772621658,&quot;60&quot;:0.00819877772621658,&quot;70&quot;:0.0163975554524331,&quot;80&quot;:0,&quot;90&quot;:0.00819877772621658,&quot;100&quot;:0.0491926663572995,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.237764554060281,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Chicago&quot;,&quot;Patents&quot;:1.71,&quot;GDP&quot;:48556.19,&quot;Population&quot;:9231469,&quot;Greenspace&quot;:430.16,&quot;Employment&quot;:3.11,&quot;Pollution&quot;:16.37,&quot;lon&quot;:-87.6297982,&quot;lat&quot;:41.8781136,&quot;Followers&quot;:3.8368757995071,&quot;1&quot;:3.02877039396438,&quot;10&quot;:0.432217234331827,&quot;20&quot;:0.14082265780235,&quot;30&quot;:0.0909931019645952,&quot;40&quot;:0.0303310339881984,&quot;50&quot;:0.0216650242772846,&quot;60&quot;:0.00758275849704959,&quot;70&quot;:0.00649950728318537,&quot;80&quot;:0.00974926092477807,&quot;90&quot;:0.00433300485545692,&quot;100&quot;:0.0639118216179895,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.375888171210887,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Cincinnati&quot;,&quot;Patents&quot;:2.47,&quot;GDP&quot;:40922.34,&quot;Population&quot;:2065761,&quot;Greenspace&quot;:3045.68,&quot;Employment&quot;:0.68,&quot;Pollution&quot;:15.71,&quot;lon&quot;:-84.5120196,&quot;lat&quot;:39.1031182,&quot;Followers&quot;:1.98474073234997,&quot;1&quot;:1.61199674115253,&quot;10&quot;:0.212996566398533,&quot;20&quot;:0.0580899726541454,&quot;30&quot;:0.0387266484360969,&quot;40&quot;:0.00968166210902423,&quot;50&quot;:0.00968166210902423,&quot;60&quot;:0.00968166210902423,&quot;70&quot;:0,&quot;80&quot;:0.00484083105451211,&quot;90&quot;:0.00484083105451212,&quot;100&quot;:0.0242041552725606,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.1597474247989,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Cleveland&quot;,&quot;Patents&quot;:2.04,&quot;GDP&quot;:37605.18,&quot;Population&quot;:1531657,&quot;Greenspace&quot;:501.03,&quot;Employment&quot;:0.51,&quot;Pollution&quot;:19.44,&quot;lon&quot;:-81.6943605,&quot;lat&quot;:41.49932,&quot;Followers&quot;:2.00436520709271,&quot;1&quot;:1.645276977809,&quot;10&quot;:0.195866306882024,&quot;20&quot;:0.0587598920646071,&quot;30&quot;:0.0326443844803373,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0.00652887689606746,&quot;70&quot;:0.0195866306882024,&quot;80&quot;:0.00652887689606746,&quot;90&quot;:0.0130577537921349,&quot;100&quot;:0.0261155075842698,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.163221922401687,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Cologne&quot;,&quot;Patents&quot;:2.04,&quot;GDP&quot;:39323.97,&quot;Population&quot;:1892004,&quot;Greenspace&quot;:71.59,&quot;Employment&quot;:2.24,&quot;Pollution&quot;:22.41,&quot;lon&quot;:6.9602786,&quot;lat&quot;:50.937531,&quot;Followers&quot;:2.56870492874222,&quot;1&quot;:2.05073562212342,&quot;10&quot;:0.232557647869666,&quot;20&quot;:0.100422620670992,&quot;30&quot;:0.0528540108794696,&quot;40&quot;:0.0422832087035757,&quot;50&quot;:0.0211416043517878,&quot;60&quot;:0.0211416043517878,&quot;70&quot;:0.00528540108794696,&quot;80&quot;:0.00528540108794696,&quot;90&quot;:0,&quot;100&quot;:0.0369978076156287,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.285411658749136,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Columbia&quot;,&quot;Patents&quot;:0.41,&quot;GDP&quot;:33109.26,&quot;Population&quot;:623161,&quot;Greenspace&quot;:220.8,&quot;Employment&quot;:0.19,&quot;Pollution&quot;:12.82,&quot;lon&quot;:-74.297333,&quot;lat&quot;:4.570868,&quot;Followers&quot;:6.80402014888608,&quot;1&quot;:5.72885658762342,&quot;10&quot;:0.561652606629747,&quot;20&quot;:0.20861382531962,&quot;30&quot;:0.0481416519968355,&quot;40&quot;:0.0160472173322785,&quot;50&quot;:0.032094434664557,&quot;60&quot;:0.0481416519968355,&quot;70&quot;:0.0160472173322785,&quot;80&quot;:0.0160472173322785,&quot;90&quot;:0,&quot;100&quot;:0.128377738658228,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.513510954632912,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Columbus&quot;,&quot;Patents&quot;:1.15,&quot;GDP&quot;:37760.92,&quot;Population&quot;:1661412,&quot;Greenspace&quot;:1917.88,&quot;Employment&quot;:0.56,&quot;Pollution&quot;:19.68,&quot;lon&quot;:-82.9987942,&quot;lat&quot;:39.9611755,&quot;Followers&quot;:3.24422840330996,&quot;1&quot;:2.70853948328289,&quot;10&quot;:0.282891901587325,&quot;20&quot;:0.132417485849386,&quot;30&quot;:0.0300948831475877,&quot;40&quot;:0.0180569298885526,&quot;50&quot;:0.00601897662951754,&quot;60&quot;:0.0180569298885526,&quot;70&quot;:0.00601897662951754,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0421328364066228,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.252797018439737,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Copenhagen&quot;,&quot;Patents&quot;:3.72,&quot;GDP&quot;:37476.61,&quot;Population&quot;:1972725,&quot;Greenspace&quot;:386.18,&quot;Employment&quot;:36.85,&quot;Pollution&quot;:15.95,&quot;lon&quot;:12.5683371,&quot;lat&quot;:55.6760968,&quot;Followers&quot;:4.76498244813646,&quot;1&quot;:3.99447464801227,&quot;10&quot;:0.375115639534147,&quot;20&quot;:0.147004777655274,&quot;30&quot;:0.0760369539596244,&quot;40&quot;:0.0456221723757747,&quot;50&quot;:0.0202765210558998,&quot;60&quot;:0.0152073907919249,&quot;70&quot;:0.0152073907919249,&quot;80&quot;:0.0101382605279499,&quot;90&quot;:0.0101382605279499,&quot;100&quot;:0.0557604329037245,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.395392160590047,&quot;Country&quot;:&quot;Denmark&quot;},{&quot;METRO_ID&quot;:&quot;Dallas&quot;,&quot;Patents&quot;:1.4,&quot;GDP&quot;:48973.56,&quot;Population&quot;:3966038,&quot;Greenspace&quot;:225.75,&quot;Employment&quot;:1.26,&quot;Pollution&quot;:14.45,&quot;lon&quot;:-96.8004511,&quot;lat&quot;:32.7801399,&quot;Followers&quot;:2.50375815864598,&quot;1&quot;:2.12806836444835,&quot;10&quot;:0.176498561032446,&quot;20&quot;:0.0731208324277276,&quot;30&quot;:0.0277354881622415,&quot;40&quot;:0.0352997122064892,&quot;50&quot;:0.0126070400737461,&quot;60&quot;:0.00252140801474923,&quot;70&quot;:0.0100856320589969,&quot;80&quot;:0.00504281602949846,&quot;90&quot;:0,&quot;100&quot;:0.03277830419174,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.199191233165189,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Dayton&quot;,&quot;Patents&quot;:0.84,&quot;GDP&quot;:34588.17,&quot;Population&quot;:698590,&quot;Greenspace&quot;:1111.72,&quot;Employment&quot;:0.23,&quot;Pollution&quot;:17.87,&quot;lon&quot;:-84.1916069,&quot;lat&quot;:39.7589478,&quot;Followers&quot;:1.46008388325055,&quot;1&quot;:1.25968021300047,&quot;10&quot;:0.114516383000043,&quot;20&quot;:0.0286290957500107,&quot;30&quot;:0.0286290957500107,&quot;40&quot;:0.0143145478750054,&quot;50&quot;:0.0143145478750054,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0858872872500322,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Denver&quot;,&quot;Patents&quot;:1.31,&quot;GDP&quot;:51317.29,&quot;Population&quot;:2418085,&quot;Greenspace&quot;:5.24,&quot;Employment&quot;:0.89,&quot;Pollution&quot;:8.88,&quot;lon&quot;:-104.9847179,&quot;lat&quot;:39.737567,&quot;Followers&quot;:5.22727695676537,&quot;1&quot;:4.11482640188413,&quot;10&quot;:0.578970549008823,&quot;20&quot;:0.227452715682038,&quot;30&quot;:0.0868455823513235,&quot;40&quot;:0.0330840313719327,&quot;50&quot;:0.020677519607458,&quot;60&quot;:0.0165420156859664,&quot;70&quot;:0.0248130235289496,&quot;80&quot;:0.0124065117644748,&quot;90&quot;:0.00413550392149159,&quot;100&quot;:0.107523101958781,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.533480005872416,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Detroit&quot;,&quot;Patents&quot;:1.49,&quot;GDP&quot;:37162.84,&quot;Population&quot;:3897193,&quot;Greenspace&quot;:538.08,&quot;Employment&quot;:1.23,&quot;Pollution&quot;:17.09,&quot;lon&quot;:-83.0457538,&quot;lat&quot;:42.331427,&quot;Followers&quot;:0.769784816918228,&quot;1&quot;:0.649185195601039,&quot;10&quot;:0.0615827853534582,&quot;20&quot;:0.0282254432870017,&quot;30&quot;:0.0102637975589097,&quot;40&quot;:0.0102637975589097,&quot;50&quot;:0.00256594938972743,&quot;60&quot;:0,&quot;70&quot;:0.00256594938972743,&quot;80&quot;:0.00256594938972743,&quot;90&quot;:0,&quot;100&quot;:0.00256594938972743,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0590168359637308,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Dortmund&quot;,&quot;Patents&quot;:1.16,&quot;GDP&quot;:30762.06,&quot;Population&quot;:832638,&quot;Greenspace&quot;:63.68,&quot;Employment&quot;:0.98,&quot;Pollution&quot;:22.74,&quot;lon&quot;:7.4652981,&quot;lat&quot;:51.5135872,&quot;Followers&quot;:1.30909230662064,&quot;1&quot;:1.1529620315191,&quot;10&quot;:0.084070148131601,&quot;20&quot;:0.0600501058082864,&quot;30&quot;:0,&quot;40&quot;:0.0120100211616573,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0720601269699437,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Dresden&quot;,&quot;Patents&quot;:2.31,&quot;GDP&quot;:26196.74,&quot;Population&quot;:832097,&quot;Greenspace&quot;:517.75,&quot;Employment&quot;:1,&quot;Pollution&quot;:18.25,&quot;lon&quot;:13.7372621,&quot;lat&quot;:51.0504088,&quot;Followers&quot;:3.73754502179433,&quot;1&quot;:3.1126178798866,&quot;10&quot;:0.420624037822513,&quot;20&quot;:0.0961426372165745,&quot;30&quot;:0.0360534889562154,&quot;40&quot;:0.0120178296520718,&quot;50&quot;:0,&quot;60&quot;:0.0240356593041436,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0360534889562154,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.204303104085221,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Duisburg&quot;,&quot;Patents&quot;:1.09,&quot;GDP&quot;:35080.35,&quot;Population&quot;:819201,&quot;Greenspace&quot;:123.94,&quot;Employment&quot;:0.97,&quot;Pollution&quot;:25.42,&quot;lon&quot;:6.7623293,&quot;lat&quot;:51.4344079,&quot;Followers&quot;:0.329589441419139,&quot;1&quot;:0.280761376023711,&quot;10&quot;:0.012207016348857,&quot;20&quot;:0.012207016348857,&quot;30&quot;:0,&quot;40&quot;:0.024414032697714,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.036621049046571,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Dusseldorf&quot;,&quot;Patents&quot;:3.02,&quot;GDP&quot;:42111.38,&quot;Population&quot;:1428489,&quot;Greenspace&quot;:53.8,&quot;Employment&quot;:1.69,&quot;Pollution&quot;:24.09,&quot;lon&quot;:6.7734556,&quot;lat&quot;:51.2277411,&quot;Followers&quot;:0.0490028274631446,&quot;1&quot;:0.0350020196165319,&quot;10&quot;:0,&quot;20&quot;:0.0140008078466127,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0140008078466127,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Essen&quot;,&quot;Patents&quot;:1.19,&quot;GDP&quot;:32557.03,&quot;Population&quot;:765005,&quot;Greenspace&quot;:40.97,&quot;Employment&quot;:0.9,&quot;Pollution&quot;:23.56,&quot;lon&quot;:7.0115552,&quot;lat&quot;:51.4556432,&quot;Followers&quot;:0.758164979313861,&quot;1&quot;:0.614375069443991,&quot;10&quot;:0.0522872399526801,&quot;20&quot;:0,&quot;30&quot;:0.02614361997634,&quot;40&quot;:0,&quot;50&quot;:0.02614361997634,&quot;60&quot;:0.01307180998817,&quot;70&quot;:0,&quot;80&quot;:0.01307180998817,&quot;90&quot;:0,&quot;100&quot;:0.01307180998817,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0915026699171901,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Florence&quot;,&quot;Patents&quot;:0.81,&quot;GDP&quot;:35318.3,&quot;Population&quot;:718528,&quot;Greenspace&quot;:510.26,&quot;Employment&quot;:1.34,&quot;Pollution&quot;:11.27,&quot;lon&quot;:11.2480006,&quot;lat&quot;:43.7710332,&quot;Followers&quot;:1.18297408034203,&quot;1&quot;:0.974213948516968,&quot;10&quot;:0.0835040527300258,&quot;20&quot;:0.0417520263650129,&quot;30&quot;:0.0278346842433419,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0.013917342121671,&quot;70&quot;:0,&quot;80&quot;:0.013917342121671,&quot;90&quot;:0,&quot;100&quot;:0.0278346842433419,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.125256079095039,&quot;Country&quot;:&quot;Italy&quot;},{&quot;METRO_ID&quot;:&quot;Frankfurt&quot;,&quot;Patents&quot;:2.89,&quot;GDP&quot;:50127.4,&quot;Population&quot;:2510347,&quot;Greenspace&quot;:101.07,&quot;Employment&quot;:3.11,&quot;Pollution&quot;:19.21,&quot;lon&quot;:8.6821267,&quot;lat&quot;:50.1109221,&quot;Followers&quot;:1.2229385021274,&quot;1&quot;:1.04766392853259,&quot;10&quot;:0.0756867476886662,&quot;20&quot;:0.0398351303624559,&quot;30&quot;:0.0239010782174735,&quot;40&quot;:0.0159340521449823,&quot;50&quot;:0.00398351303624559,&quot;60&quot;:0,&quot;70&quot;:0.00398351303624559,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0119505391087368,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0995878259061397,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Freiburg&quot;,&quot;Patents&quot;:2.77,&quot;GDP&quot;:33543.46,&quot;Population&quot;:523171,&quot;Greenspace&quot;:595.76,&quot;Employment&quot;:0.69,&quot;Pollution&quot;:17.57,&quot;lon&quot;:7.8421043,&quot;lat&quot;:47.9990077,&quot;Followers&quot;:2.38927616400756,&quot;1&quot;:2.06433460570253,&quot;10&quot;:0.172027883808544,&quot;20&quot;:0.038228418624121,&quot;30&quot;:0.0191142093120605,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0.0191142093120605,&quot;100&quot;:0.076456837248242,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.152913674496484,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Fresno&quot;,&quot;Patents&quot;:0.2,&quot;GDP&quot;:31447.09,&quot;Population&quot;:1047811,&quot;Greenspace&quot;:83.58,&quot;Employment&quot;:0.34,&quot;Pollution&quot;:14.62,&quot;lon&quot;:-119.7725868,&quot;lat&quot;:36.7468422,&quot;Followers&quot;:0.696690529112598,&quot;1&quot;:0.563078646817031,&quot;10&quot;:0.0668059411477833,&quot;20&quot;:0.0286311176347643,&quot;30&quot;:0.0190874117565095,&quot;40&quot;:0.00954370587825476,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0.00954370587825476,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0668059411477833,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Fukuyama&quot;,&quot;Patents&quot;:1.52,&quot;GDP&quot;:30097.11,&quot;Population&quot;:559460,&quot;Greenspace&quot;:33.38,&quot;Employment&quot;:0.43,&quot;Pollution&quot;:15.03,&quot;lon&quot;:133.3623127,&quot;lat&quot;:34.4858993,&quot;Followers&quot;:0,&quot;1&quot;:0,&quot;10&quot;:0,&quot;20&quot;:0,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Genova&quot;,&quot;Patents&quot;:0.63,&quot;GDP&quot;:31162.97,&quot;Population&quot;:720659,&quot;Greenspace&quot;:330.63,&quot;Employment&quot;:1.28,&quot;Pollution&quot;:14.83,&quot;lon&quot;:8.946256,&quot;lat&quot;:44.4056499,&quot;Followers&quot;:0.4301618379844,&quot;1&quot;:0.374657084696091,&quot;10&quot;:0.0416285649662323,&quot;20&quot;:0.0138761883220774,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0138761883220774,&quot;Country&quot;:&quot;Italy&quot;},{&quot;METRO_ID&quot;:&quot;Ghent&quot;,&quot;Patents&quot;:1.61,&quot;GDP&quot;:29813.1,&quot;Population&quot;:568747,&quot;Greenspace&quot;:754.47,&quot;Employment&quot;:5.63,&quot;Pollution&quot;:23.88,&quot;lon&quot;:3.7174243,&quot;lat&quot;:51.0543422,&quot;Followers&quot;:2.49671646619674,&quot;1&quot;:1.95165864611154,&quot;10&quot;:0.351650206506584,&quot;20&quot;:0.0879125516266459,&quot;30&quot;:0.0351650206506584,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0.0527475309759876,&quot;90&quot;:0,&quot;100&quot;:0.0175825103253292,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.193407613578621,&quot;Country&quot;:&quot;Belgium&quot;},{&quot;METRO_ID&quot;:&quot;Gothenburg&quot;,&quot;Patents&quot;:4.31,&quot;GDP&quot;:32772.08,&quot;Population&quot;:866669,&quot;Greenspace&quot;:302.92,&quot;Employment&quot;:9.56,&quot;Pollution&quot;:10.01,&quot;lon&quot;:11.97456,&quot;lat&quot;:57.70887,&quot;Followers&quot;:4.03845066570975,&quot;1&quot;:3.42691385061656,&quot;10&quot;:0.426921927517887,&quot;20&quot;:0.0807690133141949,&quot;30&quot;:0.0346152914203693,&quot;40&quot;:0.0115384304734564,&quot;50&quot;:0.0115384304734564,&quot;60&quot;:0.0115384304734564,&quot;70&quot;:0.0115384304734564,&quot;80&quot;:0.0230768609469128,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.184614887575303,&quot;Country&quot;:&quot;Sweden&quot;},{&quot;METRO_ID&quot;:&quot;Graz&quot;,&quot;Patents&quot;:2.61,&quot;GDP&quot;:35643.12,&quot;Population&quot;:596616,&quot;Greenspace&quot;:924.67,&quot;Employment&quot;:7.11,&quot;Pollution&quot;:16.14,&quot;lon&quot;:15.439504,&quot;lat&quot;:47.070714,&quot;Followers&quot;:2.41361277605696,&quot;1&quot;:2.1454335787173,&quot;10&quot;:0.134089598669831,&quot;20&quot;:0.0335223996674578,&quot;30&quot;:0.0502835995011867,&quot;40&quot;:0.0335223996674578,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0.0167611998337289,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.134089598669831,&quot;Country&quot;:&quot;Austria&quot;},{&quot;METRO_ID&quot;:&quot;Grenoble&quot;,&quot;Patents&quot;:5.58,&quot;GDP&quot;:30797.7,&quot;Population&quot;:642731,&quot;Greenspace&quot;:1115.82,&quot;Employment&quot;:1.05,&quot;Pollution&quot;:11.58,&quot;lon&quot;:5.724524,&quot;lat&quot;:45.188529,&quot;Followers&quot;:4.40308620558212,&quot;1&quot;:3.96744516757399,&quot;10&quot;:0.248937736004643,&quot;20&quot;:0.0466758255008705,&quot;30&quot;:0.0311172170005803,&quot;40&quot;:0.0155586085002902,&quot;50&quot;:0.0311172170005803,&quot;60&quot;:0.0311172170005803,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0311172170005803,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.186703302003482,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Hague&quot;,&quot;Patents&quot;:1.68,&quot;GDP&quot;:36914.72,&quot;Population&quot;:856025,&quot;Greenspace&quot;:21.82,&quot;Employment&quot;:5.22,&quot;Pollution&quot;:21.87,&quot;lon&quot;:4.3006999,&quot;lat&quot;:52.0704978,&quot;Followers&quot;:1.17987208317514,&quot;1&quot;:0.957915948716451,&quot;10&quot;:0.0700914108816916,&quot;20&quot;:0.0584095090680763,&quot;30&quot;:0.0233638036272305,&quot;40&quot;:0.0116819018136153,&quot;50&quot;:0.0233638036272305,&quot;60&quot;:0.0116819018136153,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0233638036272305,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.151864723576998,&quot;Country&quot;:&quot;Netherlands&quot;},{&quot;METRO_ID&quot;:&quot;Hamburg&quot;,&quot;Patents&quot;:1.76,&quot;GDP&quot;:46054.42,&quot;Population&quot;:2973464,&quot;Greenspace&quot;:925.06,&quot;Employment&quot;:3.78,&quot;Pollution&quot;:17.71,&quot;lon&quot;:9.9936818,&quot;lat&quot;:53.5510846,&quot;Followers&quot;:4.39554674278888,&quot;1&quot;:3.58504424469239,&quot;10&quot;:0.410295870405695,&quot;20&quot;:0.151338640723412,&quot;30&quot;:0.0908031844340473,&quot;40&quot;:0.023541566334753,&quot;50&quot;:0.0369938899546119,&quot;60&quot;:0.023541566334753,&quot;70&quot;:0.0100892427148941,&quot;80&quot;:0.0134523236198589,&quot;90&quot;:0.00672616180992943,&quot;100&quot;:0.0437200517645413,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.400206627690801,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Hanover&quot;,&quot;Patents&quot;:2.01,&quot;GDP&quot;:36179.87,&quot;Population&quot;:1225512,&quot;Greenspace&quot;:559.11,&quot;Employment&quot;:1.52,&quot;Pollution&quot;:18.96,&quot;lon&quot;:9.7320104,&quot;lat&quot;:52.3758916,&quot;Followers&quot;:0.522230708471235,&quot;1&quot;:0.448792015092467,&quot;10&quot;:0.0407992740993152,&quot;20&quot;:0.0163197096397261,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0.00815985481986304,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.00815985481986304,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0326394192794522,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Harrisburg&quot;,&quot;Patents&quot;:0.67,&quot;GDP&quot;:36048.71,&quot;Population&quot;:565403,&quot;Greenspace&quot;:3864.52,&quot;Employment&quot;:0.19,&quot;Pollution&quot;:16.16,&quot;lon&quot;:-76.8867008,&quot;lat&quot;:40.2731911,&quot;Followers&quot;:0.565967990972811,&quot;1&quot;:0.477535492383309,&quot;10&quot;:0.0176864997179003,&quot;20&quot;:0.0176864997179003,&quot;30&quot;:0.0353729994358007,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0.0176864997179003,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0707459988716013,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Helsinki&quot;,&quot;Patents&quot;:3.48,&quot;GDP&quot;:44733.98,&quot;Population&quot;:1435086,&quot;Greenspace&quot;:80.77,&quot;Employment&quot;:31.11,&quot;Pollution&quot;:8.55,&quot;lon&quot;:24.9410248,&quot;lat&quot;:60.1733244,&quot;Followers&quot;:4.85685178449236,&quot;1&quot;:3.95098272856122,&quot;10&quot;:0.550489657065848,&quot;20&quot;:0.118459799621765,&quot;30&quot;:0.0905869055931143,&quot;40&quot;:0.0348411175358132,&quot;50&quot;:0.0209046705214879,&quot;60&quot;:0,&quot;70&quot;:0.00696822350716263,&quot;80&quot;:0.00696822350716264,&quot;90&quot;:0.0139364470143253,&quot;100&quot;:0.0627140115644637,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.355379398865294,&quot;Country&quot;:&quot;Finland&quot;},{&quot;METRO_ID&quot;:&quot;Hiroshima&quot;,&quot;Patents&quot;:1.44,&quot;GDP&quot;:29829.75,&quot;Population&quot;:1395689,&quot;Greenspace&quot;:11.69,&quot;Employment&quot;:1.06,&quot;Pollution&quot;:12.93,&quot;lon&quot;:132.4552927,&quot;lat&quot;:34.3852029,&quot;Followers&quot;:0.286596799143649,&quot;1&quot;:0.222112519336328,&quot;10&quot;:0.0143298399571824,&quot;20&quot;:0.00716491997859122,&quot;30&quot;:0.0214947599357737,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0.00716491997859122,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0143298399571824,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0.0501544398501385,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Houston&quot;,&quot;Patents&quot;:2.96,&quot;GDP&quot;:53641.37,&quot;Population&quot;:5363803,&quot;Greenspace&quot;:719.04,&quot;Employment&quot;:1.7,&quot;Pollution&quot;:10.96,&quot;lon&quot;:-95.3693896,&quot;lat&quot;:29.7601927,&quot;Followers&quot;:1.32555203835786,&quot;1&quot;:1.11674496621147,&quot;10&quot;:0.109996582648542,&quot;20&quot;:0.0428800237443471,&quot;30&quot;:0.0261008840182982,&quot;40&quot;:0.00932174429224936,&quot;50&quot;:0,&quot;60&quot;:0.00186434885844987,&quot;70&quot;:0.00372869771689975,&quot;80&quot;:0.00186434885844987,&quot;90&quot;:0.00372869771689974,&quot;100&quot;:0.00932174429224936,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0988104894978432,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Indianapolis&quot;,&quot;Patents&quot;:1.74,&quot;GDP&quot;:38088.56,&quot;Population&quot;:1607756,&quot;Greenspace&quot;:1064.91,&quot;Employment&quot;:0.53,&quot;Pollution&quot;:18.65,&quot;lon&quot;:-86.158068,&quot;lat&quot;:39.768403,&quot;Followers&quot;:2.57501760217346,&quot;1&quot;:2.15206785109183,&quot;10&quot;:0.236354272663265,&quot;20&quot;:0.0621984928061223,&quot;30&quot;:0.0373190956836734,&quot;40&quot;:0.0186595478418367,&quot;50&quot;:0.00621984928061223,&quot;60&quot;:0.00621984928061223,&quot;70&quot;:0.0124396985612245,&quot;80&quot;:0,&quot;90&quot;:0.00621984928061223,&quot;100&quot;:0.0373190956836734,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.186595478418367,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Irapuato&quot;,&quot;Patents&quot;:0.06,&quot;GDP&quot;:5133.12,&quot;Population&quot;:509017,&quot;Greenspace&quot;:229.4,&quot;Employment&quot;:0.42,&quot;Pollution&quot;:23.42,&quot;lon&quot;:-101.3544964,&quot;lat&quot;:20.6786652,&quot;Followers&quot;:0.0392914185577299,&quot;1&quot;:0.0392914185577299,&quot;10&quot;:0,&quot;20&quot;:0,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0,&quot;Country&quot;:&quot;Mexico&quot;},{&quot;METRO_ID&quot;:&quot;Jacksonville&quot;,&quot;Patents&quot;:0.47,&quot;GDP&quot;:41632.01,&quot;Population&quot;:1122012,&quot;Greenspace&quot;:193.8,&quot;Employment&quot;:0.37,&quot;Pollution&quot;:11.06,&quot;lon&quot;:-81.655651,&quot;lat&quot;:30.3321838,&quot;Followers&quot;:1.32797153684631,&quot;1&quot;:1.10515752059693,&quot;10&quot;:0.106950727799703,&quot;20&quot;:0.0445628032498761,&quot;30&quot;:0.0178251212999504,&quot;40&quot;:0.0178251212999504,&quot;50&quot;:0,&quot;60&quot;:0.00891256064997522,&quot;70&quot;:0.00891256064997522,&quot;80&quot;:0.00891256064997522,&quot;90&quot;:0.00891256064997522,&quot;100&quot;:0,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.115863288449678,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Karlsruhe&quot;,&quot;Patents&quot;:3.04,&quot;GDP&quot;:41520.09,&quot;Population&quot;:682950,&quot;Greenspace&quot;:224.1,&quot;Employment&quot;:0.9,&quot;Pollution&quot;:19.97,&quot;lon&quot;:8.4036527,&quot;lat&quot;:49.0068901,&quot;Followers&quot;:5.38838860824365,&quot;1&quot;:4.12914561827366,&quot;10&quot;:0.629621494984992,&quot;20&quot;:0.248920125924299,&quot;30&quot;:0.146423603484882,&quot;40&quot;:0.102496522439417,&quot;50&quot;:0.0439270810454645,&quot;60&quot;:0,&quot;70&quot;:0.0146423603484882,&quot;80&quot;:0.0146423603484882,&quot;90&quot;:0.0146423603484882,&quot;100&quot;:0.0439270810454645,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.629621494984992,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Kofu&quot;,&quot;Patents&quot;:1.67,&quot;GDP&quot;:27698.47,&quot;Population&quot;:515136,&quot;Greenspace&quot;:37.09,&quot;Employment&quot;:0.42,&quot;Pollution&quot;:17.05,&quot;lon&quot;:138.5682015,&quot;lat&quot;:35.66228,&quot;Followers&quot;:0,&quot;1&quot;:0,&quot;10&quot;:0,&quot;20&quot;:0,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Kurashiki&quot;,&quot;Patents&quot;:1.49,&quot;GDP&quot;:42269.58,&quot;Population&quot;:575995,&quot;Greenspace&quot;:20.87,&quot;Employment&quot;:0.44,&quot;Pollution&quot;:18.83,&quot;lon&quot;:133.7720841,&quot;lat&quot;:34.5850134,&quot;Followers&quot;:0.0520837854495265,&quot;1&quot;:0.0520837854495265,&quot;10&quot;:0,&quot;20&quot;:0,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Leipzig&quot;,&quot;Patents&quot;:0.74,&quot;GDP&quot;:25773.74,&quot;Population&quot;:841674,&quot;Greenspace&quot;:361.39,&quot;Employment&quot;:1.02,&quot;Pollution&quot;:22,&quot;lon&quot;:12.3730747,&quot;lat&quot;:51.3396955,&quot;Followers&quot;:3.17224958832042,&quot;1&quot;:2.50690885069516,&quot;10&quot;:0.368313622613981,&quot;20&quot;:0.130691930604961,&quot;30&quot;:0.059405423002255,&quot;40&quot;:0.023762169200902,&quot;50&quot;:0.035643253801353,&quot;60&quot;:0.011881084600451,&quot;70&quot;:0.023762169200902,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.011881084600451,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.297027115011275,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Liege&quot;,&quot;Patents&quot;:0.52,&quot;GDP&quot;:25117.72,&quot;Population&quot;:719881,&quot;Greenspace&quot;:496.48,&quot;Employment&quot;:6.16,&quot;Pollution&quot;:20.25,&quot;lon&quot;:5.5796662,&quot;lat&quot;:50.6325574,&quot;Followers&quot;:0.152803032723464,&quot;1&quot;:0.138911847930422,&quot;10&quot;:0,&quot;20&quot;:0.0138911847930422,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0138911847930422,&quot;Country&quot;:&quot;Belgium&quot;},{&quot;METRO_ID&quot;:&quot;Lille&quot;,&quot;Patents&quot;:0.64,&quot;GDP&quot;:26099.21,&quot;Population&quot;:1342383,&quot;Greenspace&quot;:41.26,&quot;Employment&quot;:1.93,&quot;Pollution&quot;:26.45,&quot;lon&quot;:3.057256,&quot;lat&quot;:50.62925,&quot;Followers&quot;:2.57750582359878,&quot;1&quot;:2.17523612858625,&quot;10&quot;:0.223483163895848,&quot;20&quot;:0.0670449491687544,&quot;30&quot;:0.0521460715756978,&quot;40&quot;:0.0372471939826413,&quot;50&quot;:0.0148988775930565,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.00744943879652826,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.178786531116678,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Linz&quot;,&quot;Patents&quot;:2.04,&quot;GDP&quot;:39714.94,&quot;Population&quot;:601505,&quot;Greenspace&quot;:1735.1,&quot;Employment&quot;:7.47,&quot;Pollution&quot;:19.31,&quot;lon&quot;:14.28583,&quot;lat&quot;:48.30694,&quot;Followers&quot;:1.4131220854357,&quot;1&quot;:1.13049766834856,&quot;10&quot;:0.0831248285550411,&quot;20&quot;:0.0332499314220165,&quot;30&quot;:0.0498748971330246,&quot;40&quot;:0.0332499314220164,&quot;50&quot;:0,&quot;60&quot;:0.0166249657110082,&quot;70&quot;:0,&quot;80&quot;:0.0166249657110082,&quot;90&quot;:0.0166249657110082,&quot;100&quot;:0.0332499314220164,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.199499588532099,&quot;Country&quot;:&quot;Austria&quot;},{&quot;METRO_ID&quot;:&quot;Lisbon&quot;,&quot;Patents&quot;:0.14,&quot;GDP&quot;:31508.02,&quot;Population&quot;:2758968,&quot;Greenspace&quot;:66.52,&quot;Employment&quot;:25.55,&quot;Pollution&quot;:12.74,&quot;lon&quot;:-9.1393366,&quot;lat&quot;:38.7222524,&quot;Followers&quot;:1.79052457295626,&quot;1&quot;:1.49693653569016,&quot;10&quot;:0.16672900881779,&quot;20&quot;:0.0579926987192313,&quot;30&quot;:0.0072490873399039,&quot;40&quot;:0.0217472620197117,&quot;50&quot;:0.0181227183497598,&quot;60&quot;:0.00362454366995195,&quot;70&quot;:0,&quot;80&quot;:0.00724908733990391,&quot;90&quot;:0.00362454366995195,&quot;100&quot;:0.00724908733990391,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.126859028448318,&quot;Country&quot;:&quot;Portugal&quot;},{&quot;METRO_ID&quot;:&quot;Louisville&quot;,&quot;Patents&quot;:0.7,&quot;GDP&quot;:37792.79,&quot;Population&quot;:1201653,&quot;Greenspace&quot;:4304.6,&quot;Employment&quot;:0.37,&quot;Pollution&quot;:15.17,&quot;lon&quot;:-85.7584557,&quot;lat&quot;:38.2526647,&quot;Followers&quot;:1.88074261038752,&quot;1&quot;:1.63108651166352,&quot;10&quot;:0.133149919319471,&quot;20&quot;:0.0332874798298677,&quot;30&quot;:0.00832186995746692,&quot;40&quot;:0.0166437399149338,&quot;50&quot;:0.00832186995746693,&quot;60&quot;:0,&quot;70&quot;:0.00832186995746692,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0416093497873346,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.116506179404537,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Lyon&quot;,&quot;Patents&quot;:2.81,&quot;GDP&quot;:37866.19,&quot;Population&quot;:1863301,&quot;Greenspace&quot;:496.18,&quot;Employment&quot;:3.04,&quot;Pollution&quot;:18.19,&quot;lon&quot;:4.835659,&quot;lat&quot;:45.764043,&quot;Followers&quot;:3.67090448617803,&quot;1&quot;:2.95175068333028,&quot;10&quot;:0.354210081999634,&quot;20&quot;:0.139537305030159,&quot;30&quot;:0.0805022913635532,&quot;40&quot;:0.042934555393895,&quot;50&quot;:0.0375677359696582,&quot;60&quot;:0.00536681942423688,&quot;70&quot;:0.0161004582727106,&quot;80&quot;:0.00536681942423688,&quot;90&quot;:0,&quot;100&quot;:0.0375677359696582,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.364943720848108,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Madison&quot;,&quot;Patents&quot;:3.06,&quot;GDP&quot;:39182.8,&quot;Population&quot;:531023,&quot;Greenspace&quot;:5081.25,&quot;Employment&quot;:0.19,&quot;Pollution&quot;:10.87,&quot;lon&quot;:-89.4012302,&quot;lat&quot;:43.0730517,&quot;Followers&quot;:11.2236193159242,&quot;1&quot;:9.35929328861462,&quot;10&quot;:0.828589345470912,&quot;20&quot;:0.376631520668596,&quot;30&quot;:0.188315760334298,&quot;40&quot;:0.0753263041337192,&quot;50&quot;:0.0376631520668597,&quot;60&quot;:0.0564947281002894,&quot;70&quot;:0.0188315760334298,&quot;80&quot;:0.0188315760334298,&quot;90&quot;:0.0188315760334298,&quot;100&quot;:0.244810488434588,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:1.03573668183864,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Madrid&quot;,&quot;Patents&quot;:0.62,&quot;GDP&quot;:37185.59,&quot;Population&quot;:6259099,&quot;Greenspace&quot;:27.4,&quot;Employment&quot;:15.49,&quot;Pollution&quot;:14.49,&quot;lon&quot;:-3.7037902,&quot;lat&quot;:40.4167754,&quot;Followers&quot;:2.65213891008914,&quot;1&quot;:2.1568599570002,&quot;10&quot;:0.255627846755579,&quot;20&quot;:0.099055790617787,&quot;30&quot;:0.0543209174355606,&quot;40&quot;:0.0287581327600027,&quot;50&quot;:0.0159767404222237,&quot;60&quot;:0.00639069616888949,&quot;70&quot;:0.00479302212666712,&quot;80&quot;:0.00159767404222237,&quot;90&quot;:0.00319534808444474,&quot;100&quot;:0.0255627846755579,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.239651106333356,&quot;Country&quot;:&quot;Spain&quot;},{&quot;METRO_ID&quot;:&quot;Malaga&quot;,&quot;Patents&quot;:0.18,&quot;GDP&quot;:23794.39,&quot;Population&quot;:805318,&quot;Greenspace&quot;:28.79,&quot;Employment&quot;:1.56,&quot;Pollution&quot;:12.32,&quot;lon&quot;:-4.4212655,&quot;lat&quot;:36.721261,&quot;Followers&quot;:0.322853829170589,&quot;1&quot;:0.27318400929819,&quot;10&quot;:0.0248349099361991,&quot;20&quot;:0.0124174549680996,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0.0124174549680996,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0248349099361991,&quot;Country&quot;:&quot;Spain&quot;},{&quot;METRO_ID&quot;:&quot;Malmo&quot;,&quot;Patents&quot;:6.86,&quot;GDP&quot;:30325.86,&quot;Population&quot;:647057,&quot;Greenspace&quot;:881.78,&quot;Employment&quot;:6.97,&quot;Pollution&quot;:14.2,&quot;lon&quot;:13.003822,&quot;lat&quot;:55.604981,&quot;Followers&quot;:0.10818212305871,&quot;1&quot;:0.0927275340503232,&quot;10&quot;:0,&quot;20&quot;:0.0154545890083872,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0154545890083872,&quot;Country&quot;:&quot;Sweden&quot;},{&quot;METRO_ID&quot;:&quot;Mannheim&quot;,&quot;Patents&quot;:5.28,&quot;GDP&quot;:36923.54,&quot;Population&quot;:1246471,&quot;Greenspace&quot;:83.01,&quot;Employment&quot;:1.59,&quot;Pollution&quot;:21.94,&quot;lon&quot;:8.4660395,&quot;lat&quot;:49.4874592,&quot;Followers&quot;:0.689947860800612,&quot;1&quot;:0.593676066270294,&quot;10&quot;:0.048135897265159,&quot;20&quot;:0.0160452990883863,&quot;30&quot;:0.0160452990883863,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0160452990883863,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.048135897265159,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Marseille&quot;,&quot;Patents&quot;:1.22,&quot;GDP&quot;:30386.16,&quot;Population&quot;:1697613,&quot;Greenspace&quot;:48.68,&quot;Employment&quot;:2.6,&quot;Pollution&quot;:12.42,&quot;lon&quot;:5.36978,&quot;lat&quot;:43.296482,&quot;Followers&quot;:0.836468617994796,&quot;1&quot;:0.742218632868622,&quot;10&quot;:0.0353437444223153,&quot;20&quot;:0.0176718722111577,&quot;30&quot;:0.0117812481407718,&quot;40&quot;:0.0176718722111577,&quot;50&quot;:0.00589062407038589,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0.00589062407038589,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.0589062407038589,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Memphis&quot;,&quot;Patents&quot;:1.05,&quot;GDP&quot;:35697.94,&quot;Population&quot;:1253006,&quot;Greenspace&quot;:3239.39,&quot;Employment&quot;:0.39,&quot;Pollution&quot;:14,&quot;lon&quot;:-90.0489801,&quot;lat&quot;:35.1495343,&quot;Followers&quot;:0.965677738175236,&quot;1&quot;:0.830004006365492,&quot;10&quot;:0.0558656542746004,&quot;20&quot;:0.0478848465210861,&quot;30&quot;:0,&quot;40&quot;:0.0159616155070287,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0159616155070287,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0798080775351435,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Miami&quot;,&quot;Patents&quot;:0.64,&quot;GDP&quot;:41419.94,&quot;Population&quot;:5448094,&quot;Greenspace&quot;:150.16,&quot;Employment&quot;:1.78,&quot;Pollution&quot;:12.41,&quot;lon&quot;:-80.2040435,&quot;lat&quot;:25.7890972,&quot;Followers&quot;:0.873700049962427,&quot;1&quot;:0.745214748497364,&quot;10&quot;:0.0679136593458189,&quot;20&quot;:0.0256970602930126,&quot;30&quot;:0.00734201722657502,&quot;40&quot;:0.00550651291993126,&quot;50&quot;:0.00734201722657502,&quot;60&quot;:0.00183550430664376,&quot;70&quot;:0.00183550430664375,&quot;80&quot;:0.00183550430664376,&quot;90&quot;:0,&quot;100&quot;:0.00917752153321877,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0605716421192439,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Milwaukee&quot;,&quot;Patents&quot;:1.22,&quot;GDP&quot;:42417.81,&quot;Population&quot;:1544538,&quot;Greenspace&quot;:1602.99,&quot;Employment&quot;:0.56,&quot;Pollution&quot;:14.22,&quot;lon&quot;:-87.9064736,&quot;lat&quot;:43.0389025,&quot;Followers&quot;:1.80636539858521,&quot;1&quot;:1.51501614074888,&quot;10&quot;:0.174809554701794,&quot;20&quot;:0.0517954236153465,&quot;30&quot;:0.0323721397595915,&quot;40&quot;:0.0129488559038366,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0.00647442795191831,&quot;80&quot;:0.00647442795191831,&quot;90&quot;:0,&quot;100&quot;:0.00647442795191831,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.11653970313453,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Minneapolis&quot;,&quot;Patents&quot;:5.21,&quot;GDP&quot;:45685.38,&quot;Population&quot;:3212176,&quot;Greenspace&quot;:3061.19,&quot;Employment&quot;:1.16,&quot;Pollution&quot;:12.2,&quot;lon&quot;:-93.26667,&quot;lat&quot;:44.983334,&quot;Followers&quot;:2.83608370151573,&quot;1&quot;:2.33797898994327,&quot;10&quot;:0.261504973575545,&quot;20&quot;:0.124526177893117,&quot;30&quot;:0.0404710078152629,&quot;40&quot;:0.0217920811312954,&quot;50&quot;:0.0155657722366396,&quot;60&quot;:0,&quot;70&quot;:0.00311315444732792,&quot;80&quot;:0.00311315444732791,&quot;90&quot;:0,&quot;100&quot;:0.0280183900259513,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.236599737996922,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Mito&quot;,&quot;Patents&quot;:1.95,&quot;GDP&quot;:29130.28,&quot;Population&quot;:587575,&quot;Greenspace&quot;:70.14,&quot;Employment&quot;:0.47,&quot;Pollution&quot;:14.74,&quot;lon&quot;:140.4712215,&quot;lat&quot;:36.3658556,&quot;Followers&quot;:0.051057311832532,&quot;1&quot;:0.051057311832532,&quot;10&quot;:0,&quot;20&quot;:0,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Monterrey&quot;,&quot;Patents&quot;:0.07,&quot;GDP&quot;:25972.52,&quot;Population&quot;:3915469,&quot;Greenspace&quot;:51.31,&quot;Employment&quot;:3.97,&quot;Pollution&quot;:14.25,&quot;lon&quot;:-100.3161126,&quot;lat&quot;:25.6866142,&quot;Followers&quot;:0.38309586923048,&quot;1&quot;:0.342232309845896,&quot;10&quot;:0.0178778072307558,&quot;20&quot;:0.0153238347692192,&quot;30&quot;:0,&quot;40&quot;:0.00510794492307307,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0.00255397246153654,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0229857521538288,&quot;Country&quot;:&quot;Mexico&quot;},{&quot;METRO_ID&quot;:&quot;Montpellier&quot;,&quot;Patents&quot;:1.27,&quot;GDP&quot;:27291.98,&quot;Population&quot;:618454,&quot;Greenspace&quot;:208.6,&quot;Employment&quot;:0.88,&quot;Pollution&quot;:12.41,&quot;lon&quot;:3.876716,&quot;lat&quot;:43.610769,&quot;Followers&quot;:3.84830561367539,&quot;1&quot;:3.37939442545444,&quot;10&quot;:0.21020156713353,&quot;20&quot;:0.113185459225747,&quot;30&quot;:0.0323387026359277,&quot;40&quot;:0.0323387026359276,&quot;50&quot;:0.0323387026359277,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0485080539538915,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.258709621087421,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Munich&quot;,&quot;Patents&quot;:4.94,&quot;GDP&quot;:51791.38,&quot;Population&quot;:2786626,&quot;Greenspace&quot;:574.58,&quot;Employment&quot;:3.66,&quot;Pollution&quot;:21.07,&quot;lon&quot;:11.5819806,&quot;lat&quot;:48.1351253,&quot;Followers&quot;:4.28475152388588,&quot;1&quot;:3.5706262699049,&quot;10&quot;:0.362445480663713,&quot;20&quot;:0.147131333734775,&quot;30&quot;:0.0538285367322346,&quot;40&quot;:0.0287085529238585,&quot;50&quot;:0.0287085529238584,&quot;60&quot;:0.0179428455774115,&quot;70&quot;:0.00717713823096462,&quot;80&quot;:0.0107657073464469,&quot;90&quot;:0.0179428455774115,&quot;100&quot;:0.0394742602703054,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.351679773317266,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Nagoya&quot;,&quot;Patents&quot;:1.65,&quot;GDP&quot;:33972.34,&quot;Population&quot;:6364462,&quot;Greenspace&quot;:7.62,&quot;Employment&quot;:5.25,&quot;Pollution&quot;:24.79,&quot;lon&quot;:136.906398,&quot;lat&quot;:35.1814464,&quot;Followers&quot;:0.164978595205691,&quot;1&quot;:0.131982876164552,&quot;10&quot;:0.00785612358122336,&quot;20&quot;:0.00628489886497869,&quot;30&quot;:0.00785612358122336,&quot;40&quot;:0.00314244943248934,&quot;50&quot;:0.00157122471624467,&quot;60&quot;:0,&quot;70&quot;:0.00157122471624467,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.00471367414873402,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0.0251395954599148,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Nantes&quot;,&quot;Patents&quot;:0.67,&quot;GDP&quot;:30722.43,&quot;Population&quot;:851118,&quot;Greenspace&quot;:605.8,&quot;Employment&quot;:1.37,&quot;Pollution&quot;:13.97,&quot;lon&quot;:-1.553621,&quot;lat&quot;:47.218371,&quot;Followers&quot;:4.7349486205203,&quot;1&quot;:3.9477487257936,&quot;10&quot;:0.4934685907242,&quot;20&quot;:0.1057432694409,&quot;30&quot;:0.0587462608005,&quot;40&quot;:0.0234985043202,&quot;50&quot;:0.0117492521601,&quot;60&quot;:0.0234985043202,&quot;70&quot;:0.0234985043202,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0469970086404,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.2937313040025,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Naples&quot;,&quot;Patents&quot;:0.17,&quot;GDP&quot;:17664.71,&quot;Population&quot;:3544063,&quot;Greenspace&quot;:13.02,&quot;Employment&quot;:4.43,&quot;Pollution&quot;:15.17,&quot;lon&quot;:-81.7948103,&quot;lat&quot;:26.1420358,&quot;Followers&quot;:0.126972912163243,&quot;1&quot;:0.115686431082066,&quot;10&quot;:0.00282162027029429,&quot;20&quot;:0.00846486081088288,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.00846486081088288,&quot;Country&quot;:&quot;Italy&quot;},{&quot;METRO_ID&quot;:&quot;Nashville&quot;,&quot;Patents&quot;:0.62,&quot;GDP&quot;:39029,&quot;Population&quot;:1198031,&quot;Greenspace&quot;:4474.39,&quot;Employment&quot;:0.38,&quot;Pollution&quot;:14.4,&quot;lon&quot;:-86.783333,&quot;lat&quot;:36.166667,&quot;Followers&quot;:5.26697556240197,&quot;1&quot;:3.94814491444712,&quot;10&quot;:0.600986118055376,&quot;20&quot;:0.350575235532303,&quot;30&quot;:0.0918173235917936,&quot;40&quot;:0.0834702941743578,&quot;50&quot;:0.0166940588348715,&quot;60&quot;:0.0250410882523073,&quot;70&quot;:0.0250410882523073,&quot;80&quot;:0.00834702941743577,&quot;90&quot;:0,&quot;100&quot;:0.116858411844101,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.717844529899477,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Nice&quot;,&quot;Patents&quot;:2.06,&quot;GDP&quot;:30787.97,&quot;Population&quot;:835633,&quot;Greenspace&quot;:234.02,&quot;Employment&quot;:1.28,&quot;Pollution&quot;:15.06,&quot;lon&quot;:7.2619532,&quot;lat&quot;:43.7101728,&quot;Followers&quot;:1.10096178585575,&quot;1&quot;:1.01719295432325,&quot;10&quot;:0.0359009277996441,&quot;20&quot;:0.0239339518664294,&quot;30&quot;:0.0119669759332147,&quot;40&quot;:0,&quot;50&quot;:0.0119669759332147,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.0478679037328588,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Numazu&quot;,&quot;Patents&quot;:2.13,&quot;GDP&quot;:33669.86,&quot;Population&quot;:530836,&quot;Greenspace&quot;:31.95,&quot;Employment&quot;:0.44,&quot;Pollution&quot;:12.51,&quot;lon&quot;:138.8634925,&quot;lat&quot;:35.0955842,&quot;Followers&quot;:0,&quot;1&quot;:0,&quot;10&quot;:0,&quot;20&quot;:0,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Okayama&quot;,&quot;Patents&quot;:1.27,&quot;GDP&quot;:23797.03,&quot;Population&quot;:875734,&quot;Greenspace&quot;:85.3,&quot;Employment&quot;:0.67,&quot;Pollution&quot;:19.25,&quot;lon&quot;:133.9195019,&quot;lat&quot;:34.6551456,&quot;Followers&quot;:0.262636828077932,&quot;1&quot;:0.159865895351785,&quot;10&quot;:0.0799329476758924,&quot;20&quot;:0.022837985050255,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0.022837985050255,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Omaha&quot;,&quot;Patents&quot;:0.34,&quot;GDP&quot;:45122.77,&quot;Population&quot;:844399,&quot;Greenspace&quot;:756.54,&quot;Employment&quot;:0.31,&quot;Pollution&quot;:12,&quot;lon&quot;:-95.9979883,&quot;lat&quot;:41.2523634,&quot;Followers&quot;:4.19233087675376,&quot;1&quot;:3.75414940093487,&quot;10&quot;:0.236854851793998,&quot;20&quot;:0.0592137129484995,&quot;30&quot;:0.0118427425896999,&quot;40&quot;:0,&quot;50&quot;:0.0473709703587996,&quot;60&quot;:0,&quot;70&quot;:0.0118427425896999,&quot;80&quot;:0.0236854851793998,&quot;90&quot;:0.0236854851793998,&quot;100&quot;:0.0236854851793998,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.201326624024898,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Orlando&quot;,&quot;Patents&quot;:0.75,&quot;GDP&quot;:33993.4,&quot;Population&quot;:1747437,&quot;Greenspace&quot;:566.42,&quot;Employment&quot;:0.57,&quot;Pollution&quot;:10.78,&quot;lon&quot;:-81.3792365,&quot;lat&quot;:28.5383355,&quot;Followers&quot;:3.22186150344762,&quot;1&quot;:2.74688014503527,&quot;10&quot;:0.257520013597057,&quot;20&quot;:0.0858400045323522,&quot;30&quot;:0.0286133348441174,&quot;40&quot;:0.0228906678752939,&quot;50&quot;:0.0171680009064705,&quot;60&quot;:0.00572266696882347,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0572266696882348,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.217461344815292,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Osaka&quot;,&quot;Patents&quot;:2.59,&quot;GDP&quot;:31069.86,&quot;Population&quot;:17211139,&quot;Greenspace&quot;:10.99,&quot;Employment&quot;:12.84,&quot;Pollution&quot;:21.16,&quot;lon&quot;:135.5021651,&quot;lat&quot;:34.6937378,&quot;Followers&quot;:0.191736293571274,&quot;1&quot;:0.147578844142738,&quot;10&quot;:0.0232407628571241,&quot;20&quot;:0.00406713349999672,&quot;30&quot;:0.00464815257142482,&quot;40&quot;:0.00290509535714051,&quot;50&quot;:0.00290509535714051,&quot;60&quot;:0.0011620381428562,&quot;70&quot;:0.000581019071428102,&quot;80&quot;:0,&quot;90&quot;:0.000581019071428102,&quot;100&quot;:0.00406713349999672,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0.0209166865714117,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Oslo&quot;,&quot;Patents&quot;:1.99,&quot;GDP&quot;:46010.78,&quot;Population&quot;:1189595,&quot;Greenspace&quot;:316.5,&quot;Employment&quot;:26.18,&quot;Pollution&quot;:6.5,&quot;lon&quot;:10.7522454,&quot;lat&quot;:59.9138688,&quot;Followers&quot;:10.2303725217406,&quot;1&quot;:8.22128539544971,&quot;10&quot;:1.12643378628861,&quot;20&quot;:0.428717336572531,&quot;30&quot;:0.109280889714567,&quot;40&quot;:0.117687112000303,&quot;50&quot;:0.0168124445714718,&quot;60&quot;:0.0252186668572077,&quot;70&quot;:0.0252186668572077,&quot;80&quot;:0.0336248891429436,&quot;90&quot;:0,&quot;100&quot;:0.126093334286039,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.88265334000227,&quot;Country&quot;:&quot;Norway&quot;},{&quot;METRO_ID&quot;:&quot;Palermo&quot;,&quot;Patents&quot;:0.12,&quot;GDP&quot;:18962.79,&quot;Population&quot;:934310,&quot;Greenspace&quot;:44.8,&quot;Employment&quot;:1.18,&quot;Pollution&quot;:10.85,&quot;lon&quot;:13.3612671,&quot;lat&quot;:38.1156879,&quot;Followers&quot;:0.363904913786645,&quot;1&quot;:0.299686399589002,&quot;10&quot;:0.0428123427984288,&quot;20&quot;:0.0214061713992144,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0214061713992144,&quot;Country&quot;:&quot;Italy&quot;},{&quot;METRO_ID&quot;:&quot;Palmas&quot;,&quot;Patents&quot;:0.07,&quot;GDP&quot;:25158.1,&quot;Population&quot;:647252,&quot;Greenspace&quot;:84.9,&quot;Employment&quot;:1.41,&quot;Pollution&quot;:7.99,&quot;lon&quot;:-48.3242858,&quot;lat&quot;:-10.249091,&quot;Followers&quot;:1.46774362999265,&quot;1&quot;:1.26689450167786,&quot;10&quot;:0.123599463578328,&quot;20&quot;:0.015449932947291,&quot;30&quot;:0.015449932947291,&quot;40&quot;:0.030899865894582,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0.015449932947291,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.077249664736455,&quot;Country&quot;:&quot;Spain&quot;},{&quot;METRO_ID&quot;:&quot;Paris&quot;,&quot;Patents&quot;:2.14,&quot;GDP&quot;:49956.64,&quot;Population&quot;:11529670,&quot;Greenspace&quot;:92.85,&quot;Employment&quot;:20.33,&quot;Pollution&quot;:18.28,&quot;lon&quot;:2.3522219,&quot;lat&quot;:48.856614,&quot;Followers&quot;:4.08684723847257,&quot;1&quot;:3.32967032013926,&quot;10&quot;:0.376420140385631,&quot;20&quot;:0.151782314671625,&quot;30&quot;:0.0728555110423802,&quot;40&quot;:0.0398970655708273,&quot;50&quot;:0.0260198253722786,&quot;60&quot;:0.0190812052730044,&quot;70&quot;:0.0138772401985486,&quot;80&quot;:0.00867327512409288,&quot;90&quot;:0.0078059476116836,&quot;100&quot;:0.0407643930832366,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.380756777947678,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Philadelphia&quot;,&quot;Patents&quot;:1.78,&quot;GDP&quot;:49099.64,&quot;Population&quot;:4004502,&quot;Greenspace&quot;:378.71,&quot;Employment&quot;:1.33,&quot;Pollution&quot;:20.51,&quot;lon&quot;:-75.163789,&quot;lat&quot;:39.952335,&quot;Followers&quot;:2.95417507595202,&quot;1&quot;:2.39230745795607,&quot;10&quot;:0.252216130744847,&quot;20&quot;:0.114870713012504,&quot;30&quot;:0.0599325459195675,&quot;40&quot;:0.0374578411997297,&quot;50&quot;:0.0224747047198378,&quot;60&quot;:0.0224747047198378,&quot;70&quot;:0.00998875765326126,&quot;80&quot;:0.00499437882663063,&quot;90&quot;:0.00249718941331532,&quot;100&quot;:0.0349606517864144,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.309651487251099,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Phoenix&quot;,&quot;Patents&quot;:1.03,&quot;GDP&quot;:42304.44,&quot;Population&quot;:3654911,&quot;Greenspace&quot;:10.51,&quot;Employment&quot;:1.22,&quot;Pollution&quot;:9.1,&quot;lon&quot;:-112.0740373,&quot;lat&quot;:33.4483771,&quot;Followers&quot;:1.07800162575778,&quot;1&quot;:0.891950583748825,&quot;10&quot;:0.087553431533627,&quot;20&quot;:0.0246244026188326,&quot;30&quot;:0.0218883578834067,&quot;40&quot;:0.0191523131479809,&quot;50&quot;:0.00547208947085169,&quot;60&quot;:0.00273604473542584,&quot;70&quot;:0,&quot;80&quot;:0.00820813420627753,&quot;90&quot;:0,&quot;100&quot;:0.0164162684125551,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0984976104753303,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Pittsburgh&quot;,&quot;Patents&quot;:1.87,&quot;GDP&quot;:40246.89,&quot;Population&quot;:1234856,&quot;Greenspace&quot;:610.85,&quot;Employment&quot;:0.41,&quot;Pollution&quot;:17.65,&quot;lon&quot;:-79.9958864,&quot;lat&quot;:40.4406248,&quot;Followers&quot;:9.01319668042266,&quot;1&quot;:7.52314439902304,&quot;10&quot;:0.785516691824796,&quot;20&quot;:0.332022519224914,&quot;30&quot;:0.121471653374968,&quot;40&quot;:0.0404905511249894,&quot;50&quot;:0.0242943306749937,&quot;60&quot;:0.0404905511249895,&quot;70&quot;:0.0404905511249895,&quot;80&quot;:0.0242943306749937,&quot;90&quot;:0,&quot;100&quot;:0.0809811022499789,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.704535589574817,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Portland&quot;,&quot;Patents&quot;:2,&quot;GDP&quot;:44955.78,&quot;Population&quot;:2162610,&quot;Greenspace&quot;:445.87,&quot;Employment&quot;:0.74,&quot;Pollution&quot;:5.85,&quot;lon&quot;:-122.6762071,&quot;lat&quot;:45.5234515,&quot;Followers&quot;:11.3057832896361,&quot;1&quot;:8.30015583022366,&quot;10&quot;:1.20225098376499,&quot;20&quot;:0.587253365146744,&quot;30&quot;:0.369923379619996,&quot;40&quot;:0.194209774300498,&quot;50&quot;:0.115601056131249,&quot;60&quot;:0.0832327604144992,&quot;70&quot;:0.0416163802072496,&quot;80&quot;:0.0416163802072496,&quot;90&quot;:0.0462404224524995,&quot;100&quot;:0.323682957167497,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:1.80337647564748,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Porto&quot;,&quot;Patents&quot;:0.22,&quot;GDP&quot;:21552,&quot;Population&quot;:1294369,&quot;Greenspace&quot;:67.33,&quot;Employment&quot;:12.25,&quot;Pollution&quot;:15.78,&quot;lon&quot;:-8.6291053,&quot;lat&quot;:41.1579438,&quot;Followers&quot;:6.31195586420874,&quot;1&quot;:5.07583231675048,&quot;10&quot;:0.664416406758815,&quot;20&quot;:0.247224709491652,&quot;30&quot;:0.139063899089054,&quot;40&quot;:0.0231773165148424,&quot;50&quot;:0.0463546330296847,&quot;60&quot;:0.00772577217161412,&quot;70&quot;:0.0309030886864565,&quot;80&quot;:0.00772577217161413,&quot;90&quot;:0.0231773165148424,&quot;100&quot;:0.0463546330296847,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.571707140699445,&quot;Country&quot;:&quot;Portugal&quot;},{&quot;METRO_ID&quot;:&quot;Providence&quot;,&quot;Patents&quot;:0.9,&quot;GDP&quot;:51413.36,&quot;Population&quot;:842024,&quot;Greenspace&quot;:123.13,&quot;Employment&quot;:0.29,&quot;Pollution&quot;:11.09,&quot;lon&quot;:-71.4128343,&quot;lat&quot;:41.8239891,&quot;Followers&quot;:2.54149525429204,&quot;1&quot;:2.0545732663202,&quot;10&quot;:0.320655943298528,&quot;20&quot;:0.0118761460480937,&quot;30&quot;:0.0356284381442809,&quot;40&quot;:0.0237522920961873,&quot;50&quot;:0.0118761460480936,&quot;60&quot;:0.0237522920961873,&quot;70&quot;:0.0118761460480936,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0475045841923746,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.166266044673311,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Raleigh&quot;,&quot;Patents&quot;:3.88,&quot;GDP&quot;:38566.27,&quot;Population&quot;:1054223,&quot;Greenspace&quot;:1758.04,&quot;Employment&quot;:0.33,&quot;Pollution&quot;:13.83,&quot;lon&quot;:-78.6381787,&quot;lat&quot;:35.7795897,&quot;Followers&quot;:5.61551019091786,&quot;1&quot;:4.72385823492752,&quot;10&quot;:0.55965388727053,&quot;20&quot;:0.161256204806763,&quot;30&quot;:0.0379426364251207,&quot;40&quot;:0.0379426364251207,&quot;50&quot;:0.0284569773188405,&quot;60&quot;:0,&quot;70&quot;:0.0284569773188405,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0379426364251207,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.331998068719806,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Rennes&quot;,&quot;Patents&quot;:2.34,&quot;GDP&quot;:29317.47,&quot;Population&quot;:652633,&quot;Greenspace&quot;:520.34,&quot;Employment&quot;:1.04,&quot;Pollution&quot;:15.59,&quot;lon&quot;:-1.6777926,&quot;lat&quot;:48.117266,&quot;Followers&quot;:3.24838002368866,&quot;1&quot;:2.8346712470868,&quot;10&quot;:0.229838209223254,&quot;20&quot;:0.0612901891262011,&quot;30&quot;:0.0153225472815503,&quot;40&quot;:0,&quot;50&quot;:0.0459676418446508,&quot;60&quot;:0,&quot;70&quot;:0.0153225472815503,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0459676418446508,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.183870567378603,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Richmond&quot;,&quot;Patents&quot;:0.37,&quot;GDP&quot;:42274.02,&quot;Population&quot;:500350,&quot;Greenspace&quot;:214.51,&quot;Employment&quot;:0.18,&quot;Pollution&quot;:15.37,&quot;lon&quot;:-77.4360481,&quot;lat&quot;:37.5407246,&quot;Followers&quot;:5.95583091835715,&quot;1&quot;:4.83661436994104,&quot;10&quot;:0.45967822524233,&quot;20&quot;:0.279804137104027,&quot;30&quot;:0.0599580293794345,&quot;40&quot;:0.0999300489657239,&quot;50&quot;:0.0399720195862896,&quot;60&quot;:0.0399720195862896,&quot;70&quot;:0.0199860097931448,&quot;80&quot;:0.0199860097931448,&quot;90&quot;:0,&quot;100&quot;:0.099930048965724,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.659538323173778,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Rome&quot;,&quot;Patents&quot;:0.52,&quot;GDP&quot;:37664.43,&quot;Population&quot;:3941844,&quot;Greenspace&quot;:236.61,&quot;Employment&quot;:7.03,&quot;Pollution&quot;:13.59,&quot;lon&quot;:12.4801802,&quot;lat&quot;:41.8723889,&quot;Followers&quot;:0.951331407331188,&quot;1&quot;:0.804192149663964,&quot;10&quot;:0.0710327450807287,&quot;20&quot;:0.0202950700230654,&quot;30&quot;:0.0177581862701822,&quot;40&quot;:0.00507376750576635,&quot;50&quot;:0.00253688375288317,&quot;60&quot;:0.00507376750576633,&quot;70&quot;:0.00507376750576633,&quot;80&quot;:0.00253688375288317,&quot;90&quot;:0,&quot;100&quot;:0.0177581862701822,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0761065125864951,&quot;Country&quot;:&quot;Italy&quot;},{&quot;METRO_ID&quot;:&quot;Rotterdam&quot;,&quot;Patents&quot;:1.07,&quot;GDP&quot;:38438.17,&quot;Population&quot;:1473917,&quot;Greenspace&quot;:72.38,&quot;Employment&quot;:8.99,&quot;Pollution&quot;:24.06,&quot;lon&quot;:4.4777325,&quot;lat&quot;:51.9244201,&quot;Followers&quot;:1.95397705569581,&quot;1&quot;:1.72329920884283,&quot;10&quot;:0.142477493644486,&quot;20&quot;:0.0339232127724967,&quot;30&quot;:0.020353927663498,&quot;40&quot;:0.00678464255449934,&quot;50&quot;:0,&quot;60&quot;:0.00678464255449934,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0.00678464255449934,&quot;100&quot;:0.0135692851089987,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0882003532084914,&quot;Country&quot;:&quot;Netherlands&quot;},{&quot;METRO_ID&quot;:&quot;Rouen&quot;,&quot;Patents&quot;:0.68,&quot;GDP&quot;:27225.02,&quot;Population&quot;:691978,&quot;Greenspace&quot;:677.19,&quot;Employment&quot;:1.08,&quot;Pollution&quot;:16.73,&quot;lon&quot;:1.099971,&quot;lat&quot;:49.443232,&quot;Followers&quot;:0.708114997875655,&quot;1&quot;:0.621407038952105,&quot;10&quot;:0.0289026529745165,&quot;20&quot;:0.0289026529745165,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0.0144513264872583,&quot;100&quot;:0.0144513264872583,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.0578053059490331,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Seattle&quot;,&quot;Patents&quot;:4.36,&quot;GDP&quot;:53267.17,&quot;Population&quot;:2581101,&quot;Greenspace&quot;:106.62,&quot;Employment&quot;:0.89,&quot;Pollution&quot;:6.02,&quot;lon&quot;:-122.3320708,&quot;lat&quot;:47.6062095,&quot;Followers&quot;:17.3104423267435,&quot;1&quot;:14.0366456020125,&quot;10&quot;:1.56134920717942,&quot;20&quot;:0.63926208234393,&quot;30&quot;:0.309945252045542,&quot;40&quot;:0.170469888625048,&quot;50&quot;:0.100732206914801,&quot;60&quot;:0.0697376817102469,&quot;70&quot;:0.0658633660596777,&quot;80&quot;:0.0581147347585391,&quot;90&quot;:0.0464917878068313,&quot;100&quot;:0.251830517287003,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:1.71244751755162,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Seville&quot;,&quot;Patents&quot;:0.29,&quot;GDP&quot;:22549.37,&quot;Population&quot;:1384844,&quot;Greenspace&quot;:14.26,&quot;Employment&quot;:2.68,&quot;Pollution&quot;:14.16,&quot;lon&quot;:-5.9844589,&quot;lat&quot;:37.3890924,&quot;Followers&quot;:0.642671665545,&quot;1&quot;:0.49103003659618,&quot;10&quot;:0.0649892695494944,&quot;20&quot;:0.0649892695494944,&quot;30&quot;:0.0144420598998876,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0.00722102994994382,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0866523593993258,&quot;Country&quot;:&quot;Spain&quot;},{&quot;METRO_ID&quot;:&quot;Stockholm&quot;,&quot;Patents&quot;:5.68,&quot;GDP&quot;:47443.31,&quot;Population&quot;:1938753,&quot;Greenspace&quot;:119.36,&quot;Employment&quot;:22.89,&quot;Pollution&quot;:7.8,&quot;lon&quot;:18.0685808,&quot;lat&quot;:59.3293235,&quot;Followers&quot;:10.5686490233671,&quot;1&quot;:8.46936149163921,&quot;10&quot;:1.01611706081177,&quot;20&quot;:0.40232046062598,&quot;30&quot;:0.19084432106617,&quot;40&quot;:0.12894886558525,&quot;50&quot;:0.0773693193511499,&quot;60&quot;:0.0515795462341,&quot;70&quot;:0.06189545548092,&quot;80&quot;:0.04642159161069,&quot;90&quot;:0.01547386387023,&quot;100&quot;:0.10831704709161,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:1.0831704709161,&quot;Country&quot;:&quot;Sweden&quot;},{&quot;METRO_ID&quot;:&quot;Strasbourg&quot;,&quot;Patents&quot;:1.4,&quot;GDP&quot;:30999.5,&quot;Population&quot;:750126,&quot;Greenspace&quot;:365.43,&quot;Employment&quot;:1.34,&quot;Pollution&quot;:21.84,&quot;lon&quot;:7.747882,&quot;lat&quot;:48.583148,&quot;Followers&quot;:2.54623889853171,&quot;1&quot;:2.10631280611524,&quot;10&quot;:0.306615155320573,&quot;20&quot;:0.0533243748383605,&quot;30&quot;:0.0399932811287704,&quot;40&quot;:0.0266621874191802,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0133310937095901,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.133310937095901,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Stuttgart&quot;,&quot;Patents&quot;:6.28,&quot;GDP&quot;:44090.18,&quot;Population&quot;:1949365,&quot;Greenspace&quot;:177.84,&quot;Employment&quot;:2.58,&quot;Pollution&quot;:19.16,&quot;lon&quot;:9.1817588,&quot;lat&quot;:48.7754181,&quot;Followers&quot;:1.91857348418588,&quot;1&quot;:1.65694982725144,&quot;10&quot;:0.123117015027971,&quot;20&quot;:0.0359091293831581,&quot;30&quot;:0.0307792537569927,&quot;40&quot;:0.0307792537569927,&quot;50&quot;:0,&quot;60&quot;:0.0153896268784963,&quot;70&quot;:0.00512987562616544,&quot;80&quot;:0.00512987562616545,&quot;90&quot;:0.00512987562616544,&quot;100&quot;:0.0102597512523309,&quot;US&quot;:0,&quot;DE&quot;:1,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.138506641906467,&quot;Country&quot;:&quot;Germany&quot;},{&quot;METRO_ID&quot;:&quot;Takamatsu&quot;,&quot;Patents&quot;:1.5,&quot;GDP&quot;:35664.94,&quot;Population&quot;:526596,&quot;Greenspace&quot;:19.16,&quot;Employment&quot;:0.4,&quot;Pollution&quot;:19.57,&quot;lon&quot;:134.046574,&quot;lat&quot;:34.3427879,&quot;Followers&quot;:0.0189898897826797,&quot;1&quot;:0.0189898897826797,&quot;10&quot;:0,&quot;20&quot;:0,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Tallinn&quot;,&quot;Patents&quot;:0.41,&quot;GDP&quot;:28456.85,&quot;Population&quot;:530889,&quot;Greenspace&quot;:1468.15,&quot;Employment&quot;:39.39,&quot;Pollution&quot;:7.2,&quot;lon&quot;:24.7535746,&quot;lat&quot;:59.4369608,&quot;Followers&quot;:3.76726585030016,&quot;1&quot;:3.29635761901264,&quot;10&quot;:0.301381268024013,&quot;20&quot;:0.0565089877545023,&quot;30&quot;:0.0376726585030016,&quot;40&quot;:0.0188363292515008,&quot;50&quot;:0.0188363292515008,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0376726585030016,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.169526963263507,&quot;Country&quot;:&quot;Estonia&quot;},{&quot;METRO_ID&quot;:&quot;Tampa&quot;,&quot;Patents&quot;:0.65,&quot;GDP&quot;:38472.95,&quot;Population&quot;:1179272,&quot;Greenspace&quot;:481.46,&quot;Employment&quot;:0.39,&quot;Pollution&quot;:12.18,&quot;lon&quot;:-82.4571776,&quot;lat&quot;:27.950575,&quot;Followers&quot;:2.39978563045676,&quot;1&quot;:2.08603273884227,&quot;10&quot;:0.169596157629453,&quot;20&quot;:0.0254394236444179,&quot;30&quot;:0.0339192315258905,&quot;40&quot;:0.0169596157629453,&quot;50&quot;:0.0169596157629453,&quot;60&quot;:0.00847980788147264,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0423990394073632,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.144156733985035,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Tokyo&quot;,&quot;Patents&quot;:2.53,&quot;GDP&quot;:38165.44,&quot;Population&quot;:34482742,&quot;Greenspace&quot;:4.75,&quot;Employment&quot;:27.95,&quot;Pollution&quot;:22.35,&quot;lon&quot;:139.6917064,&quot;lat&quot;:35.6894875,&quot;Followers&quot;:1.33284064242919,&quot;1&quot;:0.999340481682112,&quot;10&quot;:0.144710069750254,&quot;20&quot;:0.0545200262786527,&quot;30&quot;:0.0333500160747078,&quot;40&quot;:0.0176900085265841,&quot;50&quot;:0.0145000069890034,&quot;60&quot;:0.0150800072685635,&quot;70&quot;:0.00870000419340203,&quot;80&quot;:0.00667000321494154,&quot;90&quot;:0.00696000335472162,&quot;100&quot;:0.0313200150962473,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:1,&quot;hifol&quot;:0.188790090996824,&quot;Country&quot;:&quot;Japan&quot;},{&quot;METRO_ID&quot;:&quot;Toledo&quot;,&quot;Patents&quot;:1.31,&quot;GDP&quot;:35954.4,&quot;Population&quot;:444432,&quot;Greenspace&quot;:569.45,&quot;Employment&quot;:0.15,&quot;Pollution&quot;:17.31,&quot;lon&quot;:-83.555212,&quot;lat&quot;:41.6639383,&quot;Followers&quot;:1.30503654102315,&quot;1&quot;:1.21503402095259,&quot;10&quot;:0.0675018900529215,&quot;20&quot;:0.0225006300176405,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0225006300176405,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Toulon&quot;,&quot;Patents&quot;:0.43,&quot;GDP&quot;:24252.26,&quot;Population&quot;:541211,&quot;Greenspace&quot;:13.88,&quot;Employment&quot;:0.83,&quot;Pollution&quot;:10.8,&quot;lon&quot;:5.928,&quot;lat&quot;:43.124228,&quot;Followers&quot;:0.35106455707663,&quot;1&quot;:0.332587475125228,&quot;10&quot;:0.0184770819514016,&quot;20&quot;:0,&quot;30&quot;:0,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Toulouse&quot;,&quot;Patents&quot;:2.8,&quot;GDP&quot;:33391.99,&quot;Population&quot;:1175096,&quot;Greenspace&quot;:185.78,&quot;Employment&quot;:1.98,&quot;Pollution&quot;:12.89,&quot;lon&quot;:1.444209,&quot;lat&quot;:43.604652,&quot;Followers&quot;:3.53162635222995,&quot;1&quot;:2.96997011308012,&quot;10&quot;:0.399967321818813,&quot;20&quot;:0.076589487156794,&quot;30&quot;:0.0425497150871078,&quot;40&quot;:0.00850994301742156,&quot;50&quot;:0.00850994301742155,&quot;60&quot;:0,&quot;70&quot;:0.00850994301742156,&quot;80&quot;:0.00850994301742155,&quot;90&quot;:0,&quot;100&quot;:0.00850994301742155,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:1,&quot;JP&quot;:0,&quot;hifol&quot;:0.16168891733101,&quot;Country&quot;:&quot;France&quot;},{&quot;METRO_ID&quot;:&quot;Tucson&quot;,&quot;Patents&quot;:1.7,&quot;GDP&quot;:35108.24,&quot;Population&quot;:951298,&quot;Greenspace&quot;:1.13,&quot;Employment&quot;:0.32,&quot;Pollution&quot;:7.45,&quot;lon&quot;:-110.926479,&quot;lat&quot;:32.2217429,&quot;Followers&quot;:1.95522328439669,&quot;1&quot;:1.77652008098409,&quot;10&quot;:0.0840956251353414,&quot;20&quot;:0.0420478125676707,&quot;30&quot;:0.031535859425753,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0.0105119531419177,&quot;70&quot;:0,&quot;80&quot;:0.0105119531419177,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0946075782772591,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Tulsa&quot;,&quot;Patents&quot;:0.68,&quot;GDP&quot;:40129.72,&quot;Population&quot;:931604,&quot;Greenspace&quot;:2200.96,&quot;Employment&quot;:0.29,&quot;Pollution&quot;:10.49,&quot;lon&quot;:-95.992775,&quot;lat&quot;:36.1539816,&quot;Followers&quot;:2.10389822285005,&quot;1&quot;:1.81407550847785,&quot;10&quot;:0.128810095276534,&quot;20&quot;:0.0644050476382669,&quot;30&quot;:0.0536708730318891,&quot;40&quot;:0.0107341746063778,&quot;50&quot;:0.0107341746063778,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0.0107341746063778,&quot;90&quot;:0,&quot;100&quot;:0.0107341746063778,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.161012619095667,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Turin&quot;,&quot;Patents&quot;:1.07,&quot;GDP&quot;:32193.76,&quot;Population&quot;:1734766,&quot;Greenspace&quot;:244.26,&quot;Employment&quot;:3.24,&quot;Pollution&quot;:29.89,&quot;lon&quot;:7.6868565,&quot;lat&quot;:45.070312,&quot;Followers&quot;:0.651384682429792,&quot;1&quot;:0.564917689186899,&quot;10&quot;:0.0461157297295428,&quot;20&quot;:0.0172933986485785,&quot;30&quot;:0.00576446621619285,&quot;40&quot;:0.0115289324323857,&quot;50&quot;:0.00576446621619285,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0403512635133499,&quot;Country&quot;:&quot;Italy&quot;},{&quot;METRO_ID&quot;:&quot;Utrecht&quot;,&quot;Patents&quot;:1.61,&quot;GDP&quot;:42593.86,&quot;Population&quot;:698897,&quot;Greenspace&quot;:240.49,&quot;Employment&quot;:4.26,&quot;Pollution&quot;:19.85,&quot;lon&quot;:5.117778,&quot;lat&quot;:52.091667,&quot;Followers&quot;:4.52141016487408,&quot;1&quot;:3.82030542411829,&quot;10&quot;:0.443556060478153,&quot;20&quot;:0.0715413000771215,&quot;30&quot;:0.10015782010797,&quot;40&quot;:0.0143082600154243,&quot;50&quot;:0,&quot;60&quot;:0.0286165200308486,&quot;70&quot;:0,&quot;80&quot;:0.0286165200308486,&quot;90&quot;:0,&quot;100&quot;:0.0143082600154243,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.257548680277637,&quot;Country&quot;:&quot;Netherlands&quot;},{&quot;METRO_ID&quot;:&quot;Valencia&quot;,&quot;Patents&quot;:0.56,&quot;GDP&quot;:27582.47,&quot;Population&quot;:1525303,&quot;Greenspace&quot;:15.62,&quot;Employment&quot;:3.55,&quot;Pollution&quot;:14.04,&quot;lon&quot;:-0.3762881,&quot;lat&quot;:39.4699075,&quot;Followers&quot;:1.98649055302455,&quot;1&quot;:1.7570279478897,&quot;10&quot;:0.144233637513333,&quot;20&quot;:0.0590046698918182,&quot;30&quot;:0.00655607443242425,&quot;40&quot;:0,&quot;50&quot;:0.00655607443242425,&quot;60&quot;:0.00655607443242425,&quot;70&quot;:0.00655607443242425,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0852289676215152,&quot;Country&quot;:&quot;Spain&quot;},{&quot;METRO_ID&quot;:&quot;Venice&quot;,&quot;Patents&quot;:0.49,&quot;GDP&quot;:34748.66,&quot;Population&quot;:540352,&quot;Greenspace&quot;:1.19,&quot;Employment&quot;:1.05,&quot;Pollution&quot;:31.44,&quot;lon&quot;:12.3155151,&quot;lat&quot;:45.4408474,&quot;Followers&quot;:2.31330688144025,&quot;1&quot;:1.86915196020372,&quot;10&quot;:0.240583915669786,&quot;20&quot;:0.111038730309132,&quot;30&quot;:0.037012910103044,&quot;40&quot;:0.0370129101030439,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.018506455051522,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.203571005566742,&quot;Country&quot;:&quot;Italy&quot;},{&quot;METRO_ID&quot;:&quot;Vienna&quot;,&quot;Patents&quot;:1.32,&quot;GDP&quot;:41262.05,&quot;Population&quot;:2630118,&quot;Greenspace&quot;:235.79,&quot;Employment&quot;:30.76,&quot;Pollution&quot;:20.84,&quot;lon&quot;:16.3738189,&quot;lat&quot;:48.2081743,&quot;Followers&quot;:3.7412770073434,&quot;1&quot;:3.03408440229678,&quot;10&quot;:0.311773083945283,&quot;20&quot;:0.140678098853359,&quot;30&quot;:0.0874485479358721,&quot;40&quot;:0.0608337724771284,&quot;50&quot;:0.0190105538991026,&quot;60&quot;:0.0266147754587437,&quot;70&quot;:0.00380211077982052,&quot;80&quot;:0.00380211077982053,&quot;90&quot;:0.00380211077982052,&quot;100&quot;:0.0494274401376668,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.395419521101335,&quot;Country&quot;:&quot;Austria&quot;},{&quot;METRO_ID&quot;:&quot;Washington&quot;,&quot;Patents&quot;:1.39,&quot;GDP&quot;:57145.96,&quot;Population&quot;:5098743,&quot;Greenspace&quot;:1150.43,&quot;Employment&quot;:1.79,&quot;Pollution&quot;:18.74,&quot;lon&quot;:-77.0368707,&quot;lat&quot;:38.9071923,&quot;Followers&quot;:4.31086642335179,&quot;1&quot;:3.4400635607639,&quot;10&quot;:0.427556360459823,&quot;20&quot;:0.145133810431316,&quot;30&quot;:0.0902183145924398,&quot;40&quot;:0.0607992989644702,&quot;50&quot;:0.0313802833365008,&quot;60&quot;:0.0137288739597191,&quot;70&quot;:0.0156901416682504,&quot;80&quot;:0.0137288739597191,&quot;90&quot;:0.0117676062511878,&quot;100&quot;:0.0607992989644703,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.443246502128074,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Wichita&quot;,&quot;Patents&quot;:0.58,&quot;GDP&quot;:35942.6,&quot;Population&quot;:577946,&quot;Greenspace&quot;:42.34,&quot;Employment&quot;:0.2,&quot;Pollution&quot;:10.21,&quot;lon&quot;:-97.336111,&quot;lat&quot;:37.688889,&quot;Followers&quot;:2.11092385793828,&quot;1&quot;:1.93789731220564,&quot;10&quot;:0.0865132728663232,&quot;20&quot;:0.0346053091465293,&quot;30&quot;:0.0173026545732646,&quot;40&quot;:0,&quot;50&quot;:0,&quot;60&quot;:0,&quot;70&quot;:0,&quot;80&quot;:0.0173026545732646,&quot;90&quot;:0,&quot;100&quot;:0.0173026545732646,&quot;US&quot;:1,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.0865132728663232,&quot;Country&quot;:&quot;United States&quot;},{&quot;METRO_ID&quot;:&quot;Zaragoza&quot;,&quot;Patents&quot;:0.77,&quot;GDP&quot;:31437.99,&quot;Population&quot;:802680,&quot;Greenspace&quot;:58.03,&quot;Employment&quot;:1.87,&quot;Pollution&quot;:19.81,&quot;lon&quot;:-0.8890853,&quot;lat&quot;:41.6488226,&quot;Followers&quot;:1.32057607016495,&quot;1&quot;:1.10878556834604,&quot;10&quot;:0.0622913240643843,&quot;20&quot;:0.0373747944386306,&quot;30&quot;:0.0498330592515074,&quot;40&quot;:0.0124582648128769,&quot;50&quot;:0.0124582648128769,&quot;60&quot;:0.0124582648128769,&quot;70&quot;:0,&quot;80&quot;:0,&quot;90&quot;:0,&quot;100&quot;:0.0249165296257537,&quot;US&quot;:0,&quot;DE&quot;:0,&quot;FR&quot;:0,&quot;JP&quot;:0,&quot;hifol&quot;:0.149499177754522,&quot;Country&quot;:&quot;Spain&quot;}];
+  var svg = dimple.newSvg(&quot;#&quot; + opts.id, opts.width, opts.height);
+
+  var myChart = new dimple.chart(svg, data);
+  if (opts.bounds) {
+    myChart.setBounds(opts.bounds.x, opts.bounds.y, opts.bounds.width, opts.bounds.height);//myChart.setBounds(80, 30, 480, 330);
+  }
+  //dimple allows use of custom CSS with noFormats
+  if(opts.noFormats) { myChart.noFormats = opts.noFormats; };
+  //for markimekko and addAxis also have third parameter measure
+  //so need to evaluate if measure provided
   
-      if(!(opts.type===&quot;pieChart&quot; || opts.type===&quot;sparklinePlus&quot; || opts.type===&quot;bulletChart&quot;)) {
-        var data = d3.nest()
-          .key(function(d){
-            //return opts.group === undefined ? 'main' : d[opts.group]
-            //instead of main would think a better default is opts.x
-            return opts.group === undefined ? opts.y : d[opts.group];
-          })
-          .entries(data);
-      }
-      
-      if (opts.disabled != undefined){
-        data.map(function(d, i){
-          d.disabled = opts.disabled[i]
-        })
-      }
-      
-      nv.addGraph(function() {
-        var chart = nv.models[opts.type]()
-          .width(opts.width)
-          .height(opts.height)
-          
-        if (opts.type != &quot;bulletChart&quot;){
-          chart
-            .x(function(d) { return d[opts.x] })
-            .y(function(d) { return d[opts.y] })
-        }
-          
-         
-        
-          
-        
-
-        
-        
-        
-      
-       d3.select(&quot;#&quot; + opts.id)
-        .append('svg')
-        .datum(data)
-        .transition().duration(500)
-        .call(chart);
-
-       nv.utils.windowResize(chart.update);
-       return chart;
-      });
+  //function to build axes
+  function buildAxis(position,layer){
+    var axis;
+    var axisopts;
+    if (!layer[position+&quot;Axis&quot;]){
+      axisopts = opts[position+&quot;Axis&quot;];
+    } else axisopts = layer[position+&quot;Axis&quot;];
+    
+    if(axisopts.measure) {
+      axis = myChart[axisopts.type](position,layer[position],axisopts.measure);
+    } else {
+      axis = myChart[axisopts.type](position, layer[position]);
     };
+    if(!(axisopts.type === &quot;addPctAxis&quot;)) axis.showPercent = axisopts.showPercent;
+    if (axisopts.orderRule) axis.addOrderRule(axisopts.orderRule);
+    if (axisopts.grouporderRule) axis.addGroupOrderRule(axisopts.grouporderRule);  
+    if (axisopts.overrideMin) axis.overrideMin = axisopts.overrideMin;
+    if (axisopts.overrideMax) axis.overrideMax = axisopts.overrideMax;
+    if (axisopts.inputFormat) axis.dateParseFormat = axisopts.inputFormat;
+    if (axisopts.outputFormat) axis.tickFormat = axisopts.outputFormat;    
+    return axis;
+  };
+  
+  var c = null;
+  if(d3.keys(opts.colorAxis).length &gt; 0) {
+    c = myChart[opts.colorAxis.type](opts.colorAxis.colorSeries,opts.colorAxis.palette) ;
+  }
+  
+  //allow manipulation of default colors to use with dimple
+  if(opts.defaultColors.length) {
+    opts.defaultColors = opts.defaultColors[0];
+    if (typeof(opts.defaultColors) == &quot;function&quot;) {
+      //assume this is a d3 scale
+      //for now loop through first 20 but need a better way to handle
+      defaultColorsArray = [];
+      for (var n=0;n&lt;20;n++) {
+        defaultColorsArray.push(opts.defaultColors(n));
+      };
+      opts.defaultColors = defaultColorsArray;
+    }
+    opts.defaultColors.forEach(function(d,i) {
+      opts.defaultColors[i] = new dimple.color(d);
+    })
+    myChart.defaultColors = opts.defaultColors;
+  }  
+  
+  //do series
+  //set up a function since same for each
+  //as of now we have x,y,groups,data,type in opts for primary layer
+  //and other layers reside in opts.layers
+  function buildSeries(layer, hidden){
+    //inherit from primary layer if not intentionally changed or xAxis, yAxis, zAxis null
+    if (!layer.xAxis) layer.xAxis = opts.xAxis;    
+    if (!layer.yAxis) layer.yAxis = opts.yAxis;
+    if (!layer.zAxis) layer.zAxis = opts.zAxis;
+    
+    var x = buildAxis(&quot;x&quot;, layer);
+    x.hidden = hidden;
+    
+    var y = buildAxis(&quot;y&quot;, layer);
+    y.hidden = hidden;
+    
+    //z for bubbles
+    var z = null;
+    if (!(typeof(layer.zAxis) === 'undefined') &amp;&amp; layer.zAxis.type){
+      z = buildAxis(&quot;z&quot;, layer);
+    };
+    
+    //here think I need to evaluate group and if missing do null
+    //as the group argument
+    //if provided need to use groups from layer
+    var s = new dimple.series(myChart, null, x, y, z, c, null, dimple.plot[layer.type], dimple.aggregateMethod.avg, dimple.plot[layer.type].stacked);
+    
+    //as of v1.1.4 dimple can use different dataset for each series
+    if(layer.data){
+      //convert to an array of objects
+      //avoid lodash for now
+      datakeys = d3.keys(layer.data)
+      layer.dataarray = layer.data[datakeys[1]].map(function(d,i){
+        var tempobj = {}
+        datakeys.forEach(function(key){
+          tempobj[key] = layer.data[key][i]
+        })
+        return tempobj
+      })
+      s.data = layer.dataarray;
+    }
+    
+    //for measure axis dimple sorts at the series level not at axis level
+    ['x','y'].map(function(ax){
+      if( layer[ax + 'Axis'].type==&quot;addMeasureAxis&quot; &amp;&amp; layer[ax + 'Axis'].orderRule ){
+        if( typeof layer[ax + 'Axis'].orderRule == &quot;string&quot; ){
+          s.addOrderRule( layer[ax + 'Axis'].orderRule );
+        } else if ( typeof layer[ax + 'Axis'].orderRule == &quot;object&quot; ) {
+          s._orderRules = layer[ax + 'Axis'].orderRule;
+        }
+      }
+    })
+    
+    if(layer.hasOwnProperty(&quot;groups&quot;)) {
+      s.categoryFields = (typeof layer.groups === &quot;object&quot;) ? layer.groups : [layer.groups];
+      //series offers an aggregate method that we will also need to check if available
+      //options available are avg, count, max, min, sum
+    }
+    if (!(typeof(layer.aggregate) === 'undefined')) {
+      s.aggregate = eval(layer.aggregate);
+    }
+    if (!(typeof(layer.lineWeight) === 'undefined')) {
+      s.lineWeight = layer.lineWeight;
+    }
+    if (!(typeof(layer.lineMarkers) === 'undefined')) {
+      s.lineMarkers = layer.lineMarkers;
+    }
+    if (!(typeof(layer.barGap) === 'undefined')) {
+      s.barGap = layer.barGap;
+    }    
+    if (!(typeof(layer.interpolation) === 'undefined')) {
+      s.interpolation = layer.interpolation;
+    } 
+    
+    myChart.series.push(s);
+    
+    /*placeholder fix domain of primary scale for new series data
+    //not working right now but something like this
+    //for now just use overrideMin and overrideMax from rCharts
+    for( var i = 0; i&lt;2; i++) {
+      if (!myChart.axes[i].overrideMin) {
+        myChart.series[0]._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;).min = myChart.series[0]._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;).min &lt; s._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;).min ? myChart.series[0]._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;).min : s._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;).min;
+      }
+      if (!myChart.axes[i].overrideMax) {  
+        myChart.series[0]._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;)._max = myChart.series[0]._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;).max &gt; s._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;).max ? myChart.series[0]._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;).max : s._axisBounds(i==0?&quot;x&quot;:&quot;y&quot;).max;
+      }
+      myChart.axes[i]._update();
+    }
+    */
+      
+    
+    return s;
+  };
+  
+  buildSeries(opts, false);
+  if (opts.layers.length &gt; 0) {
+    opts.layers.forEach(function(layer){
+      buildSeries(layer, true);
+    })
+  }
+  //unsure if this is best but if legend is provided (not empty) then evaluate
+  if(d3.keys(opts.legend).length &gt; 0) {
+    var l =myChart.addLegend();
+    d3.keys(opts.legend).forEach(function(d){
+      l[d] = opts.legend[d];
+    });
+  }
+  //quick way to get this going but need to make this cleaner
+  if(opts.storyboard) {
+    myChart.setStoryboard(opts.storyboard);
+  };
+  myChart.draw();
+
 &lt;/script&gt;
     
     &lt;script&gt;&lt;/script&gt;    
   &lt;/body&gt;
-&lt;/html&gt; " scrolling="no" frameBorder="0" seamless class="rChart  nvd3  " id="iframe-chart 1">
+&lt;/html&gt; " scrolling="no" frameBorder="0" seamless class="rChart  dimple  " id="iframe-chart2cc64f226b">
 
 </iframe>
 
