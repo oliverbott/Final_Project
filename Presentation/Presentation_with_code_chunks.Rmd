@@ -2,7 +2,9 @@
 title: "Open vs. Closed Innovation"
 author: "Oliver Bott"
 date: "Wednesday, December 03, 2014"
-output: ioslides_presentation
+output: ioslides_presentation:
+css: http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css
+  beamer_presentation: default
 ---
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
@@ -52,7 +54,7 @@ add_lib_assets("NVD3", cdn = TRUE, css = "http://rawgithub.com/ramnathv/rCharts/
 ```
 
 ## What are we doing here?
-<br>
+
 How many groups in this class have done something:
 <br>
 <br>
@@ -75,17 +77,17 @@ How is innovation measured?
 <br>
 - For the last few decades, measured through **patents**
 
-## Why Patents
+## Why patents?
 <br>
 Patents were used because:
 <br>
 - defined moment and place in time (registration)
-<br>
 - a legal claim of a new idea
-<br>
 - same 'innovation' can't be claimed twice
 
 ## But:
+<br>
+<br>
 <br>
 Intuitively, seems many innovations are taking place which aren't being patented
 
@@ -101,7 +103,12 @@ Wanted to see if there is a relationship between classical innovation, and open 
 
 ## Data
 <br>
-We pulled and cleaned follower data, patent data, and some other variables for 120 cities to see if we can find a relationship between follower and patent data, and these and 'explanatory' variables
+We pulled and cleaned follower data, patent data, and some other variables for 130 cities to see if we can find a relationship between follower and patent data, and these and 'explanatory' variables
+
+## Limitations
+<br>
+- Timing
+- Exclusion
 
 ## Finding Innovation
 <br>
@@ -202,12 +209,10 @@ americamap + geom_point(aes(x=lon, y=lat), data=dataset) +
         scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
-## Correlation?
-
-- Maybe add correlation matrix here. Use it?
-
-## Nerd Slide: Our Model
-
+## Our Model
+<br>
+<br>
+<br>
 $logP_{i} = {\beta}_0 +{\beta}_1 logF_{i} + {\beta}_2 logControls_{i} +{\epsilon}_{i}$
 
 
@@ -262,9 +267,21 @@ n2$xAxis(axisLabel = "Sepal.Width")  # add x axis label
 n2$yAxis(axisLabel = "Sepal.Length")
 n2$print("nvd3Scatter")
 ```
+## Findings
+<br>
+<br>
+<br>
+ - No strong relationships
+ - A few interesting patterns
+ - Hard to parse whether relationships or findings with current data limitations
+ - 
 
 ## Implications
+<br>
+<br>
+<br>
+**Preliminarily** using open data is a potentially innovative way of measuring innovation (see what we did there?) 
+- The field in the future may move away from patents
 
-**Preliminarily** using open data is a potentially innovative way of measuring innovation (see what we did there?)
-
-Could be used in the future for 
+## Thanks
+Questions
