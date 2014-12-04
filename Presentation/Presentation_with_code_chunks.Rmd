@@ -1,7 +1,7 @@
 ---
-title: "Open vs. Closed Innovation"
+title: "The Future of Innovation"
 author: "Oliver Bott and Benjamin Snow"
-date: "Wednesday, December 03, 2014"
+date: "Thursday, December 04, 2014"
 output: ioslides_presentation
 ---
 
@@ -55,31 +55,32 @@ add_lib_assets("NVD3", cdn = TRUE, css = "http://rawgithub.com/ramnathv/rCharts/
 
 How many groups in this class have done something:
 
-- interesting?
+- Interesting?
 
-- creative?
+- Creative?
 
-- **innovative**?
-<br>
+- **Innovative**?
+
 <br>
 Why should we be interested in innovation?
 
-- economic growth
+- Economic growth
 
-- sustainability
+- Sustainability
 
-- education
 
 
 ## Measuring innovation
 
 Innovation has mostly been measured in **patents**, but why?
 
-- Registration defined moment and place in time
+- Defined moment and place in time
 
 - Legal claim of a new idea, vital for commercialization
 
 - Same *innovation* cannot be claimed twice
+
+- Shortcomings?
 
 <br>
 **Research question:**
@@ -98,9 +99,10 @@ Research design has some limitations:
 
 - Timing discrepancies
 
-- Influence of language
+- Exclusion of some major tech-cities
 
-- Diffusion of GitHub - underestimating effect?
+<br>
+Diffusion of GitHub - underestimating effect?
 
 
 ## When is a GitHub user innovative?
