@@ -160,7 +160,7 @@ df$id <- NULL
 df$variable <- as.factor(df$variable)
 
 n1 <- nPlot(value ~ variable, group = "Country", data = df, type = "multiBarChart")
-n1$print("chart3")
+n1$print("chart3", cdn = TRUE, include_assets = TRUE)
 ```
 
 We choose a follower cutoff at 20 and more followers
@@ -227,7 +227,7 @@ n2 <- nPlot(Patents ~ hifol, data = datasetscat, type = "scatterChart",
     group = "Country")
 n2$xAxis(axisLabel = "GitHub Follower Counts")  # add x axis label
 n2$yAxis(axisLabel = "Patent Counts")
-n2$print("nvd3Scatter")
+n2$print("nvd3Scatter", cdn = TRUE, include_assets = TRUE)
 ```
 
 ## Findings
