@@ -52,50 +52,59 @@ add_lib_assets("NVD3", cdn = TRUE, css = "http://rawgithub.com/ramnathv/rCharts/
 ```
 
 ## What are we doing here?
-
+<br>
 How many groups in this class have done something:
-
+<br>
+<br>
+<br>
 - interesting
 - creative
 - **innovative**
 
 Why is innovation important?
-
+<br>
+<br>
+<br>
 - economic growth
 - sustainability
 - education
 
 How is innovation measured?
-
+<br>
+<br>
+<br>
 - For the last few decades, measured through **patents**
 
 ## Why Patents
-
+<br>
 Patents were used because:
+<br>
 - defined moment and place in time (registration)
+<br>
 - a legal claim of a new idea
+<br>
 - same 'innovation' can't be claimed twice
 
 ## But:
-
+<br>
 Intuitively, seems many innovations are taking place which aren't being patented
 
 ## Open Innovation
-
-Focused on software innovation
-Used Github API
-Used **follower** numbers
+<br>
+- Focused on software innovation
+- Used Github API
+- Used **follower** numbers
 
 ## Goal
-
+<br>
 Wanted to see if there is a relationship between classical innovation, and open innovation
 
 ## Data
-
+<br>
 We pulled and cleaned follower data, patent data, and some other variables for 120 cities to see if we can find a relationship between follower and patent data, and these and 'explanatory' variables
 
 ## Finding Innovation
-
+<br>
 This is an alternative interactive plot.
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
