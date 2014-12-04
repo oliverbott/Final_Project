@@ -1,10 +1,8 @@
 ---
 title: "Open vs. Closed Innovation"
-author: "Oliver Bott"
+author: "Oliver Bott and Benjamin Snow"
 date: "Wednesday, December 03, 2014"
-output: ioslides_presentation:
-css: http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css
-  beamer_presentation: default
+output: ioslides_presentation
 ---
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
@@ -56,63 +54,56 @@ add_lib_assets("NVD3", cdn = TRUE, css = "http://rawgithub.com/ramnathv/rCharts/
 ## What are we doing here?
 
 How many groups in this class have done something:
-<br>
-<br>
-<br>
-- interesting
-- creative
-- **innovative**
 
-Why is innovation important?
+- interesting?
+
+- creative?
+
+- **innovative**?
 <br>
 <br>
-<br>
+Why should we be interested in innovation?
+
 - economic growth
+
 - sustainability
+
 - education
 
-How is innovation measured?
-<br>
-<br>
-<br>
-- For the last few decades, measured through **patents**
 
-## Why patents?
-<br>
-Patents were used because:
-<br>
-- defined moment and place in time (registration)
-- a legal claim of a new idea
-- same 'innovation' can't be claimed twice
+## Measuring innovation
 
-## But:
-<br>
-<br>
-<br>
-Intuitively, seems many innovations are taking place which aren't being patented
+Innovation has mostly been measured in **patents**, but why?
 
-## Open Innovation
-<br>
-- Focused on software innovation
-- Used Github API
-- Used **follower** numbers
+- Registration defined moment and place in time
 
-## Goal
-<br>
-Wanted to see if there is a relationship between classical innovation, and open innovation
+- Legal claim of a new idea, vital for commercialization
 
-## Data
-<br>
-We pulled and cleaned follower data, patent data, and some other variables for 130 cities to see if we can find a relationship between follower and patent data, and these and 'explanatory' variables
+- Same *innovation* cannot be claimed twice
 
-## Limitations
 <br>
-- Timing
-- Exclusion
+**Research question:**
 
-## Finding Innovation
+**To what extent can open innovation network data add to the measurement of innovation performance?**
+
+
+## Methodology
+
+We look at relationship between open and closed innovation
+
+Comparison of **GitHub** API users' follower numbers to **OECD** patent data in **132** cities in **16** countries
+
 <br>
-This is an alternative interactive plot.
+Research design has some limitations:
+
+- Timing discrepancies
+
+- Influence of language
+
+- Diffusion of GitHub - underestimating effect?
+
+
+## When is a GitHub user innovative?
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 
@@ -172,6 +163,8 @@ n1 <- nPlot(value ~ variable, group = "Country", data = df, type = "multiBarChar
 n1$print("chart3")
 ```
 
+We choose a follower cutoff at 20 and more followers
+
 ## City overview - Europe
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
@@ -187,6 +180,7 @@ eumap + geom_point(aes(x=lon, y=lat), data=dataset) +
 # + guides(size=FALSE)
 ```
 
+
 ## City overview - Japan
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
@@ -198,57 +192,25 @@ japanmap + geom_point(aes(x=lon, y=lat), data=dataset) +
         scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
+
 ## City overview - America
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Map of American cities
-america.center <- geocode("Cuba")
-americamap <- qmap(c(lon=america.center$lon, lat=america.center$lat), source='google', color="bw", zoom=3)
+america.center <- geocode("Dallas")
+americamap <- qmap(c(lon=america.center$lon, lat=america.center$lat), source='google', color="bw", zoom=4)
 americamap + geom_point(aes(x=lon, y=lat), data=dataset) + 
         geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
         scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
+
 ## Our Model
-<br>
-<br>
-<br>
-$logP_{i} = {\beta}_0 +{\beta}_1 logF_{i} + {\beta}_2 logControls_{i} +{\epsilon}_{i}$
 
+1. $logFol_{i} = {\beta}_0 +{\beta}_1 logPat_{i} + {\beta}_2 Controls_{i} +{\epsilon}_{i}$
 
-```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
-# Regression table with stargazer
+2. $logPat_{i} = {\beta}_0 +{\beta}_1 logFol_{i} + {\beta}_2 Controls_{i} +{\epsilon}_{i}$
 
-# For log delete 0 follower categories: new datasetlog
-datasetlog <- dataset
-#datasetlog[-c(45, 59, 62, 63, 73, 81, 90, 116, 121), ]
-datasetlog <- datasetlog[-c(45, 59, 62, 63, 73, 81, 90, 116, 121), ]
-
-# Create country interaction
-datasetlog$USfol <- datasetlog$hifol*datasetlog$US
-datasetlog$DEfol <- datasetlog$hifol*datasetlog$DE
-datasetlog$FRfol <- datasetlog$hifol*datasetlog$FR
-datasetlog$JPfol <- datasetlog$hifol*datasetlog$JP
-
-P1 <- lm(log(Patents) ~ log(hifol), data = datasetlog)
-P2 <- lm(log(Patents) ~ log(hifol) + log(GDP) + log(Population) + 
-           log(Greenspace) + log(Employment) + log(Pollution), data = datasetlog)
-P3 <- lm(log(Patents) ~ log(hifol) + log(GDP) + log(Population) + 
-           log(Greenspace) + log(Employment) + log(Pollution) + USfol + DEfol + FRfol + JPfol, data = datasetlog)
-
-labelsP <- c('Over 20 Followers', 'GDP', 'Population', 'Greenspace', 'Employment', 'Pollution', 'US' , 'DE' , 'FR' , 'JP', '(Intercept)')
-```
-
-## Regression output
-
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-stargazer::stargazer(P1, P2, P3, covariate.labels = labelsP,
-  title = 'Regression Estimates of Patent Activity',
-  digits = 2, type ='html', single.row=TRUE)
-```
-
-
-## Alternative scatterplot
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 countryset <- data.frame (id=1:132)
@@ -263,25 +225,41 @@ datasetscat <- merge(dataset , countryset , by=c("METRO_ID"))
 
 n2 <- nPlot(Patents ~ hifol, data = datasetscat, type = "scatterChart", 
     group = "Country")
-n2$xAxis(axisLabel = "Sepal.Width")  # add x axis label
-n2$yAxis(axisLabel = "Sepal.Length")
+n2$xAxis(axisLabel = "GitHub Follower Counts")  # add x axis label
+n2$yAxis(axisLabel = "Patent Counts")
 n2$print("nvd3Scatter")
 ```
+
 ## Findings
+
+Significant positive correlation between   patents and followers **vanishes** when adding controls
+
 <br>
+Both follower number and patents are positively correlated to 
+
+- GDP
+
+- Relative importance of city
+
+- Degree of deindustrialization
+
 <br>
-<br>
- - No strong relationships
- - A few interesting patterns
- - Hard to parse whether relationships or findings with current data limitations
- - 
+GitHub diffusion higher in United States, lowest in Japan
+
 
 ## Implications
-<br>
-<br>
-<br>
-**Preliminarily** using open data is a potentially innovative way of measuring innovation (see what we did there?) 
-- The field in the future may move away from patents
 
-## Thanks
-Questions
+**Preliminarily** using open innovation data is a potentially innovative way of measuring innovation (see what we did there?) 
+
+- The field in the future may move away from pure patents perspective
+
+- Use of API user data for other collaborative networks
+
+- Considering fast diffusion of GitHub: are we too early?
+
+## Question time
+<br>
+<br>
+![alt text](http://www.reactiongifs.com/wp-content/uploads/2013/03/oh-boy.gif)
+
+
