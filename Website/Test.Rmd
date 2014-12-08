@@ -1,0 +1,124 @@
+---
+title: "Website_Test"
+author: "Oliver Bott"
+date: "Monday, December 08, 2014"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Set working directory
+setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project/Website/')
+
+library(RCurl)
+library(ggmap)
+library(maptools)
+library(dplyr)
+library(reshape2)
+library(maps)
+library(stargazer)
+library(rCharts)
+
+# Load .csv from GitHub repository
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+
+# Create dynamic link to Dataset.csv created through the Data_Gathering.R
+x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Data/Dataset.csv')
+dataset <- read.csv(text = x)
+dataset$X <- NULL
+colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "Followers" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "hifol")
+```
+
+## What are we doing here?
+
+How many groups in this class have done something:
+
+- Interesting?
+
+- Creative?
+
+- **Innovative**?
+
+Why should we be interested in innovation?
+
+- Economic growth
+
+- Sustainability
+
+
+
+## Measuring innovation
+
+Innovation has mostly been measured in **patents**, but why?
+
+- Defined moment and place in time
+
+- Legal claim of a new idea, vital for commercialization
+
+- Same *innovation* cannot be claimed twice
+
+- Shortcomings?
+
+
+**Research question:**
+
+**To what extent can open innovation network data add to the measurement of innovation performance?**
+
+
+## Methodology
+
+We look at relationship between open and closed innovation
+
+Comparison of **GitHub** API users' follower numbers to **OECD** patent data in **132** cities in **16** countries
+
+
+Research design has some limitations:
+
+- Timing discrepancies
+
+- Exclusion of some major tech-cities
+
+
+Diffusion of GitHub - underestimating effect?
+
+## City overview - Europe
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+
+
+# Map of European cities
+europe.center <- geocode("Europe")
+eumap <- qmap(c(lon=europe.center$lon, lat=europe.center$lat), source = 'google', color="bw", zoom=4)
+eumap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+#guide legend = false or something
+# + guides(size=FALSE)
+```
+
+
+## City overview - Japan
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Map of Japanese cities
+japan.center <- geocode("Japan")
+japanmap <- qmap(c(lon=japan.center$lon, lat=japan.center$lat), source='google', color="bw", zoom=5)
+japanmap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+```
+
+
+## City overview - America
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Map of American cities
+america.center <- geocode("Dallas")
+americamap <- qmap(c(lon=america.center$lon, lat=america.center$lat), source='google', color="bw", zoom=4)
+americamap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+```
+
