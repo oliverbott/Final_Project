@@ -1,14 +1,21 @@
-# Set working directory
-setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project/Data/')
 
-#install.packages("RCurl")
+# Set working directory
+setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project/Test files/')
+
 library(RCurl)
+library(ggmap)
+library(maptools)
+library(dplyr)
+library(reshape2)
+library(maps)
+library(stargazer)
+library(rCharts)
 
 # Load .csv from GitHub repository
 options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
 
 # Create dynamic link to Dataset.csv created through the Data_Gathering.R
-x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Data/Dataset.csv')
+x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/9c08cb04289524812f7f2a94a00bd5d89b7fa7de/Data/Dataset.csv')
 dataset <- read.csv(text = x)
 
 # For this task we get rid of the other variables
@@ -23,48 +30,54 @@ dataset$lon <- NULL
 dataset$lat <- NULL
 dataset$zeroFollowers <- NULL
 
-# Rename variables for melting
-colnames(dataset) <- c("METRO_ID" , "1" , "10" , "20" , "30", "40", "50", 
-                       "60", "70", "80", "90", "100" , "US" , "DE" , "FR" , "JP")
-  # 1 means 1-9 followers, 10 equals 10-19 followers etc.
+new <- dataset
+new_2 <- reshape(new, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
 
-# Use country dummies to group cities
-  #install.packages("dplyr")
-  #install.packages("reshape2")
-  library(dplyr)
-  library(reshape2)
+new_2 <- subset(new_2, value>0)
+new_2$id <- NULL 
+new_2$value <- NULL
+new_2$Country <- as.factor(new_2$Country)
+x_2 <- split(new_2, new_2$Country)
+x_3 <- lapply(x_2, function (x) sapply(x, mean))
+x_3 <- data.frame(x_3)
+x_3 <- na.omit(x_3)
 
-attach(dataset)
-aggdata <-aggregate(dataset, by=list(US, DE, FR, JP), 
-                    FUN=mean, na.rm=TRUE)
-country <- c("Other", "US", "DE", "FR", "JP")
-aggdata <- data.frame(country, aggdata)
+df <- reshape(x_3, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+variable <- c(1,10,20,30,40,50,60,70,80,90,100, 
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100)
+df <- data.frame(df, variable)
+df$id <- NULL 
+df$variable <- as.factor(df$variable)
 
-aggdata=aggdata[,-c(2:15,27:31)]
+# Set color scheme
+library(RColorBrewer)
+myColours <- brewer.pal(6,"Set3")
 
-colnames(aggdata) <- c("Country" , "1" , "10" , "20" , "30", "40", "50", 
-                       "60", "70", "80", "90", "100")
-detach(dataset)
+my.settings <- list(
+  superpose.polygon=list(col=myColours[3:6], border="transparent"),
+  strip.background=list(col=myColours[6]),
+  strip.border=list(col="black")
+)
 
-# Turn dataframe horizontally
-aggdata <- melt(aggdata)
-head(aggdata)
-
-# Very basic bar graph for all country averages added
-library(ggplot2)
-ggplot(data=aggdata, aes(x=variable, y=value)) + geom_bar(stat="identity")
-
-
-# rCharts interactive plot
-  #install.packages("rCharts")
-library(rCharts)
-
-n1 <- nPlot(variable ~ value, group = "Country", 
-            data = aggdata, type = "multiBarChart")
-n1$print("chart3")
-
-# How to show this in R/browser/presentation?
-n1$show('iframesrc', cdn = TRUE)
-
-
-
+require(lattice)
+barchart(value ~ variable, groups=Country, df, auto.key = list(columns = 4), 
+         main="Follower counts in different countries", xlab="Follower category", 
+         ylab="Frequency", par.settings = my.settings, scales=list(alternating=1),
+         uto.key=list(space="top", columns=4, 
+                      points=FALSE, rectangles=TRUE,
+                      title="District", cex.title=1),
+         par.strip.text=list(col="white", font=2),)
