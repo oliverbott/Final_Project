@@ -1,38 +1,114 @@
+---
+title: "Website"
+author: "Oliver Bott and Benjamin Snow"
+date: "Monday, December 08, 2014"
+output:
+  html_document:
+    theme: cosmo
+    highlight: kate
+---
 
-New Ways of Looking at Innovation
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Set working directory
 
-What consitutes a new idea? How do you measure inspiration or a moment of genious? These may sound like silly questions, but policy makers and governments for years have attempted to both monitor and positively impact the rate at which new, original, useful ideas, or innovations take place. 
+require("devtools")
+library(RCurl)
+library(ggmap)
+library(maptools)
+library(dplyr)
+library(reshape2)
+library(maps)
+library(stargazer)
+library(rCharts)
 
-Why do they do this? 
+# Load .csv from GitHub repository
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
 
-Innovation is thought to be extremely important for economic growth and development. When you think about most of the advancements of the last decades or centuries, many of them can be attributed to a single person or group of people with an unexpected idea. Thomas Edison and the lightbulb, the Wright Brothers and the first airplane. Additionally, many think that innovation will be extremely necessary in the future. Our current technology and consumption of fossil fuels is unsustainable, so innovative ideas to more us toward cleaner fuels is not just preferable, but mandatory. 
+# Create dynamic link to Dataset.csv created through the Data_Gathering.R
+x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Data/Dataset.csv')
+dataset <- read.csv(text = x)
+dataset$X <- NULL
+colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "AnyFollowing" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "Users")
+```
 
-So innovation is pretty important, but how do we measure it?
+# New Ways of Looking at Innovation
+
+What consitutes a new idea? How do you measure inspiration or a moment of genious? These may sound like silly questions, but policy makers and governments for years have attempted to both monitor and positively impact the rate at which new, original, useful ideas, or **innovations** take place. 
+
+# Why Care about Innovation? 
+
+Innovation is thought to be vital for economic growth and development. When you think about most of the advancements of the last decades or centuries, many of them can be attributed to a single person or group of people with an unexpected idea. Think of *Thomas Edison* and the lightbulb, the *Wright Brothers* and the first airplane. 
+
+Many think that innovation will be extremely important in the future. Our current use of technology and consumption of fossil fuels is unsustainable, so innovative ideas to more us toward cleaner fuels is not just preferable, but mandatory. 
+
+# So Innovation is pretty important, but how do we measure it?
 
 Until now, not terribly well... For decades those studying innovation have used Patent applications and the way to measure innovation. Patents are a good way to measure innovation in a number of ways: a patent application takes place in a set moment a time, a patent is a legal claim of a new product, design, or use, which is recorded, so in theory no two patents are the same, or would be recorded twice.
 
 On the other hand...
 
-It costs money to apply for a patent, so people only apply for them when they need to protect their idea or innovation for commercial purposes. So anytime someone comes up with an innovation that doesn't need to be protected or commercialized, they would likely not patent it. With the rise of the internet, alot of innovation is being put out openly, people create programs, and even whole programming languages, and share them freely with the world. So its pretty likely that patents are underestimating innovation. Using patents to measure innovation seems kind of like using articles published in academic journals to measure human knowledge, its a not a bad place to start, and it is easy to count all of the journals, but it would exclude everything put out freely online, on Wikipedia for example. So we thought imagining new ways of measuring innovation could be useful.
+It costs money to apply for a patent, so people only apply for them when they need to protect their idea or innovation for commercial purposes. So anytime someone comes up with an innovation that doesn't need to be protected or commercialized, they would likely not patent it. 
 
-Our Question:
+With the rise of the internet, alot of innovation is being put out openly, people create programs, and even whole programming languages, and share them freely with the world. So its pretty likely that patents are underestimating innovation. Using patents to measure innovation seems kind of like using articles published in academic journals to measure human knowledge, its a not a bad place to start, and it is easy to count all of the journals, but it would exclude everything put out freely online, on Wikipedia for example. So we thought imagining new ways of measuring innovation could be useful.
+
+# What we do
 
 We wondered to what extent innovation can be measured from looking at people who other people think are innovative online, to see if they could be a better or different way to measure innovation, rather than patents?
 
-How did we do it:
+# How we do it
 
-We used a website called Github, which allows people to show new web development projects openly online, and got all of the counts for how many people were following other people (following just means they were watching their work because they found it interesting). 
+We used a website called Github, which allows people to show new web development projects openly online, and got all of the counts for how many people were following other people. Thereby we count the relative importance of people´s projects, which we see as an innovation measure.
 
 We thought that these 'follower numbers' seemed like a good thing to measure because if people are following another person on Github, it means that the person is doing something interesting that people want to see in the future, and expect new or interesting ideas from.
 
-We took the follower counts for all of the Github users and the cities that they are in, and how many followers they have. We took this in 132 cities in 16 countries, and got the patent data for the same cities that we could compare it to. We also took a few other indicators too, such as pollution, greenspace, and the importance of the city, to find out if these other indicators affect one or both measures of innovation.
+For a range of 135 cities in 16 countries, we take the follower counts for all Github users and compare them to patent data.  Since we are interested in innovation more generally, we also look at a few other indicators, such as pollution, greenspace, and the importance of the city, to find out if these other indicators affect one or both measures of innovation. 
+
+
+```{r Europe Map, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+
+
+# Map of European cities
+europe.center <- geocode("Europe")
+eumap <- qmap(c(lon=europe.center$lon, lat=europe.center$lat), source = 'google', color="bw", zoom=4)
+eumap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=Users, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+#guide legend = false or something
+# + guides(size=FALSE)
+```
+
+
+
+```{r Japan Map, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Map of Japanese cities
+japan.center <- geocode("Japan")
+japanmap <- qmap(c(lon=japan.center$lon, lat=japan.center$lat), source='google', color="bw", zoom=5)
+japanmap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=Users, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+```
+
+
+
+```{r America Map, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Map of American cities
+america.center <- geocode("Dallas")
+americamap <- qmap(c(lon=america.center$lon, lat=america.center$lat), source='google', color="bw", zoom=4)
+americamap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=Users, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+```
+
 
 We took in all of the follower counts, and decided that all the people who had over 20 followers should be considered innovative.
 
+
+# What did we find out?
+
 We found some interesting findings for the follower numbers, which you can see below on these cool maps.
 
-In the end, we found a relationship between patents and followers, but that relationship largely disapeared when we controlled for all of the other aspects. We did find that both patents and follower numbers we related to industrializations, economic output, and how important the city is in relation to the size of the country. 
+In the end, we found a relationship between patents and followers, but that relationship largely disapeared when we controlled for all of the other aspects. We did find that both patents and follower numbers we related to air pollution, economic output, and how important the city is in relation to the size of the country. 
 
-What did we find out?
+
 
 It's hard to tell at this point whether we are or aren't measuring innovation, and whether we are measuring the same or a different type of innovation as patents. We do think we may have found a new and interesting way of measuring innovation, and that while our 20 follower line, or the use of Github at all, might not be a perfect way to measure it, in the future using collaborative networks and open data may be a much better way than patents.

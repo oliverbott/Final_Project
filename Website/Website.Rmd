@@ -9,6 +9,7 @@ output: html_document
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Set working directory
 
+require("devtools")
 library(RCurl)
 library(ggmap)
 library(maptools)
