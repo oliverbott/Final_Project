@@ -7,6 +7,8 @@ output:
   pdf_document:
     fig_caption: yes
     number_sections: yes
+    toc: true
+    toc_depth: 2
   html_document:
     fig_caption: yes
     number_sections: no
@@ -32,7 +34,9 @@ library(rCharts)
 # Load packages and create BibTeX file
 # Note: must have repmis, rsdmx, httr, dplyr and rjson packages installed
 PackagesUsed <- c("ggplot2", "repmis", "rsdmx", "httr", 
-                  "dplyr", "rjson", "stargazer", "knitr", "car", "rCharts", "reshape2", "ggmap", "maps", "RCurl", "maptools")
+                  "dplyr", "rjson", "stargazer", "knitr", 
+                  "car", "rCharts", "reshape2", "ggmap", 
+                  "maps", "RCurl", "maptools", "Rcpp")
 
 # Load PackagesUsed and create .bib BibTeX file
 repmis::LoadandCite(PackagesUsed, file = "Packages.bib", install = FALSE)
@@ -45,7 +49,9 @@ This research project examines the potential benefit of using open knowledge dat
 
 For the full examination of the previous literature on the subject and reasoning for the purpose, motives, and plan for this study please see the [Research Proposal](https://github.com/benjaminsnow/Collaborative-Research-Proposal-Assignment-Two-).  This contribution focuses specifically on outlining the data gathering and cleaning process. It will also examine the constructed dataset using basic descriptive statistics, as well as run preliminary inferential statistical models, offering explanation and context throughout the process. Finally, steps to improve the analysis for the final version will be discussed.
 
-# Data Gathering
+# Methodology
+
+## Data Gathering
 
 To examine open network data against patent data, this study relies on two key data sources and uses the statistical tool *R* [@CiteR] for the data analysis.
 
@@ -75,7 +81,7 @@ dataset$X <- NULL
 colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "AnyFollowing" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "Users")
 ```
 
-# Data Sources
+## Data Sources
 
 As can be seen in the Table below, the analysis is based on cross-sectional data with varying time frames. There are several limitations to the data used in this study. First, the time discrepency between different aspects of the data used, which range from 2005 to 2014, reflect an obvious data comparability constraint. Secondly, in this analysis for data availability and access reasons, there are some prominent innovation hubs excluded, including San Fransisco and New York. Third, several variables used, with pollution being the most obvious example, while numerically accurate, act as at best a rough proxy for the meaning (industrialization) attributed to them. Any found significance will need to take this into account. Last, and perhaps most significantly, when comparing the two measures of innovation, it should be noted that patent data reflects innovation across all types of sectors, whereas Github data mainly reflects innovation within the software technology domain.
 
@@ -109,7 +115,7 @@ knitr::kable(limtab)
 ```
 
 
-#Data Selection
+## Data Selection
 
 Several potential explanatory variables are collected besides the patent and GitHub data. These variables were selected as they were thought to potentially show cause for why innovation, be it open or closed, occurs in a certain city, but needed to be variables that would not introduce endogeneity to the model. 
 
@@ -123,8 +129,85 @@ Several potential explanatory variables are collected besides the patent and Git
 
 **Population**: A Population variable explores whether there is a necessary city size threshold which corresponds to innovation, and also is taken for controlling for across cities, to find patent data or GitHub data per a number of people in a city.
 
+Follower cutoff point
 
-# Descriptive Statistics
+```{r Follower Cutoff Selection, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Load .csv from GitHub repository
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+
+# Create dynamic link to Dataset.csv created through the Data_Gathering.R
+x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/9c08cb04289524812f7f2a94a00bd5d89b7fa7de/Data/Dataset.csv')
+datasetold <- read.csv(text = x)
+
+# For this task we get rid of the other variables
+datasetold$X <- NULL
+datasetold$Patents <- NULL
+datasetold$GDP <- NULL
+datasetold$Population <- NULL
+datasetold$Pollution <- NULL
+datasetold$Greenspace <- NULL
+datasetold$Employment <- NULL
+datasetold$lon <- NULL
+datasetold$lat <- NULL
+datasetold$zeroFollowers <- NULL
+
+new <- datasetold
+new_2 <- reshape(new, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+
+new_2 <- subset(new_2, value>0)
+new_2$id <- NULL 
+new_2$value <- NULL
+new_2$Country <- as.factor(new_2$Country)
+x_2 <- split(new_2, new_2$Country)
+x_3 <- lapply(x_2, function (x) sapply(x, mean))
+x_3 <- data.frame(x_3)
+x_3 <- na.omit(x_3)
+
+df <- reshape(x_3, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+variable <- c(1,10,20,30,40,50,60,70,80,90,100, 
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100)
+df <- data.frame(df, variable)
+df$id <- NULL 
+df$variable <- as.factor(df$variable)
+
+# Set color scheme
+library(RColorBrewer)
+myColours <- brewer.pal(6,"Set3")
+
+my.settings <- list(
+  superpose.polygon=list(col=myColours[3:6], border="transparent"),
+  strip.background=list(col=myColours[6]),
+  strip.border=list(col="black")
+)
+
+require(lattice)
+barchart(value ~ variable, groups=Country, df, auto.key = list(columns = 4), 
+         main="Follower counts in different countries", xlab="Follower category", 
+         ylab="Frequency", par.settings = my.settings, scales=list(alternating=1),
+         uto.key=list(space="top", columns=4, 
+                      points=FALSE, rectangles=TRUE,
+                      title="District", cex.title=1),
+         par.strip.text=list(col="white", font=2),)
+
+```
+
+# Analysis
+
+## Descriptive Statistics
 
 The summary statistics in Table 2 show wide ranging distributions of the observations in the data set. Since the data cleaning eliminated all values equal to or lower than zero, a log transformation seems to be a strategy that could strengthen the analysis. The *car* package [@R-car] is used to examine the relationship, distribution, and normality of all variables included in the model, to understand which regression model would be most appropriate. The distribution of many variables are highly skewed (see Figure 1). All of the GitHub based variables 'nofollowing', 'medfollowing', and 'hifollowing' have significant right skews, as do nearly all of the observed variables, excluding Pollution, GDP and Patents, which come closer to a normal distribution. It seems as if already in the scatterplot a slight correlation between Patents and Followers can be observed. To normalize for the skewed distributions, the log of the variables is deemed necessary to increase the explanatory power of our inferential statistics.  
 
@@ -214,7 +297,7 @@ D3 <- lm(log(AnyFollowing) ~ log(Patents) + log(GDP) + log(Population) + log(Gre
 labelsD <- c('Users', 'GDP', 'Population', 'Greenspace', 'Employment', 'Pollution', 'US' , 'DE' , 'FR' , 'JP', '(Intercept)')
 ```
 
-# Inferential Statistics
+## Inferential Statistics
 
 As a relationship between patent and follower data is observed, further inferential statistical analysis attempts to find the common predictor or cause of innovation in both patent and open data. The second regression model hence includes the open innovation indicator now as the dependent variable *F* and is expressed below using similar notation and logic as stated above:
 
@@ -251,6 +334,9 @@ Here *P* is the patent intensity expected in a given city *i*. As seen in the re
 
 
 The findings endorse the implicit hypothesis of the study that open data sources seem to show innovation in a similar but perhaps distinct manner to patent data and could hence enrich the measurement of innovation. These found relationships offer a glimps into the 'throughput' of open innovation (in the form of collaboration) rather than the 'output' which patent data reflects (in the form of commercialization of knowledge).  While significant relationships are found with innovation, other unaccounted for variables can be expected to contribute but are not currently accounted for in the model.
+
+# Discussion
+
 
 # Outlook
 
