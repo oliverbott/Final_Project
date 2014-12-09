@@ -82,7 +82,7 @@ fol$Greenspace <- NULL
 fol$Employment <- NULL
 fol$lon <- NULL
 fol$lat <- NULL
-fol$Followers <- NULL
+fol$AnyFollowing <- NULL
 fol$Users <- NULL
 
 # Rename variables for melting
