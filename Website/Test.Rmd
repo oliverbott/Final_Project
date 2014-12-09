@@ -2,7 +2,10 @@
 title: "Website_Test"
 author: "Oliver Bott"
 date: "Monday, December 08, 2014"
-output: ioslides_presentation
+output:
+  html_document:
+    theme: cosmo
+    highlight: kate
 ---
 
 
@@ -17,6 +20,7 @@ library(reshape2)
 library(maps)
 library(stargazer)
 library(rCharts)
+library(rNVD3)
 
 # Load .csv from GitHub repository
 options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
@@ -115,5 +119,5 @@ df$variable <- as.factor(df$variable)
 n1 <- nPlot(value ~ variable, group = "Country", data = df, type = "multiBarChart")
 n1$xAxis(axisLabel = "GitHub Follower Categories")  # add x axis label
 n1$yAxis(axisLabel = "Count")
-n1$print("chart3", cdn = TRUE, include_assets = TRUE)
+n1$print("chart3", cdn = FALSE, include_assets = TRUE)
 ```
