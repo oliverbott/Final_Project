@@ -2,6 +2,7 @@
 title: 'Open vs. closed innovation: using online network data to measure innovation'
 author: "Benjamin Snow and Oliver Bott"
 date: "14 November 2014"
+linestretch: 2
 output:
   pdf_document:
     fig_caption: yes
@@ -18,10 +19,20 @@ bibliography:
 # Set working directory. Change as needed
 setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project/')
 
+require("devtools")
+library(RCurl)
+library(ggmap)
+library(maptools)
+library(dplyr)
+library(reshape2)
+library(maps)
+library(stargazer)
+library(rCharts)
+
 # Load packages and create BibTeX file
 # Note: must have repmis, rsdmx, httr, dplyr and rjson packages installed
 PackagesUsed <- c("ggplot2", "repmis", "rsdmx", "httr", 
-                  "dplyr", "rjson", "stargazer", "knitr", "car")
+                  "dplyr", "rjson", "stargazer", "knitr", "car", "rCharts", "reshape2", "ggmap", "maps", "RCurl", "maptools")
 
 # Load PackagesUsed and create .bib BibTeX file
 repmis::LoadandCite(PackagesUsed, file = "Packages.bib", install = FALSE)
@@ -60,6 +71,8 @@ dataset <- read.csv(text = x)
 dataset$row.names <- NULL
 dataset$X <- NULL
 
+# Change column names
+colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "AnyFollowing" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "Users")
 ```
 
 # Data Sources
@@ -116,22 +129,28 @@ Several potential explanatory variables are collected besides the patent and Git
 The summary statistics in Table 2 show wide ranging distributions of the observations in the data set. Since the data cleaning eliminated all values equal to or lower than zero, a log transformation seems to be a strategy that could strengthen the analysis. The *car* package [@R-car] is used to examine the relationship, distribution, and normality of all variables included in the model, to understand which regression model would be most appropriate. The distribution of many variables are highly skewed (see Figure 1). All of the GitHub based variables 'nofollowing', 'medfollowing', and 'hifollowing' have significant right skews, as do nearly all of the observed variables, excluding Pollution, GDP and Patents, which come closer to a normal distribution. It seems as if already in the scatterplot a slight correlation between Patents and Followers can be observed. To normalize for the skewed distributions, the log of the variables is deemed necessary to increase the explanatory power of our inferential statistics.  
 
 
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+```{r Summary Statistics of selected variables, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Descriptive statistics
 library(stargazer)
 
-stargazer(dataset[,], summary=TRUE,
+sumdat <- subset(dataset, select = -c(1,8:9,22:25) )
+
+colnames(sumdat) <- c("Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "Users with >0 Followers" , "1-9 Followers" , "10-19 Followers" , "20-29 Followers" , "30-39 Followers" , "40-49 Followers" , "50-59 Followers" , "60-69 Followers" , "70-79 Followers" , "80-89 Followers" , "90-99 Followers" , ">100 Followers" , "Users with >20 Followers")
+
+stargazer(sumdat[,], summary=TRUE,
   title = 'Summary statistics',
   digits = 2, type ='latex', header=FALSE)
 
 ```
 
 
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+```{r Scatterplot matrix of selected variables, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Create scatterplot matrix of variables
 require("car")
 
-car::scatterplotMatrix(dataset[,2:10], 
+scatmat <- subset(dataset, select = -c(1,8:9,11:25) )
+
+car::scatterplotMatrix(scatmat[,], 
                        main="Scatterplot matrix")
 
 ```
@@ -139,67 +158,97 @@ car::scatterplotMatrix(dataset[,2:10],
 The residual plot between patents and users with high follower numbers (see Figure 2) depicts a relatively random pattern, which indicates that a linear regression model provides a decent fit to the inferential statistics of the data set.
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+
+# For log delete 0 follower categories: new datasetlog
+datasetlog <- dataset
+datasetlog <- datasetlog[-c(45, 59, 62, 63, 73, 81, 90, 116, 121), ]
+
+datasetlog2 <- dataset
+datasetlog2 <- datasetlog2[-c(45, 62, 90), ]
+
 # Create residual plot for log(Patents)
-patfol.lm = lm(log(Patents) ~ log(hifollowing)
-               , data = dataset)
+patfol.lm = lm(log(Patents) ~ log(Users)
+               , data = datasetlog)
 patfol.res = resid(patfol.lm)
 
-plot(dataset$hifollowing, patfol.res,
+plot(datasetlog$Users, patfol.res,
      ylab="Residuals", xlab="High Followers",
      main="Patents")
 abline(0, 0)
 
 ```
 
-# Inferential Statistics
 
-This study plans to use an ordinary least squares (OLS) model to examine the relationship between patent and highly followed open data sources. The model for the regression analysis can be viewed as:
+```{r Regression Preparation, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+# Regression table with stargazer
 
-$$   logP_{i} = {\beta}_0 +{\beta}_1 logF_{i} + {\beta}_2 logGDP_{i} + {\beta}_3 logPop_{i} + {\beta}_4 logG_{i} + {\beta}_5 logE_{i} + {\beta}_6 logPol_{i} + {\epsilon}_{i}$$
+# Create country interaction
+datasetlog$USfol <- datasetlog$Users*datasetlog$US
+datasetlog$DEfol <- datasetlog$Users*datasetlog$DE
+datasetlog$FRfol <- datasetlog$Users*datasetlog$FR
+datasetlog$JPfol <- datasetlog$Users*datasetlog$JP
 
-Here *P* is the patent intensity expected in a given city *i*. As seen in the regression output Table 3, a positive relationship between patent data and GitHub data is observed (at a significance level of p<0.01), though most significantly between patent data and those with high numbers of followers on GitHub. In the full model specification, a 1 percent increase in GitHub users with more than 25 followers (per 10,000 population) corresponds with a 1.76 percent increase in PCT patents (per 10,000 population). Additionally, Employment seems also to be positively correlated with patents, supporting the initial hypothesis that the significance of a city in a national context is strongly related to patent activities. Pollution is negatively correlated with patent data at a high significance level, while the variables GDP, Population and Greenspace do not seem to have a significant effect on patent activity.
+# Create regression models with Patents as dependent variable
+P1 <- lm(log(Patents) ~ log(Users), data = datasetlog)
+P2 <- lm(log(Patents) ~ log(Users) + log(GDP) + log(Population) + 
+           log(Greenspace) + log(Employment) + log(Pollution), data = datasetlog)
+P3 <- lm(log(Patents) ~ log(Users) + log(GDP) + log(Population) + 
+           log(Greenspace) + log(Employment) + log(Pollution), data = datasetlog)
 
+labelsP <- c('Over 20 Followers', 'GDP', 'Population', 'Greenspace', 'Employment', 'Pollution', '(Intercept)')
 
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-# Create patent models for stargazer regression output
+# Create regression models with User numbers as dependent variable
+F1 <- lm(log(Users) ~ log(Patents), data = datasetlog)
+F2 <- lm(log(Users) ~ log(Patents) + log(GDP) + log(Population) + 
+           log(Greenspace) + log(Employment) + log(Pollution), data = datasetlog)
+F3 <- lm(log(Users) ~ log(Patents) + log(GDP) + log(Population) + 
+           log(Greenspace) + log(Employment) + log(Pollution) + US + DE + FR + JP, data = datasetlog)
 
-P1 <- lm(log(Patents) ~ log(nofollowing), data = dataset)
-P2 <- lm(log(Patents) ~ log(medfollowing), data = dataset)
-P3 <- lm(log(Patents) ~ log(hifollowing), data = dataset)
-P4 <- lm(log(Patents) ~ log(hifollowing) + log(GDP) + log(Population) + 
-           log(Greenspace) + log(Employment) + log(Pollution), data = dataset)
+labelsF <- c('Patents', 'GDP', 'Population', 'Greenspace', 'Employment', 'Pollution', 'US' , 'DE' , 'FR' , 'JP', '(Intercept)')
 
-labelsP <- c('(Intercept)', 'No Following', '1-24 Following', '>25 Following', 
-             'GDP', 'Population', 'Greenspace', 'Employment', 'Pollution')
+# Create regression models with any Following numbers as dependent variable
+D1 <- lm(log(AnyFollowing) ~ log(Patents), data = datasetlog2)
+D2 <- lm(log(AnyFollowing) ~ log(Patents) + log(GDP) + log(Population) + log(Greenspace) + log(Employment) + log(Pollution), data = datasetlog2)
+D3 <- lm(log(AnyFollowing) ~ log(Patents) + log(GDP) + log(Population) + log(Greenspace) + log(Employment) + log(Pollution) + US + DE + FR + JP, data = datasetlog2)
 
-stargazer::stargazer(P1, P2, P3, P4, covariate.labels = labelsP,
-  title = 'Regression Estimates of Patent Activity',
-  digits = 2, type ='latex', header=FALSE, single.row=TRUE)
-
+labelsD <- c('Users', 'GDP', 'Population', 'Greenspace', 'Employment', 'Pollution', 'US' , 'DE' , 'FR' , 'JP', '(Intercept)')
 ```
+
+# Inferential Statistics
 
 As a relationship between patent and follower data is observed, further inferential statistical analysis attempts to find the common predictor or cause of innovation in both patent and open data. The second regression model hence includes the open innovation indicator now as the dependent variable *F* and is expressed below using similar notation and logic as stated above:
 
 $$   logF_{l} = {\beta}_0 +{\beta}_1 logP_{l} + {\beta}_2 logGDP_{l} + {\beta}_3 logPop_{l} + {\beta}_4 logG_{l} + {\beta}_4 logE_{l} + {\beta}_4 logPol_{l} + {\epsilon}_{l}$$
 
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+stargazer::stargazer(D1, D2, D3, covariate.labels = labelsD,
+  title = 'Regression Estimates of GitHub Collaborative Activity',
+  digits = 2, type ='latex', single.row=TRUE)
+```
+
+
 As can be seen in Table 4, again Patents are strongly positively correlated with Follower numbers (at a significance level of p<0.01). Both Pollution and Employment are negatively correlated (at a significance level of p<0.05). The adjusted R squared value indicates that about 36% of the variation in follower numbers in our sample is explained through the model.
 
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+stargazer::stargazer(P1, P2, P3, covariate.labels = labelsP,
+  title = 'Regression Estimates of Patent Activity',
+  digits = 2, type ='latex', single.row=TRUE)
+```
+
+
+This study plans to use an ordinary least squares (OLS) model to examine the relationship between patent and highly followed open data sources. The model for the regression analysis can be viewed as:
+
+$$   logP_{i} = {\beta}_0 +{\beta}_1 logF_{i} + {\beta}_2 logGDP_{i} + {\beta}_3 logPop_{i} + {\beta}_4 logG_{i} + {\beta}_5 logE_{i} + {\beta}_6 logPol_{i} + {\epsilon}_{i}$$
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-
-# Create follower model for stargazer regression output
-
-F1 <- lm(log(hifollowing) ~ log(Patents), data = dataset)
-F2 <- lm(log(hifollowing) ~ log(Patents) + log(GDP) + log(Population) + 
-           log(Greenspace) + log(Employment) + log(Pollution), data = dataset)
-
-labelsF <- c('(Intercept)', 'Patents', 'GDP', 'Population', 
-             'Greenspace', 'Employment', 'Pollution')
-
-stargazer::stargazer(F1, F2, covariate.labels = labelsF,
-  title = 'Regression Estimates of Follower Numbers',
-  digits = 2, type ='latex', header=FALSE, single.row=TRUE)
+stargazer::stargazer(F1, F2, F3, covariate.labels = labelsF,
+  title = 'Regression Estimates of GitHub Collaborative Activity',
+  digits = 2, type ='latex', single.row=TRUE)
 ```
+
+
+Here *P* is the patent intensity expected in a given city *i*. As seen in the regression output Table 3, a positive relationship between patent data and GitHub data is observed (at a significance level of p<0.01), though most significantly between patent data and those with high numbers of followers on GitHub. In the full model specification, a 1 percent increase in GitHub users with more than 25 followers (per 10,000 population) corresponds with a 1.76 percent increase in PCT patents (per 10,000 population). Additionally, Employment seems also to be positively correlated with patents, supporting the initial hypothesis that the significance of a city in a national context is strongly related to patent activities. Pollution is negatively correlated with patent data at a high significance level, while the variables GDP, Population and Greenspace do not seem to have a significant effect on patent activity.
+
 
 The findings endorse the implicit hypothesis of the study that open data sources seem to show innovation in a similar but perhaps distinct manner to patent data and could hence enrich the measurement of innovation. These found relationships offer a glimps into the 'throughput' of open innovation (in the form of collaboration) rather than the 'output' which patent data reflects (in the form of commercialization of knowledge).  While significant relationships are found with innovation, other unaccounted for variables can be expected to contribute but are not currently accounted for in the model.
 
