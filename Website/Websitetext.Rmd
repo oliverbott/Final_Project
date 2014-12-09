@@ -83,7 +83,7 @@ fol$Employment <- NULL
 fol$lon <- NULL
 fol$lat <- NULL
 fol$Followers <- NULL
-fol$hifol <- NULL
+fol$Users <- NULL
 
 # Rename variables for melting
 colnames(fol) <- c("METRO_ID" , "1" , "10" , "20" , "30", "40", "50", 
@@ -187,7 +187,7 @@ countryset$Country <- c('Austria', 'Austria', 'Austria', 'Belgium', 'Belgium', '
 datasetscat <- merge(dataset , countryset , by=c("METRO_ID")) 
 
 
-n2 <- nPlot(Patents ~ hifol, data = datasetscat, type = "scatterChart", 
+n2 <- nPlot(Patents ~ Users, data = datasetscat, type = "scatterChart", 
     group = "Country")
 n2$xAxis(axisLabel = "GitHub Follower Counts")  # add x axis label
 n2$yAxis(axisLabel = "Patent Counts")
