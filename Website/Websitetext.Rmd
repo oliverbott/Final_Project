@@ -71,7 +71,60 @@ Let´s look at how many GitHub users there are in different countries and compar
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Cutoff interactive barchart
+fol <- dataset
 
+fol$X <- NULL
+fol$Patents <- NULL
+fol$GDP <- NULL
+fol$Population <- NULL
+fol$Pollution <- NULL
+fol$Greenspace <- NULL
+fol$Employment <- NULL
+fol$lon <- NULL
+fol$lat <- NULL
+fol$Followers <- NULL
+fol$hifol <- NULL
+
+# Rename variables for melting
+colnames(fol) <- c("METRO_ID" , "1" , "10" , "20" , "30", "40", "50", 
+                       "60", "70", "80", "90", "100" , "US" , "DE" , "FR" , "JP")
+  # 1 means 1-9 followers, 10 equals 10-19 followers etc.
+
+new <- fol
+new_2 <- reshape(new, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+
+new_2 <- subset(new_2, value>0)
+new_2$id <- NULL 
+new_2$value <- NULL
+new_2$Country <- as.factor(new_2$Country)
+x_2 <- split(new_2, new_2$Country)
+x_3 <- lapply(x_2, function (x) sapply(x, mean))
+x_3 <- data.frame(x_3)
+x_3 <- na.omit(x_3)
+
+df <- reshape(x_3, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+variable <- c(1,10,20,30,40,50,60,70,80,90,100, 
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100)
+df <- data.frame(df, variable)
+df$id <- NULL 
+df$variable <- as.factor(df$variable)
+
+n1 <- nPlot(value ~ variable, group = "Country", data = df, type = "multiBarChart")
+n1$print("chart3", cdn = FALSE, include_assets = TRUE)
 ```
 
 
@@ -124,8 +177,23 @@ The interesting part is, however, that we find that both patents and follower nu
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Interactive scatterplot
+countryset <- data.frame (id=1:132)
 
+countryset$METRO_ID <- c('Vienna', 'Graz', 'Linz', 'Brussels', 'Antwerp', 'Ghent', 'Liege', 'Berlin', 'Hamburg', 'Munich', 'Cologne', 'Frankfurt', 'Essen', 'Stuttgart', 'Leipzig', 'Dresden', 'Dortmund', 'Dusseldorf', 'Bremen', 'Hanover', 'Bochum', 'Freiburg', 'Augsburg', 'Bonn', 'Karlsruhe', 'Duisburg', 'Mannheim', 'Aachen', 'Copenhagen', 'Tallinn', 'Madrid', 'Barcelona', 'Valencia', 'Seville', 'Zaragoza', 'Malaga', 'Palmas', 'Bilbao', 'Helsinki', 'Paris', 'Lyon', 'Toulouse', 'Strasbourg', 'Bordeaux', 'Nantes', 'Lille', 'Montpellier', 'Rennes', 'Grenoble', 'Toulon', 'Marseille', 'Nice', 'Rouen', 'Rome', 'Naples', 'Turin', 'Palermo', 'Genova', 'Florence', 'Bologna', 'Catania', 'Venice', 'Mito', 'Tokyo', 'Kofu', 'Nagoya', 'Numazu', 'Osaka', 'Okayama', 'Kurashiki', 'Fukuyama', 'Hiroshima', 'Takamatsu', 'Monterrey', 'Irapuato', 'Hague', 'Amsterdam', 'Rotterdam', 'Utrecht', 'Oslo', 'Lisbon', 'Porto', 'Stockholm', 'Gothenburg', 'Malmo', 'Seattle', 'Portland', 'Minneapolis', 'Milwaukee', 'Madison', 'Buffalo', 'Albany', 'Detroit', 'Boston', 'Chicago', 'Providence', 'Toledo', 'Cleveland', 'Omaha', 'Akron', 'Pittsburgh', 'Harrisburg', 'Philadelphia', 'Columbus', 'Denver', 'Indianapolis', 'Dayton', 'Baltimore', 'Cincinnati', 'Washington', 'Louisville',  'Wichita', 'Richmond', 'Fresno', 'Nashville', 'Tulsa', 'Raleigh', 'Charlotte', 'Albuquerque', 'Memphis', 'Columbia', 'Atlanta', 'Phoenix',  'Dallas', 'Charleston', 'Tucson', 'Austin', 'Jacksonville', 'Houston', 'Orlando', 'Tampa', 'Miami')
+countryset$id <- NULL
+
+countryset$Country <- c('Austria', 'Austria', 'Austria', 'Belgium', 'Belgium', 'Belgium', 'Belgium', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Denmark', 'Estonia', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Finland', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Mexico', 'Mexico', 'Netherlands', 'Netherlands', 'Netherlands', 'Netherlands', 'Norway', 'Portugal', 'Portugal', 'Sweden', 'Sweden', 'Sweden', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States',  'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States',  'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States')
+
+datasetscat <- merge(dataset , countryset , by=c("METRO_ID")) 
+
+
+n2 <- nPlot(Patents ~ hifol, data = datasetscat, type = "scatterChart", 
+    group = "Country")
+n2$xAxis(axisLabel = "GitHub Follower Counts")  # add x axis label
+n2$yAxis(axisLabel = "Patent Counts")
+n2$print("nvd3Scatter", cdn = FALSE, include_assets = TRUE)
 ```
+
 
 # Implications of our research
 
