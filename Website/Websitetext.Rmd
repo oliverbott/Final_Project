@@ -43,9 +43,9 @@ Innovation is thought to be vital for economic growth, prosperity and developmen
 
 Many think that innovation will be extremely important in the future, for example to overcome societal challenges and our dependency on unsustainable energy use.
 
-# <span style="color:#2c7fb8">How to measure Innovation?</span>
+# <span style="color:#2c7fb8">How we measure Innovation</span>
 
-Until now, not terribly well. For decades those studying innovation have used patent applications to measure innovation. Patents are a good way to measure innovation in a number of ways: a patent application takes place in a set moment a time, a patent is a legal claim of a new product, design, or use, which is recorded, so in theory no two patents are the same, or would be recorded twice.
+But how does one measure innovation? Until now, not terribly well. For decades those studying innovation have used patent applications to measure innovation. Patents are a good way to measure innovation for a number of ways: a patent application takes place in a set moment a time, a patent is a legal claim of a new product, design, or use, which is recorded, so in theory no two patents are the same, or would be recorded twice.
 
 ![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImagePatent.JPG "Bloomberg - gettyimages.com")
 
@@ -53,23 +53,23 @@ Until now, not terribly well. For decades those studying innovation have used pa
 
 It costs money to apply for a patent, so people only apply when they need to protect their idea or innovation for commercial purposes. So anytime someone comes up with an innovation that doesn't need to be protected or commercialized, they would likely not patent it. 
 
-With the rise of the internet, alot of innovation is being put out openly, people create programs, and even whole programming languages, and share them freely with the world. So its pretty likely that patents are underestimating innovation. Using patents to measure innovation seems kind of like using articles published in academic journals to measure human knowledge. It is a not a bad place to start, and it is easy to count, but it would exclude everything put out freely online, on Wikipedia for example. So we thought imagining new ways of measuring innovation could be useful.
+With the rise of the internet, alot of innovation is being put out openly, people create software programs, and even whole programming languages, and share them freely with the world. So its pretty likely that patents are underestimating innovation. Using patents to measure innovation seems kind of like using articles published in academic journals to measure human knowledge. It is a not a bad place to start, and it is easy to count, but it would exclude everything put out freely online, on Wikipedia for example. So we thought imagining new ways of measuring innovation could be useful.
 
 ---
 
 # <span style="color:#2c7fb8">What we do</span>
 
-We wondered to what extent innovation can be measured from looking at people who other people think are innovative online, to see if they could be a better or different way to measure innovation, rather than patents?
+We wondered to what extent innovation could be measured from looking at people who other people think are innovative online, to see if they could be a better or different way to measure innovation, rather than patents?
 
 ![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageSky.JPG "Max Dereta / Stone - gettyimages.com")
 
 # <span style="color:#2c7fb8">How we do it</span>
 
-We used a website called GitHub, which allows people to show new web development projects openly online, and got all of the counts for how many people were following other people. Thereby we count the relative importance of people´s projects, which we see as an innovation measure.
+We used a website called GitHub.com, which allows people to show new web development projects openly online, and got all of the counts for how many people were following other people. Thereby we count the relative importance of people´s work, which we see as an innovation measure.
 
-We thought that these 'follower numbers' seemed like a good thing to measure because if people are following another person on GitHub, it means that the person is doing something interesting that people want to see in the future, and expect new or interesting ideas from.
+We thought that these 'follower numbers' seemed like a good thing to measure because if people are following another person on GitHub, it means that the person is doing something interesting that people want to see in the future, and expect new or interesting ideas from them.
 
-For a range of 135 cities in 16 countries, we take the follower counts for all GitHub users and compare them to traditional patent data.  Since we are interested in innovation more generally, we also look at a few other indicators, such as economic output, air pollution, available urban greenspace, and the importance of the city, to find out whether these other indicators affect one or both measures of innovation.
+With a range of 135 cities in 16 countries, we take the follower counts for all GitHub users and compare them to traditional patent data.  Since we are interested in innovation more generally, we also look at a few other indicators, such as economic output, air pollution, available urban greenspace, and the importance of the city, to find out whether these other indicators affect one or both measures of innovation.
 
 Let´s look at how many GitHub users there are in different countries and compare their follower numbers for the United States, Germany, France and Japan.
 
