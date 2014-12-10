@@ -31,7 +31,7 @@ dataset$X <- NULL
 colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "AnyFollowing" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "Users")
 ```
 
-![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageBulb.jpg "Patrick Llewelyn-Davies OJO Images - gettyimages.com")
+<span style="color:white">The power of new ideas and innovation</span> <img align="middle" src="https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageBulb.jpg" /> <span style="color:white">Ideas to change the world</span>
 
 # <span style="color:#2c7fb8">New Ways of Looking at Innovation</span>
 
@@ -47,7 +47,7 @@ Many think that innovation will be extremely important in the future, for exampl
 
 Until now, not terribly well. For decades those studying innovation have used patent applications to measure innovation. Patents are a good way to measure innovation in a number of ways: a patent application takes place in a set moment a time, a patent is a legal claim of a new product, design, or use, which is recorded, so in theory no two patents are the same, or would be recorded twice.
 
-![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImagePatent.JPG "Bloomberg - gettyimages.com")
+<span style="color:white">The power of new ideas</span> <img align="middle" src="https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImagePatent.JPG" /> <span style="color:white">Ideas to change the world</span>
 
 **On the other hand...**
 
@@ -61,7 +61,7 @@ With the rise of the internet, alot of innovation is being put out openly, peopl
 
 We wondered to what extent innovation can be measured from looking at people who other people think are innovative online, to see if they could be a better or different way to measure innovation, rather than patents?
 
-![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageSky.JPG "Max Dereta / Stone - gettyimages.com")
+<span style="color:white">The power of open innovation</span> <img align="middle" src="https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageSky.JPG" /> <span style="color:white">Ideas to change the world</span>
 
 # <span style="color:#2c7fb8">How we do it</span>
 
