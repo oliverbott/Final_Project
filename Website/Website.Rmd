@@ -1,10 +1,12 @@
 ---
-title: "Website"
+title: "The Future of Innovation"
 author: "Oliver Bott and Benjamin Snow"
-date: "Monday, December 08, 2014"
-output: html_document
+date: "December 12, 2014"
+output:
+  html_document:
+    theme: cosmo
+    highlight: kate
 ---
-
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Set working directory
@@ -26,66 +28,60 @@ options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", packag
 x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Data/Dataset.csv')
 dataset <- read.csv(text = x)
 dataset$X <- NULL
-colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "Followers" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "hifol")
+colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "AnyFollowing" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "Users")
 ```
 
-## What are we doing here?
+<span style="color:white">The power of new ideas and innovation</span> <img align="middle" src="https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageBulb.jpg" /> <span style="color:white">Ideas to change the world</span>
 
-How many groups in this class have done something:
+<p style='text-align: center;'>*Source: Patrick Llewelyn-Davies - OJO Images - gettyimages.com*</p>
 
-- Interesting?
+# <span style="color:#2c7fb8">New Ways of Looking at Innovation</span>
 
-- Creative?
+What consitutes a new idea? How do you measure inspiration or a moment of genius? These may sound like silly questions, but policy makers and governments for years have attempted to both monitor and positively impact the rate at which new, original, useful ideas, or **innovations** take place. 
 
-- **Innovative**?
+# <span style="color:#2c7fb8">Why Care about Innovation?</span>
 
-Why should we be interested in innovation?
+Innovation is thought to be vital for economic growth, prosperity and development. When you think about most of the advancements of the last decades or centuries, many of them can be attributed to a single person or group of people with an unexpected idea. Think of *Thomas Edison* and the lightbulb, the *Wright Brothers* and the first airplane. 
 
-- Economic growth
+Many think that innovation will be extremely important in the future, for example to overcome societal challenges and our dependency on unsustainable energy use.
 
-- Sustainability
+# <span style="color:#2c7fb8">How we Measure Innovation</span>
 
+But how does one measure innovation? Until now, not terribly well. For decades those studying innovation have used patent applications to measure innovation. Why? It´s simple: a patent application takes place in a set moment a time, a patent is a legal claim of a new product, design, or use, which is recorded, so in theory no two patents are the same, or would be recorded twice.
 
+<span style="color:white">The power of new ideas</span> <img align="middle" src="https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImagePatent.JPG" /> <span style="color:white">Ideas to change the world</span>
 
-## Measuring innovation
+<p style='text-align: center;'>*Source: gettyimages.com*</p>
 
-Innovation has mostly been measured in **patents**, but why?
+**On the other hand...**
 
-- Defined moment and place in time
+It costs money to apply for a patent, so people only apply when they need to protect their idea or innovation for commercial purposes. So anytime someone comes up with an innovation that doesn't need to be protected or commercialized, they would likely not patent it. Think for example of open source software available to everyone.
 
-- Legal claim of a new idea, vital for commercialization
+With the rise of the internet, a lot of innovation is being put out openly, people create software programs, and even whole programming languages, and share them freely with the world. So its pretty likely that patents are underestimating innovation. Using patents to measure innovation seems kind of like using articles published in academic journals to measure human knowledge. It is a not a bad place to start, and it is easy to count, but it would exclude everything put out freely online, on Wikipedia for example. So we thought imagining new ways of measuring innovation could be useful.
 
-- Same *innovation* cannot be claimed twice
+---
 
-- Shortcomings?
+# <span style="color:#2c7fb8">What we do</span>
 
+We wondered to what extent innovation could be measured from looking at people who other people think are innovative online, to see if they could be a better or different way to measure innovation, rather than patents?
 
-**Research question:**
+<span style="color:white">The power of open innovation</span> <img align="middle" src="https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageSky.JPG" /> <span style="color:white">Ideas to change the world</span>
 
-**To what extent can open innovation network data add to the measurement of innovation performance?**
+<p style='text-align: center;'>*Source: Max Dereta - Stone - gettyimages.com*</p>
 
+# <span style="color:#2c7fb8">How we do it</span>
 
-## Methodology
+We used a website called [GitHub.com](https://github.com/), which allows people to show new web development projects openly online, and got all of the counts for how many people were following other people. Thereby we count the relative importance of people´s work, which we see as an innovation measure.
 
-We look at relationship between open and closed innovation
+We thought that these 'follower numbers' seemed like a good thing to measure because if people are following another person on GitHub, it means that the person is doing something interesting that people want to see in the future, and expect new or interesting ideas from them.
 
-Comparison of **GitHub** API users' follower numbers to **OECD** patent data in **132** cities in **16** countries
+With a range of 135 cities in 16 countries, we take the follower counts for all GitHub users and compare them to traditional patent data.  Since we are interested in innovation more generally, we also look at a few other indicators, such as economic output, air pollution, available urban greenspace, and the importance of the city, to find out whether these other indicators affect one or both measures of innovation.
 
+Let´s look at how many GitHub users there are in different countries and compare their follower numbers for the United States, Germany, France and Japan.
 
-Research design has some limitations:
-
-- Timing discrepancies
-
-- Exclusion of some major tech-cities
-
-
-Diffusion of GitHub - underestimating effect?
-
-
-## When is a GitHub user innovative?
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-
+# Cutoff interactive barchart
 fol <- dataset
 
 fol$X <- NULL
@@ -97,8 +93,8 @@ fol$Greenspace <- NULL
 fol$Employment <- NULL
 fol$lon <- NULL
 fol$lat <- NULL
-fol$Followers <- NULL
-fol$hifol <- NULL
+fol$AnyFollowing <- NULL
+fol$Users <- NULL
 
 # Rename variables for melting
 colnames(fol) <- c("METRO_ID" , "1" , "10" , "20" , "30", "40", "50", 
@@ -142,56 +138,60 @@ n1 <- nPlot(value ~ variable, group = "Country", data = df, type = "multiBarChar
 n1$print("chart3", cdn = FALSE, include_assets = TRUE)
 ```
 
-We choose a follower cutoff at 20 and more followers
 
-## City overview - Europe
+When looking at the follower counts for these selected countries, we can see that many users have 1-9 or 10-19 followers, but there is a noticeable drop at the threshold of 20. This is how we decided that all the GitHub users who have over 20 followers should be considered innovative.
 
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+### <span style="color:#2c7fb8">GitHub users in Selected Cities</span>
+
+Let´s now look at how many of those GitHub users with more than 20 followers there are in different cities. The user count depicted in the maps represents users per 10,000 population.
 
 
+```{r All Maps, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE, fig.width=7, fig.height=7}
 # Map of European cities
 europe.center <- geocode("Europe")
 eumap <- qmap(c(lon=europe.center$lon, lat=europe.center$lat), source = 'google', color="bw", zoom=4)
 eumap + geom_point(aes(x=lon, y=lat), data=dataset) + 
-        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        geom_point(aes(x = lon, y = lat, color=Users, size=20), data = dataset) + 
         scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 #guide legend = false or something
 # + guides(size=FALSE)
 ```
 
+As we can see, there are some GitHub hotspots in Europe, especially in Berlin, Amsterdam, Oslo and Stockholm. These cities have over 1.5 GitHub users with over 20 followers per 10,000 population. This might seem very little but, when put into a wider perspective, this number in fact shows some of the highest open innovation intensity of GitHub users worldwide.
 
-## City overview - Japan
 
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE, fig.width=7, fig.height=7}
 # Map of Japanese cities
 japan.center <- geocode("Japan")
 japanmap <- qmap(c(lon=japan.center$lon, lat=japan.center$lat), source='google', color="bw", zoom=5)
 japanmap + geom_point(aes(x=lon, y=lat), data=dataset) + 
-        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        geom_point(aes(x = lon, y = lat, color=Users, size=20), data = dataset) + 
         scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
+In comparison, cities in Japan show a relatevely low GitHub diffusion with only few users with over 20 followers, one exception being Tokyo.
 
-## City overview - America
-
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE, fig.width=7, fig.height=7}
 # Map of American cities
 america.center <- geocode("Dallas")
 americamap <- qmap(c(lon=america.center$lon, lat=america.center$lat), source='google', color="bw", zoom=4)
 americamap + geom_point(aes(x=lon, y=lat), data=dataset) + 
-        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        geom_point(aes(x = lon, y = lat, color=Users, size=20), data = dataset) + 
         scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
+In America, many cities feature comparatively many GitHub users with over 20 followers, for example in Madison, Portland, Seattle and Austin.
 
-## Our Model
+---
 
-1. $logFol_{i} = {\beta}_0 +{\beta}_1 logPat_{i} + {\beta}_2 Controls_{i} +{\epsilon}_{i}$
+# <span style="color:#2c7fb8">What we find</span>
 
-2. $logPat_{i} = {\beta}_0 +{\beta}_1 logFol_{i} + {\beta}_2 Controls_{i} +{\epsilon}_{i}$
+In our research we find a strong relationship between patents and followers, but that relationship largely disappears when we control for other aspects. Hence online collaboration and patent activity do not seem to have a direct link.
 
+In this interactive chart you can compare the patent counts to the GitHub user counts. As you can see, there seems to be a general correlation between the two innovation measures, but it is far from clear. This is why the statistical analysis also found no real direct connection in our dataset.
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Interactive scatterplot
 countryset <- data.frame (id=1:132)
 
 countryset$METRO_ID <- c('Vienna', 'Graz', 'Linz', 'Brussels', 'Antwerp', 'Ghent', 'Liege', 'Berlin', 'Hamburg', 'Munich', 'Cologne', 'Frankfurt', 'Essen', 'Stuttgart', 'Leipzig', 'Dresden', 'Dortmund', 'Dusseldorf', 'Bremen', 'Hanover', 'Bochum', 'Freiburg', 'Augsburg', 'Bonn', 'Karlsruhe', 'Duisburg', 'Mannheim', 'Aachen', 'Copenhagen', 'Tallinn', 'Madrid', 'Barcelona', 'Valencia', 'Seville', 'Zaragoza', 'Malaga', 'Palmas', 'Bilbao', 'Helsinki', 'Paris', 'Lyon', 'Toulouse', 'Strasbourg', 'Bordeaux', 'Nantes', 'Lille', 'Montpellier', 'Rennes', 'Grenoble', 'Toulon', 'Marseille', 'Nice', 'Rouen', 'Rome', 'Naples', 'Turin', 'Palermo', 'Genova', 'Florence', 'Bologna', 'Catania', 'Venice', 'Mito', 'Tokyo', 'Kofu', 'Nagoya', 'Numazu', 'Osaka', 'Okayama', 'Kurashiki', 'Fukuyama', 'Hiroshima', 'Takamatsu', 'Monterrey', 'Irapuato', 'Hague', 'Amsterdam', 'Rotterdam', 'Utrecht', 'Oslo', 'Lisbon', 'Porto', 'Stockholm', 'Gothenburg', 'Malmo', 'Seattle', 'Portland', 'Minneapolis', 'Milwaukee', 'Madison', 'Buffalo', 'Albany', 'Detroit', 'Boston', 'Chicago', 'Providence', 'Toledo', 'Cleveland', 'Omaha', 'Akron', 'Pittsburgh', 'Harrisburg', 'Philadelphia', 'Columbus', 'Denver', 'Indianapolis', 'Dayton', 'Baltimore', 'Cincinnati', 'Washington', 'Louisville',  'Wichita', 'Richmond', 'Fresno', 'Nashville', 'Tulsa', 'Raleigh', 'Charlotte', 'Albuquerque', 'Memphis', 'Columbia', 'Atlanta', 'Phoenix',  'Dallas', 'Charleston', 'Tucson', 'Austin', 'Jacksonville', 'Houston', 'Orlando', 'Tampa', 'Miami')
@@ -202,36 +202,22 @@ countryset$Country <- c('Austria', 'Austria', 'Austria', 'Belgium', 'Belgium', '
 datasetscat <- merge(dataset , countryset , by=c("METRO_ID")) 
 
 
-n2 <- nPlot(Patents ~ hifol, data = datasetscat, type = "scatterChart", 
+n2 <- nPlot(Patents ~ Users, data = datasetscat, type = "scatterChart", 
     group = "Country")
 n2$xAxis(axisLabel = "GitHub Follower Counts")  # add x axis label
 n2$yAxis(axisLabel = "Patent Counts")
 n2$print("nvd3Scatter", cdn = FALSE, include_assets = TRUE)
 ```
 
-## Findings
+The interesting part is, however, that both patents and follower numbers are related to air pollution, a city´s economic output, and how important the city is in relation to the country. So, although there might not be a direct link between the two, online collaboration and patent intensity seem to thrive under similar conditions.
 
-Significant positive correlation between   patents and followers **vanishes** when adding controls
+# <span style="color:#2c7fb8">Implications of our Research</span>
 
+It's hard to tell at this point whether we are measuring the same or a different type of innovation when comparing online collaboration to patents. Still, we do think we may have found a new and interesting way of thinking of innovation and its measurement. While our 20 follower line, or the use of GitHub at all, might not be a perfect way to measure innovation, in the future using collaborative networks and open data may be a much better way than simply relying on exclusive knowledge in the form of patents.
 
-Both follower number and patents are positively correlated to 
+### <span style="color:#2c7fb8">Want to find out more?</span>
 
-- GDP
+If you are interested in **innovation** and want to find out more on how to use GitHub or undertake similar research using the rStudio software, visit our [GitHub repository](https://github.com/oliverbott/Final_Project) with our more detailed research findings and [rStudio](http://www.rstudio.com/).
 
-- Relative importance of city
+*Pictures taken from http://www.gettyimages.com/*
 
-- Degree of deindustrialization
-
-
-GitHub diffusion higher in United States, lowest in Japan
-
-
-## Implications
-
-**Preliminarily** using open innovation data is a potentially innovative way of measuring innovation (see what we did there?) 
-
-- The field in the future may move away from pure patents perspective
-
-- Use of API user data for other collaborative networks
-
-- Considering fast diffusion of GitHub: are we too early?
