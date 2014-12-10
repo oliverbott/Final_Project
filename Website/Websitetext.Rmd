@@ -33,17 +33,17 @@ colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspac
 
 ![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageBulb.jpg "Patrick Llewelyn-Davies OJO Images - gettyimages.com")
 
-# New Ways of Looking at Innovation
+# <span style="color:#2c7fb8">New Ways of Looking at Innovation</span>
 
 What consitutes a new idea? How do you measure inspiration or a moment of genius? These may sound like silly questions, but policy makers and governments for years have attempted to both monitor and positively impact the rate at which new, original, useful ideas, or **innovations** take place. 
 
-# Why Care about Innovation? 
+# <span style="color:#2c7fb8">Why Care about Innovation?</span>
 
 Innovation is thought to be vital for economic growth, prosperity and development. When you think about most of the advancements of the last decades or centuries, many of them can be attributed to a single person or group of people with an unexpected idea. Think of *Thomas Edison* and the lightbulb, the *Wright Brothers* and the first airplane. 
 
 Many think that innovation will be extremely important in the future, for example to overcome societal challenges and our dependency on unsustainable energy use.
 
-# So Innovation is pretty important, but how do we measure it?
+# <span style="color:#2c7fb8">So Innovation is pretty important, but how do we measure it?</span>
 
 Until now, not terribly well. For decades those studying innovation have used patent applications to measure innovation. Patents are a good way to measure innovation in a number of ways: a patent application takes place in a set moment a time, a patent is a legal claim of a new product, design, or use, which is recorded, so in theory no two patents are the same, or would be recorded twice.
 
@@ -57,13 +57,13 @@ With the rise of the internet, alot of innovation is being put out openly, peopl
 
 ---
 
-# What we do
+# <span style="color:#2c7fb8">What we do</span>
 
 We wondered to what extent innovation can be measured from looking at people who other people think are innovative online, to see if they could be a better or different way to measure innovation, rather than patents?
 
 ![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageSky.JPG "Max Dereta / Stone - gettyimages.com")
 
-# How we do it
+# <span style="color:#2c7fb8">How we do it</span>
 
 We used a website called GitHub, which allows people to show new web development projects openly online, and got all of the counts for how many people were following other people. Thereby we count the relative importance of people´s projects, which we see as an innovation measure.
 
@@ -134,7 +134,7 @@ n1$print("chart3", cdn = FALSE, include_assets = TRUE)
 
 When looking at the follower counts for these selected countries, we can see that many users have 1-9 or 10-19 followers, but there is a noticeable drop at the threshold of 20. This is how we decided that all the GitHub users who have over 20 followers should be considered innovative.
 
-# GitHub users in selected cities
+# <span style="color:#2c7fb8">GitHub users in selected cities</span>
 
 Let´s now look at how many of those GitHub users with more than 20 followers there are. The user count depicted in the maps represents users per 10,000 population.
 
@@ -175,7 +175,7 @@ In America, many cities feature comparatively many GitHub users with over 20 fol
 
 ---
 
-# What we find
+# <span style="color:#2c7fb8">What we find</span>
 
 In our research we find a strong relationship between patents and followers, but that relationship largely disapears when we control for other aspects. Hence online collaboration and patent activity do not seem to have a direct link.
 
@@ -201,6 +201,6 @@ n2$print("nvd3Scatter", cdn = FALSE, include_assets = TRUE)
 ```
 
 
-# Implications of our research
+# <span style="color:#2c7fb8">Implications of our research</span>
 
 It's hard to tell at this point whether we are measuring the same or a different type of innovation when comparing online collaboration to patents.Still, we do think we may have found a new and interesting way of thinking of innovation and its measurement. While our 20 follower line, or the use of GitHub at all, might not be a perfect way to measure innovation, in the future using collaborative networks and open data may be a much better way than simply relying on exclusive knowledge in the form of patents.
