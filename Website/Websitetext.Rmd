@@ -61,7 +61,7 @@ With the rise of the internet, alot of innovation is being put out openly, peopl
 
 We wondered to what extent innovation can be measured from looking at people who other people think are innovative online, to see if they could be a better or different way to measure innovation, rather than patents?
 
-![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageSky.jpg "Max Dereta / Stone - gettyimages.com")
+![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageSky.JPG "Max Dereta / Stone - gettyimages.com")
 
 # How we do it
 
