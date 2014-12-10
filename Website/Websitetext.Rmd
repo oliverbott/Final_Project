@@ -55,9 +55,13 @@ It costs money to apply for a patent, so people only apply when they need to pro
 
 With the rise of the internet, alot of innovation is being put out openly, people create programs, and even whole programming languages, and share them freely with the world. So its pretty likely that patents are underestimating innovation. Using patents to measure innovation seems kind of like using articles published in academic journals to measure human knowledge. It is a not a bad place to start, and it is easy to count, but it would exclude everything put out freely online, on Wikipedia for example. So we thought imagining new ways of measuring innovation could be useful.
 
+---
+
 # What we do
 
 We wondered to what extent innovation can be measured from looking at people who other people think are innovative online, to see if they could be a better or different way to measure innovation, rather than patents?
+
+![Alt text](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Website/Images/ImageSky.jpg "Max Dereta / Stone - gettyimages.com")
 
 # How we do it
 
@@ -168,6 +172,8 @@ americamap + geom_point(aes(x=lon, y=lat), data=dataset) +
 ```
 
 In America, many cities feature comparatively many GitHub users with over 20 followers, for example in Madison, Portland, Seattle and Austin.
+
+---
 
 # What we find
 
