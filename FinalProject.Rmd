@@ -75,6 +75,14 @@ Current developments in research indicate that "characteristics that were import
 
 Since @freeman2009, among others, calls for the continuous improvement of innovation measurement, this work seeks to contribute to the refinement of innovation indicators. The purpose of this study is to explore the conceptual and statistical viability of a new metric by which we can measure innovation. 
 
+## Fundamental Drivers of Innovation
+
+## Additional Potential Variables Affecting Innovation
+
+To study not only the direct relationship between patent and open innovation requires also taking into account other variables which either must be controlled for when evaluating both forms of innovation, or which could explain one or another form of innovation in a specific locale, to explain what attributes of a location predict or expalin innovation rather than simply measuring it. Many studies have attempted to evaluate different attributes of innovative regions, with policymakers wishing to find the elusive set of policies or conditions under which innovation flourishes. @porter1991 originally hypothesized that relationship to the environment, and specifically environmental regulation could have a positive effect on innovation, as it forces the hand of domestic firms to be more innovative than their foriegn counterparts, to remain competitive despite the increased regulation. However, this initial hypothesis was not found in the evidence when tested by @Jaffe1997, finding little evidence that industries become more inventive due to compliance costs. Wider examinations of the specific environmental conditions of a locale, its pollution level or amount of greenspace, for instance, affect peoples level of innovation in these areas, or whether high mobility of labor allows innovators to selectively choose where they innovate.
+
+Past environmental conditions, labor conditions have long been studied as potentially relevant to the rate of innovation.  Most often oversimplified as a cause and effect statement "Does technology create or destroy jobs" in which innovation in technology is the culbrit of economic disruptions. However, @Pianta2005 instead examines how innovation and employment effect each other when composition of skills and wages, and employment are taken into account, but often looks at innovation on the organizational, rather than the societal, level.
+
 ## Research Question
 
 In light of the above mentioned state of innovation research we plan to examine the following research question: *To what extent can open innovation network data add to the measurement of innovation performance?*
