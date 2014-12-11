@@ -55,7 +55,7 @@ ________________________________________________________________________________
 
 Policy makers worldwide have a profound interest in innovation for its significance for economic development and prosperity. @taylor2004 views innovation as "the driving force behind modern economic growth, relative industrial power, and competitive advantage" (p.222). Numerous studies, for example the Innovation Union Scoreboard[^IUS] and the OECD Science, Technology and Innovation Scoreboard[^STI], have attempted to measure and compare innovation performance on the national level.  However, until today most examinations of innovation have put their analytical emphasis on national level patent data, relying on this form of registering of proprietary data as a means of measuring innovation.  However, the use of pantent data has widely been criticized for its limited view of innovation, as patents are only filed as a means of protecting an idea for its exclusive commercial use. Many forms of innovation, with the key example being the opensource development of software, do not require or attempt government protection through patents, but would still in a digitalized society be considered as important forms of innovation.
 
-Thus the academic literature until this point leaves largely unexplored other, more open measures of innovation disregarded. The relatively recent emergence of network-based research systems offer new and potentially more instructive metrics by which to measure innovation, compared to protected closed knowledge. Since various scholars called for the continuous improvement of innovation measurement [see for example @freeman2009], this work seeks to go beyond the widespread use of patent data to contribute to the refinement of innovation indicators, and the field as a whole.
+Thus the academic literature until this point leaves largely unexplored other, more open measures of innovation disregarded. The relatively recent emergence of network-based research systems offer new and potentially more instructive metrics by which to measure innovation, compared to protected closed knowledge. Since various scholars called for the continuous improvement of innovation measurement [see for example @freeman2009], this work seeks to go beyond the widespread use of patent data to contribute to the refinement of innovation indicators, and the field as a whole. In the following section, the current state of the field will be examined. Current best practice of defining and measuring innovation will be discussed before highlighting how new open innovation can improve the measurement of innovation. Further, other factors influencing innovation intensity will be discussed, which will inform our later analysis. In the third section, our methodology will be stated, including the process of data gathering, selection and analysis. This will be followed by our main section, the analysis, in which we use descriptive and inferential statitics to answer our research question. In a first step, we analyze the relationship between open and closed innovation inthe form of collaborative online research platform use and patent intensity. In a second step, we look at the more fundamental drivers of innovation to establish whether there is an indirect relationship between the two variables of interest. Findings will be further discussed and summarized in the concluding section. Overall, we find that, despite our exploratory research and various data limitations, there is an indirect relationship between what we term open and closed innovation. The authors are confident that in the future, similar research incorporating open innovation data will help improve the measurement of innovation and thus enhance our understanding of innovation. 
 
 # State of the Field
 
@@ -152,7 +152,7 @@ Explanation <- c('PCT patents per 10,000 population', 'GDP per capita',
                  'Total urban population', 'Green area per capita in square metres', 
                  'Employment of metropolitan area as % of national value', 
                  'Annual average of pop exposure to air pollution PM2,5 in µg/m³', 
-                 'GitHub users per 10,000 population')
+                 'GitHub users with >20 followers per 10,000 population')
 Year <- c('2008', '2008','2008','2008','2008',
           '2005', '2014')
 Source <- c('OECD', 'OECD', 'OECD', 'OECD', 'OECD', 
@@ -291,7 +291,10 @@ car::scatterplotMatrix(scatmat[,],
 
 ```
 
-The residual plot between Patents and Users (see Figure 2) depicts a relatively random pattern, which indicates that a linear regression model provides a decent fit to the inferential statistics of the data set.
+
+## Inferential Statistics
+
+To determine which regression model to take for the inferential statistics, we use a residual plot. The residual plot between Patents and Users (see Figure 2) depicts a relatively random pattern, which indicates that a linear regression model provides a decent fit to the inferential statistics of the data set.
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 
@@ -350,21 +353,15 @@ D3 <- lm(log(AnyFollowing) ~ log(Patents) + log(GDP) + log(Population) + log(Gre
 labelsD <- c('Users', 'GDP', 'Population', 'Greenspace', 'Employment', 'Pollution', 'US' , 'DE' , 'FR' , 'JP', '(Intercept)')
 ```
 
-## Inferential Statistics
-
-This study uses an ordinary least squares (OLS) model to examine the relationship between patent and highly followed open data sources.  
-
-The first regression model includes the open innovation indicator as the dependent variable *U* and can be viewed as:  
+This study uses an ordinary least squares (OLS) model to examine the relationship between patent and highly followed open data sources. The first regression model includes the open innovation indicator*U* as the GitHub users with more than 20 followers variable expected in a given city *i*, and can be viewed as:
 
 $$   logU_{l} = {\beta}_0 +{\beta}_1 logP_{l} + {\beta}_2 logGDP_{l} + {\beta}_3 logPop_{l} + {\beta}_4 logG_{l} + {\beta}_4 logE_{l} + {\beta}_4 logPol_{l} + {\epsilon}_{l}$$  
-
-Here *U* is the GitHub users with more than 20 followers variable expected in a given city *i*.  
 
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 stargazer::stargazer(F1, F2, F3, covariate.labels = labelsF,
   title = 'Regression Estimates of GitHub user couts',
-  digits = 2, type ='latex', single.row=TRUE)
+  digits = 2, type ='latex', single.row=TRUE, header=FALSE)
 ```
 
 As can be seen in Table 3, the variable User is strongly positively correlated with the Patent variable (at a significance level of p<0.01). Without including controls, a 1% increase in patents corresponds to a 0.37% increase in GitHub users with over 20 followers. However, the correlation becomes much smaller and insignificant when adding control variables. The GDP (at a significance level of p<0.01) and relative significance of a city in its national context, represented by the Employment variable, (at a significance level of p<0.1) are positively correlated with GitHub users, while the pollution levels negatively correlate with our User variable (at a significance level of p<0.05). The urban greenspace and total population size of the city do not seem to have a correlation with GitHub users.  
@@ -387,7 +384,7 @@ $$   logP_{i} = {\beta}_0 +{\beta}_1 logU_{i} + {\beta}_2 logGDP_{i} + {\beta}_3
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 stargazer::stargazer(P1, P2, P3, covariate.labels = labelsP,
   title = 'Regression Estimates of Patent Activity',
-  digits = 2, type ='latex', single.row=TRUE)
+  digits = 2, type ='latex', single.row=TRUE, header=FALSE)
 ```
 
 Similar to the first model, the regression output for our second model (see Table 4) demonstrates a positive relationship between patent data and GitHub users (at a significance level of p<0.01), but only when no controsl are added. In the full model specification, again GDP and relative importance of a city in its national context positive correlate with Patents. Interestingly, however, the pollution level is also positively correlated to Patents (at a significance level of p<0.05).  
