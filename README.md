@@ -13,22 +13,13 @@ The full assignment and repository include three main elements:
 2. A website offering for public consumption and understanding
 3. A presentation of the full project
 
-These elements are, however, included over a number of files and folders.  The full table of contents of the repository includes:
+These elements are included over a number of files and folders.  The full table of contents of the repository includes:
 
-- Data Folder, which includes seven data gathering and merging related files, and the full dataset of the project in Dataset.csv
-- Presentation folder, which includes several versions of the presentation.
-- An ignore file
-- FinalProject.Rmd, the main final project paper
-- A license file
-- Main.bib, a main bibliography file
-- Packages.bib is a bibliographic file dynamically linked to FinalProject.Rmd with citations for R and R packages.
-- A file which includes the code for a key map
-- Readme.md, which includes the code for the document currently being read
-
-The paper includes dynamically linked academic references (see Main.bib) and citations for R packages (see Packages.bib).
-
-#### Project Paper File
-The project Paper, as stated above, can be found in FinalProject.Rmd.  
+- **Data Folder**: includes the files used for data gathering and merging as well as the full dataset of the project in Dataset.csv. Our final paper is dynamically linked to the .csv file to keep processing times to a minimum.
+- **Presentation folder**: includes the presentation with our most important findings.
+- **FinalProject.Rmd**: this is the final paper version of our project.
+- **Main.bib**: contains our main bibliography file.
+- **Packages.bib**: contains our is a bibliographic with citations for R and R packages used in our project.
 
 #### Paper Outline and Sections
 
