@@ -1,42 +1,269 @@
 ---
-title: "How to create magic in a box"
+title: "The Future of Innovation"
 author: "Oliver Bott and Benjamin Snow"
-date: "Thursday, November 27, 2014"
-output: ioslides_presentation:
-  beamer_presentation: default
+date: "Thursday, December 04, 2014"
+output: ioslides_presentation
 ---
 
-## Slide with Bullets
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Set working directory
+setwd('C:/Users/a6p/Desktop/Uni 2014/E1161 - Collaborative Research/GitHub Clone/Final_Project/Presentation/')
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
-
-## Slide with R Code and Output
-
-```{r}
-# Multibar chart
-
-# Prepare data
+library(RCurl)
+library(ggmap)
+library(maptools)
+library(dplyr)
+library(reshape2)
+library(maps)
+library(stargazer)
 library(rCharts)
-x <- data.frame(USPersonalExpenditure)
-colnames(x) <- substr(colnames(x), 2, 5)
 
-# Create chart
-a <- rCharts:::Highcharts$new()
-a$chart(type = "column")
-a$title(text = "US Personal Expenditure")
-a$xAxis(categories = rownames(x))
-a$yAxis(title = list(text = "Billions of dollars"))
-a$data(x)
+# Load .csv from GitHub repository
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
 
-# Print chart
-a$print('chart 1', include_assets = TRUE)
+# Create dynamic link to Dataset.csv created through the Data_Gathering.R
+x <- getURL('https://raw.githubusercontent.com/oliverbott/Final_Project/master/Data/Dataset.csv')
+dataset <- read.csv(text = x)
+dataset$X <- NULL
+colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "lon" , "lat" , "Followers" , "1" , "10" , "20" , "30" , "40" , "50" , "60" , "70" , "80" , "90" , "100" , "US" , "DE" , "FR" , "JP" , "hifol")
 ```
 
-## Slide with Plot
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# This code is needed to use the rCharts
 
-```{r, echo=FALSE}
-plot(cars)
+## utility function to add required assets such as CSS and JS libraries
+add_lib_assets <- function(lib, cdn = F, css = NULL) {
+    assets = get_assets(get_lib(lib), cdn = cdn)
+    if (!is.null(css)) {
+        assets$css = c(assets$css, css)
+    }
+    styles <- lapply(assets$css, function(style) {
+        sprintf("<link rel='stylesheet' href=%s>", style)
+    })
+
+    scripts <- lapply(assets$jshead, function(script) {
+        sprintf("<script type='text/javascript' src=%s></script>", script)
+    })
+    cat(paste(c(styles, scripts), collapse = "\n"))
+}
+
+# get assets from online repositories
+add_lib_assets("NVD3", cdn = TRUE, css = "http://rawgithub.com/ramnathv/rCharts/master/inst/libraries/nvd3/css/rNVD3.css")
 ```
+
+## What are we doing here?
+
+How many groups in this class have done something:
+
+- Interesting?
+
+- Creative?
+
+- **Innovative**?
+
+<br>
+Why should we be interested in innovation?
+
+- Economic growth
+
+- Sustainability
+
+
+
+## Measuring innovation
+
+Innovation has mostly been measured in **patents**, but why?
+
+- Defined moment and place in time
+
+- Legal claim of a new idea, vital for commercialization
+
+- Same *innovation* cannot be claimed twice
+
+- Shortcomings?
+
+<br>
+**Research question:**
+
+**To what extent can open innovation network data add to the measurement of innovation performance?**
+
+
+## Methodology
+
+We look at relationship between open and closed innovation
+
+Comparison of **GitHub** API users' follower numbers to **OECD** patent data in **132** cities in **16** countries
+
+<br>
+Research design has some limitations:
+
+- Timing discrepancies
+
+- Exclusion of some major tech-cities
+
+<br>
+Diffusion of GitHub - underestimating effect?
+
+
+## When is a GitHub user innovative?
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+
+fol <- dataset
+
+fol$X <- NULL
+fol$Patents <- NULL
+fol$GDP <- NULL
+fol$Population <- NULL
+fol$Pollution <- NULL
+fol$Greenspace <- NULL
+fol$Employment <- NULL
+fol$lon <- NULL
+fol$lat <- NULL
+fol$Followers <- NULL
+fol$hifol <- NULL
+
+# Rename variables for melting
+colnames(fol) <- c("METRO_ID" , "1" , "10" , "20" , "30", "40", "50", 
+                       "60", "70", "80", "90", "100" , "US" , "DE" , "FR" , "JP")
+  # 1 means 1-9 followers, 10 equals 10-19 followers etc.
+
+new <- fol
+new_2 <- reshape(new, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+
+new_2 <- subset(new_2, value>0)
+new_2$id <- NULL 
+new_2$value <- NULL
+new_2$Country <- as.factor(new_2$Country)
+x_2 <- split(new_2, new_2$Country)
+x_3 <- lapply(x_2, function (x) sapply(x, mean))
+x_3 <- data.frame(x_3)
+x_3 <- na.omit(x_3)
+
+df <- reshape(x_3, 
+                 varying = c("US", "DE", "FR", "JP"), 
+                 v.names = "value",
+                 timevar = "Country", 
+                 times = c("US", "DE", "FR", "JP"), 
+                 new.row.names = 1:1000,
+                 direction = "long")
+variable <- c(1,10,20,30,40,50,60,70,80,90,100, 
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100,
+              1,10,20,30,40,50,60,70,80,90,100)
+df <- data.frame(df, variable)
+df$id <- NULL 
+df$variable <- as.factor(df$variable)
+
+n1 <- nPlot(value ~ variable, group = "Country", data = df, type = "multiBarChart")
+n1$xAxis(axisLabel = "GitHub Follower Categories")  # add x axis label
+n1$yAxis(axisLabel = "Count")
+n1$print("chart3", cdn = TRUE, include_assets = TRUE)
+```
+
+We choose a follower cutoff at 20 and more followers
+
+## City overview - Europe
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+
+
+# Map of European cities
+europe.center <- geocode("Europe")
+eumap <- qmap(c(lon=europe.center$lon, lat=europe.center$lat), source = 'google', color="bw", zoom=4)
+eumap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+#guide legend = false or something
+# + guides(size=FALSE)
+```
+
+
+## City overview - Japan
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Map of Japanese cities
+japan.center <- geocode("Japan")
+japanmap <- qmap(c(lon=japan.center$lon, lat=japan.center$lat), source='google', color="bw", zoom=5)
+japanmap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+```
+
+
+## City overview - America
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Map of American cities
+america.center <- geocode("Dallas")
+americamap <- qmap(c(lon=america.center$lon, lat=america.center$lat), source='google', color="bw", zoom=4)
+americamap + geom_point(aes(x=lon, y=lat), data=dataset) + 
+        geom_point(aes(x = lon, y = lat, color=hifol, size=20), data = dataset) + 
+        scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
+```
+
+
+## Our Model
+
+1. $logFol_{i} = {\beta}_0 +{\beta}_1 logPat_{i} + {\beta}_2 Controls_{i} +{\epsilon}_{i}$
+
+2. $logPat_{i} = {\beta}_0 +{\beta}_1 logFol_{i} + {\beta}_2 Controls_{i} +{\epsilon}_{i}$
+
+
+```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+countryset <- data.frame (id=1:132)
+
+countryset$METRO_ID <- c('Vienna', 'Graz', 'Linz', 'Brussels', 'Antwerp', 'Ghent', 'Liege', 'Berlin', 'Hamburg', 'Munich', 'Cologne', 'Frankfurt', 'Essen', 'Stuttgart', 'Leipzig', 'Dresden', 'Dortmund', 'Dusseldorf', 'Bremen', 'Hanover', 'Bochum', 'Freiburg', 'Augsburg', 'Bonn', 'Karlsruhe', 'Duisburg', 'Mannheim', 'Aachen', 'Copenhagen', 'Tallinn', 'Madrid', 'Barcelona', 'Valencia', 'Seville', 'Zaragoza', 'Malaga', 'Palmas', 'Bilbao', 'Helsinki', 'Paris', 'Lyon', 'Toulouse', 'Strasbourg', 'Bordeaux', 'Nantes', 'Lille', 'Montpellier', 'Rennes', 'Grenoble', 'Toulon', 'Marseille', 'Nice', 'Rouen', 'Rome', 'Naples', 'Turin', 'Palermo', 'Genova', 'Florence', 'Bologna', 'Catania', 'Venice', 'Mito', 'Tokyo', 'Kofu', 'Nagoya', 'Numazu', 'Osaka', 'Okayama', 'Kurashiki', 'Fukuyama', 'Hiroshima', 'Takamatsu', 'Monterrey', 'Irapuato', 'Hague', 'Amsterdam', 'Rotterdam', 'Utrecht', 'Oslo', 'Lisbon', 'Porto', 'Stockholm', 'Gothenburg', 'Malmo', 'Seattle', 'Portland', 'Minneapolis', 'Milwaukee', 'Madison', 'Buffalo', 'Albany', 'Detroit', 'Boston', 'Chicago', 'Providence', 'Toledo', 'Cleveland', 'Omaha', 'Akron', 'Pittsburgh', 'Harrisburg', 'Philadelphia', 'Columbus', 'Denver', 'Indianapolis', 'Dayton', 'Baltimore', 'Cincinnati', 'Washington', 'Louisville',  'Wichita', 'Richmond', 'Fresno', 'Nashville', 'Tulsa', 'Raleigh', 'Charlotte', 'Albuquerque', 'Memphis', 'Columbia', 'Atlanta', 'Phoenix',  'Dallas', 'Charleston', 'Tucson', 'Austin', 'Jacksonville', 'Houston', 'Orlando', 'Tampa', 'Miami')
+countryset$id <- NULL
+
+countryset$Country <- c('Austria', 'Austria', 'Austria', 'Belgium', 'Belgium', 'Belgium', 'Belgium', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Germany', 'Denmark', 'Estonia', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Spain', 'Finland', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'France', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Italy', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Japan', 'Mexico', 'Mexico', 'Netherlands', 'Netherlands', 'Netherlands', 'Netherlands', 'Norway', 'Portugal', 'Portugal', 'Sweden', 'Sweden', 'Sweden', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States',  'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States',  'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States', 'United States')
+
+datasetscat <- merge(dataset , countryset , by=c("METRO_ID")) 
+
+
+n2 <- nPlot(Patents ~ hifol, data = datasetscat, type = "scatterChart", 
+    group = "Country")
+n2$xAxis(axisLabel = "GitHub Users with >20 Followers")  # add x axis label
+n2$yAxis(axisLabel = "Patent Counts")
+n2$print("nvd3Scatter", cdn = TRUE, include_assets = TRUE)
+```
+
+## Findings
+
+Significant positive correlation between   patents and followers **vanishes** when adding controls
+
+<br>
+Both follower number and patents are positively correlated to 
+
+- GDP
+
+- Relative importance of city
+
+- Degree of deindustrialization
+
+<br>
+GitHub diffusion higher in United States, lowest in Japan
+
+
+## Implications
+
+**Preliminarily** using open innovation data is a potentially innovative way of measuring innovation (see what we did there?) 
+
+- The field in the future may move away from pure patents perspective
+
+- Use of API user data for other collaborative networks
+
+- Considering fast diffusion of GitHub: are we too early?
+
+## Question time
+<br>
+<br>
+![alt text](http://www.reactiongifs.com/wp-content/uploads/2013/03/oh-boy.gif)
+
 
