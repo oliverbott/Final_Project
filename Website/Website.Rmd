@@ -73,9 +73,9 @@ We wondered to what extent innovation could be measured from looking at people w
 
 We used a website called [GitHub.com](https://github.com/), which allows people to show new web development projects openly online, and got all of the counts for how many people were following other people. Thereby we count the relative importance of people´s work, which we see as an innovation measure.
 
-We thought that these 'follower numbers' seemed like a good thing to measure because if people are following another person on GitHub, it means that the person is doing something interesting that people want to see in the future, and expect new or interesting ideas from them.
+We thought that these 'follower numbers' seemed like a good thing to measure because, if people are following another person on GitHub, it means that the person is doing something interesting that people want to see in the future, and expect new or interesting ideas from them.
 
-With a range of 135 cities in 16 countries, we take the follower counts for all GitHub users and compare them to traditional patent data.  Since we are interested in innovation more generally, we also look at a few other indicators, such as economic output, air pollution, available urban greenspace, and the importance of the city, to find out whether these other indicators affect one or both measures of innovation.
+With a range of 132 cities in 16 countries, we take the follower counts for all GitHub users and compare them to traditional patent data.  Since we are interested in innovation more generally, we also look at a few other indicators, such as economic output, air pollution, available urban greenspace, and the importance of the city, to find out whether these other indicators affect one or both measures of innovation.
 
 Let´s look at how many GitHub users there are in different countries and compare their follower numbers for the United States, Germany, France and Japan.
 
@@ -169,7 +169,7 @@ japanmap + geom_point(aes(x=lon, y=lat), data=dataset) +
         scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
-In comparison, cities in Japan show a relatevely low GitHub diffusion with only few users with over 20 followers, one exception being Tokyo.
+In comparison, cities in Japan show a relatively low GitHub diffusion with only few users that people like to follow, one exception being Tokyo. This could also be due to the fact that there are much fewer people using GitHub in Japan.
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE, fig.width=7, fig.height=7}
 # Map of American cities
@@ -180,7 +180,7 @@ americamap + geom_point(aes(x=lon, y=lat), data=dataset) +
         scale_colour_gradient(low="#2c7fb8", high="#f03b20") + guides(size=FALSE)
 ```
 
-In America, many cities feature comparatively many GitHub users with over 20 followers, for example in Madison, Portland, Seattle and Austin.
+In America, many cities feature comparatively many GitHub users with over 20 followers, for example in Madison, Portland, Seattle and Austin. Some of the highest GitHub user activity is found in the United States, which is not surprising when considering that GitHub is a research platform developed in the United States.
 
 ---
 
@@ -217,7 +217,7 @@ It's hard to tell at this point whether we are measuring the same or a different
 
 ### <span style="color:#2c7fb8">Want to find out more?</span>
 
-If you are interested in **innovation** and want to find out more on how to use GitHub or undertake similar research using the rStudio software, visit our [GitHub repository](https://github.com/oliverbott/Final_Project) with our more detailed research findings and [rStudio](http://www.rstudio.com/).
+If you are interested in **innovation** and want to find out more on how to use GitHub or undertake similar research using the RStudio software, visit our [GitHub repository](https://github.com/oliverbott/Final_Project) with our more detailed research findings and the [RStudio website](http://www.rstudio.com/).
 
 *Pictures taken from http://www.gettyimages.com/*
 
