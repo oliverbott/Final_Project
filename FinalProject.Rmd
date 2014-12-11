@@ -258,7 +258,7 @@ barchart(value ~ variable, groups=Country, df, auto.key = list(columns = 4),
 
 ## Descriptive Statistics
 
-The summary statistics in Table 2 show wide ranging distributions of the observations in the data set. Since the data cleaning eliminated all values equal to or lower than zero, a log transformation seems to be a strategy that could strengthen the analysis. The *car* package [@R-car] is used to examine the relationship, distribution, and normality of all variables included in the model, to understand which regression model would be most appropriate. The distribution of many variables are highly skewed (see Figure 1). All of the GitHub based variables 'nofollowing', 'medfollowing', and 'hifollowing' have significant right skews, as do nearly all of the observed variables, excluding Pollution, GDP and Patents, which come closer to a normal distribution. It seems as if already in the scatterplot a slight correlation between Patents and Followers can be observed. To normalize for the skewed distributions, the log of the variables is deemed necessary to increase the explanatory power of our inferential statistics.  
+The summary statistics in Table 2 show wide ranging distributions of the observations in the data set. The *car* package [@R-car] is used to examine the relationship, distribution, and normality of all variables included in the model, to understand which regression model would be most appropriate. The distribution of many variables are highly skewed (see Figure 1). The GitHub based variable 'Users', our main variable of interest, is skewed to the right, as do nearly all of the observed variables, excluding Pollution, GDP and Patents, which come closer to a normal distribution. It seems as if already in the scatterplot a weak correlation between Patents and Users can be observed. To normalize for the skewed distributions, the log of the variables is deemed necessary to increase the explanatory power of our inferential statistics.  
 
 
 ```{r Summary Statistics of selected variables, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
@@ -267,7 +267,7 @@ library(stargazer)
 
 sumdat <- subset(dataset, select = -c(1,8:9,22:25) )
 
-colnames(sumdat) <- c("Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , "Users with >0 Followers" , "1-9 Followers" , "10-19 Followers" , "20-29 Followers" , "30-39 Followers" , "40-49 Followers" , "50-59 Followers" , "60-69 Followers" , "70-79 Followers" , "80-89 Followers" , "90-99 Followers" , ">100 Followers" , "Users with >20 Followers")
+colnames(sumdat) <- c("Patents" , "GDP" , "Population", "Greenspace", "Employment" , "Pollution" , ">0 Followers" , "1-9 Followers" , "10-19 Followers" , "20-29 Followers" , "30-39 Followers" , "40-49 Followers" , "50-59 Followers" , "60-69 Followers" , "70-79 Followers" , "80-89 Followers" , "90-99 Followers" , ">100 Followers" , ">20 Followers")
 
 stargazer(sumdat[,], summary=TRUE,
   title = 'Summary statistics',
@@ -287,7 +287,7 @@ car::scatterplotMatrix(scatmat[,],
 
 ```
 
-The residual plot between patents and users with high follower numbers (see Figure 2) depicts a relatively random pattern, which indicates that a linear regression model provides a decent fit to the inferential statistics of the data set.
+The residual plot between Patents and Users (see Figure 2) depicts a relatively random pattern, which indicates that a linear regression model provides a decent fit to the inferential statistics of the data set.
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 
@@ -356,6 +356,15 @@ $$   logU_{l} = {\beta}_0 +{\beta}_1 logP_{l} + {\beta}_2 logGDP_{l} + {\beta}_3
 stargazer::stargazer(D1, D2, D3, covariate.labels = labelsD,
   title = 'Regression Estimates of GitHub Collaborative Activity',
   digits = 2, type ='latex', single.row=TRUE)
+```
+
+```{r Scatterplot, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
+# Simple Scatterplot
+attach(datasetlog)
+plot(Users, Patents, main="Scatterplot Example", 
+    xlab="GitHub users with >20 followers ", ylab="Patents", pch=19)
+abline(lm(Patents~Users), col="red") # regression line (y~x) 
+lines(lowess(Patents,Users), col="blue") # lowess line (x,y)
 ```
 
 
