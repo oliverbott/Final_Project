@@ -1,7 +1,7 @@
 ---
 title: 'Open vs. closed innovation: using online network data to measure innovation'
 author: "Benjamin Snow and Oliver Bott"
-date: "14 November 2014"
+date: "12 December 2014"
 linestretch: 2
 output:
   pdf_document:
@@ -44,8 +44,12 @@ repmis::LoadandCite(PackagesUsed, file = "Packages.bib", install = FALSE)
 
 ```
 
-> **Abstract:** This research project examines the potential benefit of using open knowledge data in the form of collaborative online network data as an innovation indicator. By doing so, this work critically assesses current innovation indicators, namely patent data, in the hope of offering new alternatives for measuring and understanding innovation. The stated research question is:  *To what extent can open innovation network data add to the measurement of innovation performance?* This study uses Github API follower data and patent data in 135 countries to compare the two, finding no correlation once controls were taken into account. However, several controls, including industrialization and the relative importance of a city in its national context were both found to be correlated to both patent data and open innovation data, suggesting that both types of innovation, if that is what patent and/or follower data were showing, bear fruit in similar circumstances. We suggest that, while the study does not conclusively determine a future metric for measuring open innovation or comparing types of innovation, it does suggest a potential expansion of the current field, which could potentially more accurately represent innovation in the open technological age.
 
+__________________________________________________________________________________________________
+
+> **Abstract:** This research project examines the potential benefit of using open knowledge data in the form of collaborative online network data as an innovation indicator. By doing so, this work critically assesses current innovation indicators, namely patent data, in the hope of offering new alternatives for measuring and understanding innovation. The stated research question is:  *To what extent can open innovation network data add to the measurement of innovation performance?* This study uses Github API follower data and patent data in 135 countries to compare the two, finding no correlation once controls are included in the model. However, several controls, including pollution and the relative importance of a city in its national context are both found to be correlated to both patent data and open innovation data, suggesting that both types of innovation bear fruit in similar circumstances. We suggest that, while the study does not conclusively determine a future metric for measuring open innovation or comparing types of innovation, it does suggest a potential expansion of the current field of measuring innovation, which could potentially more accurately represent innovation in the open technological age.
+
+__________________________________________________________________________________________________
 
 # Introduction
 
@@ -71,25 +75,25 @@ Despite the usefulness of patent data, @taylor2004 finds several limitations. In
 
 ## Using Network Data as Innovation Indicator
 
-Current developments in research indicate that "characteristics that were important last century may well no longer be so relevant today and indeed may even be positively misleading" [@freeman2009, 3]. A shift away from the belief that innovation only occurs in professional R&D labs has occured, a change towards what @freeman2009 calls "research without frontiers" (p.13). Even though networks and research collaborations become increasingly important, there have been relatively few studies focusing on network data [see @breschi2005]. Even where research networks have been analyzed, the focus is too often on economically useful knowledge [see @acs2002]. Other studies focusing on research networks focus on other protected collaborative networks [see @ponds2010]. In an exception to this standard, @senghore2014 attempt to answer whether social network statistics act as indicators of innovation performance within a network, and which statistics could predict innovation performance. Using @Gnyawali2013's use models on cluster and network effects to analyze multipartite social networks at mass collaboration events, gathering their data from NASA's International Space Apps Challenge. They use graph theory models constructed from affiliation networks finding (preliminarily) that distributions likely correlate to key aspects [@senghore2014].
+Current developments in research indicate that "characteristics that were important last century may well no longer be so relevant today and indeed may even be positively misleading" [@freeman2009, 3]. A shift away from the belief that innovation only occurs in professional R&D labs has occured, a change towards what @freeman2009 calls "research without frontiers" (p.13). Even though networks and research collaborations become increasingly important, there have been relatively few studies focusing on network data [see @breschi2005]. Even where research networks have been analyzed, the focus is too often on economically useful knowledge [see @acs2002]. Other studies focusing on research networks focus on other protected collaborative networks [see @ponds2010]. In an exception to this standard, @senghore2014 attempt to answer whether social network statistics act as indicators of innovation performance within a network, and which statistics could predict innovation performance. Using @Gnyawali2013's use models on cluster and network effects to analyze multipartite social networks at mass collaboration events, gathering their data from NASA's International Space Apps Challenge. They use graph theory models constructed from affiliation networks finding (preliminarily) that distributions likely correlate to key aspects [@senghore2014].  
 
 Since @freeman2009, among others, calls for the continuous improvement of innovation measurement, this work seeks to contribute to the refinement of innovation indicators. The purpose of this study is to explore the conceptual and statistical viability of a new metric by which we can measure innovation. 
 
 ## Fundamental Drivers of Innovation
 
-While most previous studies of measuring innovation, as seen above, focus on the inputs (R&D) or outputs (GDP) of innovation, which this study attempts to reconsider, other research has attempted to define what actually drives or fosters innovation. While not the main focus of this study, which looks at measurement rather than impetus, an examination of what is considered plausible as a cause of innovation seems highly relevant. 
+While most previous studies of measuring innovation, as seen above, focus on the inputs (R&D) or outputs (GDP) of innovation, which this study attempts to reconsider, other research has attempted to define what actually drives or fosters innovation. While not the main focus of this study, which looks at measurement rather than impetus, an examination of what is considered plausible as a cause of innovation seems highly relevant.  
 
-When considering innovation drivers a common culprit is creativity. While this may seem somewhat redundant, as innovation and creativity often in common langauge are used synonymously, for academic purposes innovation is the output of, and requires, creativity, but must be taken seperately.  However, the importance of creativity to innovation, and as a contributing predictor or cause of innovation has often been examined. @Florida2003, when discussing the creative economy, cites the importance of creativity not only in the science and technological fields, but the wider economy as well. He emphasizes the importance of schools and universities fostering creativity, and additionally notes the importance of geography and proximity to creative innovation, naming major global cities and imploring readers to move to one of these hubs, as the innovative as well as economic divide between these hubs and the rest of the world grows wider.
+When considering innovation drivers, a common culprit is creativity. While this may seem somewhat redundant, as innovation and creativity often in common langauge are used synonymously, for academic purposes innovation is the output of, and requires, creativity, but must be taken seperately.  However, the importance of creativity to innovation, and as a contributing predictor or cause of innovation has often been examined. @Florida2006, when discussing the creative economy, cites the importance of creativity not only in the science and technological fields, but the wider economy as as a whole. He emphasizes the importance of schools and universities fostering creativity, and additionally notes the importance of geography and proximity to creative innovation, naming major global cities and imploring readers to move to one of these hubs, as the innovative as well as economic divide between these hubs and the rest of the world grows wider. To attract creative talent, deemend necessary for innovation, cities need to have certain characteristics [@Florida2006].  
 
-## Additional Potential Variables Affecting Innovation
+To study not only the direct relationship between patent and open innovation requires also taking into account other variables which either must be controlled for when evaluating both forms of innovation, or which could explain one or another form of innovation in a specific locale, to explain what attributes of a location predict or explain innovation rather than simply measuring it. Many studies have attempted to evaluate different attributes of innovative regions, with policymakers wishing to find the elusive set of policies or conditions under which innovation flourishes.  
 
-To study not only the direct relationship between patent and open innovation requires also taking into account other variables which either must be controlled for when evaluating both forms of innovation, or which could explain one or another form of innovation in a specific locale, to explain what attributes of a location predict or expalin innovation rather than simply measuring it. Many studies have attempted to evaluate different attributes of innovative regions, with policymakers wishing to find the elusive set of policies or conditions under which innovation flourishes. @porter1991 originally hypothesized that relationship to the environment, and specifically environmental regulation could have a positive effect on innovation, as it forces the hand of domestic firms to be more innovative than their foriegn counterparts, to remain competitive despite the increased regulation. However, this initial hypothesis was not found in the evidence when tested by @Jaffe1997, finding little evidence that industries become more inventive due to compliance costs. Wider examinations of the specific environmental conditions of a locale, its pollution level or amount of greenspace, for instance, affect peoples level of innovation in these areas, or whether high mobility of labor allows innovators to selectively choose where they innovate. Along this line of thinking @Florida2003, mentioned previously in relation to creativity and innovation, suggests that as creativity is a flow rather than a stock, and requires an open system and longterm development, it can only take place in places where people can easily get to, lead the lives they want, and express themselves.
+@porter1991 originally hypothesized that relationship to the environment, and specifically environmental regulation could have a positive effect on innovation, as it forces the hand of domestic firms to be more innovative than their foreign counterparts, to remain competitive despite the increased regulation. However, this initial hypothesis was not found in the evidence when tested by @jaffe1997environmental, finding little evidence that industries become more inventive due to compliance costs. Wider examinations of the specific environmental conditions of a locale, its pollution level or amount of greenspace, for instance, affect peoples level of innovation in these areas, or whether high mobility of labor allows innovators to selectively choose where they innovate. Along this line of thinking @Florida2006, mentioned previously in relation to creativity and innovation, suggests that as creativity is a flow rather than a stock, and requires an open system and longterm development, it can only take place in places where people can easily get to, lead the lives they want, and express themselves.  
 
-Past environmental conditions, labor conditions have long been studied as potentially relevant to the rate of innovation.  Most often oversimplified as a cause and effect statement "Does technology create or destroy jobs" in which innovation in technology is the culbrit of economic disruptions. However, @Pianta2005 instead examines how innovation and employment effect each other when composition of skills and wages, and employment are taken into account, but often looks at innovation on the organizational, rather than the societal, level.
+Past environmental conditions, labor conditions have long been studied as potentially relevant to the rate of innovation.  Most often oversimplified as a cause and effect statement "Does technology create or destroy jobs" in which innovation in technology is the culbrit of economic disruptions. However, @pianta2005innovation instead examines how innovation and employment effect each other when composition of skills and wages, and employment are taken into account, but often looks at innovation on the organizational, rather than the societal, level. This is why this study also takes into account variables that can explain innovation intensity in a given location, namely the GDP, total urban population, urban greenspace available, pollution levels and relative importance of a city in relation to its national context. Empirical findings in the literature suggest that these factors can affect the attraction and retaining of creative talent fundamental for any form of innovation activity.
 
 ## Research Question
 
-In light of the above mentioned state of innovation research we plan to examine the following research question: *To what extent can open innovation network data add to the measurement of innovation performance?*
+In light of the above mentioned state of innovation research we plan to examine the following research question: *To what extent can open innovation network data add to the measurement of innovation performance?*  
 
 Exploiting technological advances related to the increasing use of the internet and open research platforms like GitHub, we plan to explore whether open knowledge networks can help refine currently limited innovation performance measurements.
 
@@ -98,15 +102,15 @@ Exploiting technological advances related to the increasing use of the internet 
 
 ## Data Gathering
 
-To examine open network data against patent data, this study relies on two key data sources and uses the statistical tool *R* [@CiteR] for the data analysis. We take city-level data of 135 cities overall, ranging from sixteen different countries.
+To examine open network data against patent data, this study relies on two key data sources and uses the statistical tool *R* [@CiteR] for the data analysis. We take city-level data of 132 cities overall, ranging from sixteen different countries.  
 
-**API network data**
+**API network data**  
 
-The first data set is obtained by using the Application Programming Interface (API) data for open networks. To examine open innovation, data is obtained from the the git repository web-based hosting service GitHub[^GIT]. Its use of source code management makes it a commonly used software development collaboration tool. Since most of the repositories are openly accessible one can use API tools to track the popularity of contributors through a process called following. The *R* [@CiteR] packages *httr* [@R-httr], *dplyr* [@R-dplyr] and *rjson* [@R-rjson] allow for compiling data on the follower counts and locations associated with different users and online reponsitories. 
+The first data set is obtained by using the Application Programming Interface (API) data for open networks. To examine open innovation, data is obtained from the the git repository web-based hosting service GitHub[^GIT]. Its use of source code management makes it a commonly used software development collaboration tool. Since most of the repositories are openly accessible one can use API tools to track the popularity of contributors through a process called following. The *R* [@CiteR] packages *httr* [@R-httr], *dplyr* [@R-dplyr] and *rjson* [@R-rjson] allow for compiling data on the follower counts and locations associated with different users and online reponsitories.  
 
-**Closed innovation OECD patent data**
+**Closed innovation OECD patent data**  
 
-For closed innovation we use city-level patent data, taken from the Organization for Economic Co-operation and Development[^OECD]. Patent Cooperation Treaty (PCT) patent data are used to track internationally patented inventions. The *R* [@CiteR] package *rsdmx* [@R-rsdmx] is necessary for obtaining the OECD dataset.  As we are interested in patent data, we work with data indicating the PCT patent applications per 10,000 inhabitants. From the same database, we also use GDP per capita data and environmental data, as other variables thought potentially relevant in explaining differences in innovation.
+For closed innovation we use city-level patent data, taken from the Organization for Economic Co-operation and Development[^OECD]. Patent Cooperation Treaty (PCT) patent data are used to track internationally patented inventions. The *R* [@CiteR] package *rsdmx* [@R-rsdmx] is necessary for obtaining the OECD dataset.  As we are interested in patent data, we work with data indicating the PCT patent applications per 10,000 inhabitants. From the same database, we also use GDP per capita data and environmental data, as other variables thought potentially relevant in explaining differences in innovation.  
 
 To allow for reproducibility of this research, the code for gathering and cleaning the data is stored in a separate .R file and can be accessed [here](https://raw.githubusercontent.com/oliverbott/Final_Project/master/Data/Data_Gathering_Final.Rmd). Packages to clean, analyze and visualize the data include *R-car* [@R-car], *R-ggmap* [@R-ggmap], *ggplot2* [@R-ggplot2], *maps* [@R-maps], *maptools* [@R-maptools], *Rcpp* [@R-Rcpp], *rCharts* [@R-rCharts], *RCurl* [@R-RCurl], *repmis* [@R-repmis], *reshape2* [@R-reshape2] and *stargazer* [@R-stargazer].
 
@@ -132,7 +136,7 @@ colnames(dataset) <- c("METRO_ID" , "Patents" , "GDP" , "Population", "Greenspac
 
 ## Data Sources
 
-As can be seen in Table 1, the analysis is based on cross-sectional data with varying time frames. There are several limitations to the data used in this study. First, the time discrepency between different aspects of the data used, which range from 2005 to 2014, reflect an obvious data comparability constraint. The GitHub user data is taken from December 2014. Secondly, in this analysis for data availability and access reasons, there are some prominent innovation hubs excluded, including San Fransisco and New York. Any found significance will need to take this into account. Last, and perhaps most significantly, when comparing the two measures of innovation, it should be noted that patent data reflects innovation across all types of sectors, whereas Github data mainly reflects innovation within the software technology domain.
+As can be seen in Table 1, the analysis is based on cross-sectional data with varying time frames. There are several limitations to the data used in this study. First, the time discrepency between different aspects of the data used, which range from 2005 to 2014, reflect an obvious data comparability constraint. The GitHub user data is taken from December 2014. Secondly, in this analysis for data availability and access reasons, there are some prominent innovation hubs excluded, including San Fransisco and New York. Any found significance will need to take this into account. Last, and perhaps most significantly, when comparing the two measures of innovation, it should be noted that patent data reflects innovation across all types of sectors, whereas Github data mainly reflects innovation within the software technology domain.  
 
 However, in defense of the dataset employed - with regard to the time discrepancy issue, many of the variables which are from different times would likely have limited change in a decade, for instance greenspace or industrialization are not aspects of a city which would change drastically. In regards to the exclusion of a few major tech spaces, which non-inclusion does not help the dataset, the use of over 130 cities should allow trends to be seen despite imperfect data. While the exclusion of some important innovation hubs like New York and San Fransisco should be taken into account, it seems implicitly that the studies finding would actually serve to provide better more general trends and relationships, by excluding tech havens and rather looking more broadly at the pace of innovation in most of the world.
 
@@ -167,17 +171,17 @@ knitr::kable(limtab)
 
 Several potential explanatory variables are collected besides the patent and GitHub data. These variables were selected as they were thought to potentially show cause for why innovation, be it open or closed, occurs in a certain city, but needed to be variables that would not introduce endogeneity to the model. 
 
-**Greenspace**: The Greenspace indicator is deemed potentially relevant in that with a choice of city to innovate in (assuming some level of geographic labor flexibility) there might be a recreational value necessary for attracting talent. Put another way, green cities could attract innovators.
+**Greenspace**: The Greenspace indicator is deemed potentially relevant in that with a choice of city to innovate in (assuming some level of geographic labor flexibility) there might be a recreational value necessary for attracting talent. Put another way, green cities could attract innovators.  
 
-**Pollution**: The Pollution indicator is taken both as a broad proxy for industrialization (leaving aside a discussion of to what degree pollution is from industry vs cars), that it seemed worth exploring whether a certain level of pollution discouraged talent attraction of innovators on the city-level.
+**Pollution**: The Pollution indicator is taken both as a broad proxy for industrialization (leaving aside a discussion of to what degree pollution is from industry vs cars), that it seemed worth exploring whether a certain level of pollution discouraged talent attraction of innovators on the city-level.  
 
-**Employment**: The Employment indicator is taken largely as an indication of that city´s significance within its national context. Understanding whether a city would likely be viewed as the most prominent or significant, and whether this effects innovation, or whether innovation takes place in smaller provincial cities, is worther understanding.  Additionally, seeing if the type of innovation (open vs. closed) depends on the significance of the city is viewed as relevant.
+**Employment**: The Employment indicator is taken largely as an indication of that city´s significance within its national context. Understanding whether a city would likely be viewed as the most prominent or significant, and whether this effects innovation, or whether innovation takes place in smaller provincial cities, is worther understanding.  Additionally, seeing if the type of innovation (open vs. closed) depends on the significance of the city is viewed as relevant.  
 
-**GDP**: A GDP indicator explores whether the size of the economy, or wealth generally, is related to innovation on the city-level, and if it is indicator of one type of innovation over another.
+**GDP**: A GDP indicator explores whether the size of the economy, or wealth generally, is related to innovation on the city-level, and if it is indicator of one type of innovation over another.  
 
-**Population**: A Population variable explores whether there is a necessary city size threshold which corresponds to innovation, and also is taken for controlling for across cities, to find patent data or GitHub data per a number of people in a city.
+**Population**: A Population variable explores whether there is a necessary city size threshold which corresponds to innovation, and also is taken for controlling for across cities, to find patent data or GitHub data per a number of people in a city.  
 
-**GitHub user follower counts**: The number of GitHub users with a certain follower count acts as our main variable of interest. To determine which follower range can be deemed as an indicator for innovative activities,  we compile follower data in various categories ranging from users with 1-9, 10-19 up to 90-99 and over 100 followers (per 10,000 population). We choose GitHub users with more than 20 followers as our main indicator of high collaboration and innovative activity, as the threshold of 20 represents a drastic decline in user counts as can be seen in Figure 1.
+**GitHub user follower counts**: The number of GitHub users with a certain follower count acts as our main variable of interest. To determine which follower range can be deemed as an indicator for innovative activities,  we compile follower data in various categories ranging from users with 1-9, 10-19 up to 90-99 and over 100 followers (per 10,000 population). We choose GitHub users with more than 20 followers as our main indicator of high collaboration and innovative activity, as the threshold of 20 represents a drastic decline in user counts as can be seen in Figure 1.  
 
 
 ```{r Follower Cutoff Selection, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
@@ -348,27 +352,37 @@ labelsD <- c('Users', 'GDP', 'Population', 'Greenspace', 'Employment', 'Pollutio
 
 ## Inferential Statistics
 
-As a relationship between patent and follower data is observed, further inferential statistical analysis attempts to find the common predictor or cause of innovation in both patent and open data. The second regression model hence includes the open innovation indicator now as the dependent variable *F* and is expressed below using similar notation and logic as stated above:
+This study uses an ordinary least squares (OLS) model to examine the relationship between patent and highly followed open data sources.  
 
-$$   logU_{l} = {\beta}_0 +{\beta}_1 logP_{l} + {\beta}_2 logGDP_{l} + {\beta}_3 logPop_{l} + {\beta}_4 logG_{l} + {\beta}_4 logE_{l} + {\beta}_4 logPol_{l} + {\epsilon}_{l}$$
+The first regression model includes the open innovation indicator as the dependent variable *U* and can be viewed as:  
+
+$$   logU_{l} = {\beta}_0 +{\beta}_1 logP_{l} + {\beta}_2 logGDP_{l} + {\beta}_3 logPop_{l} + {\beta}_4 logG_{l} + {\beta}_4 logE_{l} + {\beta}_4 logPol_{l} + {\epsilon}_{l}$$  
+
+Here *U* is the GitHub users with more than 20 followers variable expected in a given city *i*.  
+
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-stargazer::stargazer(D1, D2, D3, covariate.labels = labelsD,
-  title = 'Regression Estimates of GitHub Collaborative Activity',
+stargazer::stargazer(F1, F2, F3, covariate.labels = labelsF,
+  title = 'Regression Estimates of GitHub user couts',
   digits = 2, type ='latex', single.row=TRUE)
 ```
+
+As can be seen in Table 3, the variable User is strongly positively correlated with the Patent variable (at a significance level of p<0.01). Without including controls, a 1% increase in patents corresponds to a 0.37% increase in GitHub users with over 20 followers. However, the correlation becomes much smaller and insignificant when adding control variables. The GDP (at a significance level of p<0.01) and relative significance of a city in its national context, represented by the Employment variable, (at a significance level of p<0.1) are positively correlated with GitHub users, while the pollution levels negatively correlate with our User variable (at a significance level of p<0.05). The urban greenspace and total population size of the city do not seem to have a correlation with GitHub users.  
+
+When adding country dummies, it becomes clear that both the United States and France seem to have more GitHub users than other countries in the sample. The adjusted R squared value indicates that, for our final specification of the first model, about 30% of the variation in users in our sample is explained through the model. The weak relationship between GitHub users and patents also becomes evident in the scatterplot in Figure 4, where we can witness a wide dispersion between the two variables. The distribution of the data points indicates that some cities have relatively many GitHub users with more than 20 followers while some cities have close to zero users per 10,000 population.  
+
 
 ```{r Scatterplot, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 # Simple Scatterplot
 attach(datasetlog)
-plot(Users, Patents, main="Scatterplot Example", 
+plot(Users, Patents, main="Scatterplot for GitHub users and patents", 
     xlab="GitHub users with >20 followers ", ylab="Patents", pch=19)
 abline(lm(Patents~Users), col="red") # regression line (y~x) 
-lines(lowess(Patents,Users), col="blue") # lowess line (x,y)
 ```
 
+Although there does not seem to be a direct relationship between patent and GitHub user data, further inferential statistical analysis attempts to find the common predictor or cause of innovation in both patent and open data. Our second model hence uses patents as the dependent variable *P* and is expressed below using similar notation and logic as stated above:  
 
-As can be seen in Table 4, again Patents are strongly positively correlated with Follower numbers (at a significance level of p<0.01). Both Pollution and Employment are negatively correlated (at a significance level of p<0.05). The adjusted R squared value indicates that about 36% of the variation in follower numbers in our sample is explained through the model.
+$$   logP_{i} = {\beta}_0 +{\beta}_1 logU_{i} + {\beta}_2 logGDP_{i} + {\beta}_3 logPop_{i} + {\beta}_4 logG_{i} + {\beta}_5 logE_{i} + {\beta}_6 logPol_{i} + {\epsilon}_{i}$$  
 
 ```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
 stargazer::stargazer(P1, P2, P3, covariate.labels = labelsP,
@@ -376,39 +390,21 @@ stargazer::stargazer(P1, P2, P3, covariate.labels = labelsP,
   digits = 2, type ='latex', single.row=TRUE)
 ```
 
+Similar to the first model, the regression output for our second model (see Table 4) demonstrates a positive relationship between patent data and GitHub users (at a significance level of p<0.01), but only when no controsl are added. In the full model specification, again GDP and relative importance of a city in its national context positive correlate with Patents. Interestingly, however, the pollution level is also positively correlated to Patents (at a significance level of p<0.05).  
 
-This study plans to use an ordinary least squares (OLS) model to examine the relationship between patent and highly followed open data sources. The model for the regression analysis can be viewed as:
-
-$$   logP_{i} = {\beta}_0 +{\beta}_1 logU_{i} + {\beta}_2 logGDP_{i} + {\beta}_3 logPop_{i} + {\beta}_4 logG_{i} + {\beta}_5 logE_{i} + {\beta}_6 logPol_{i} + {\epsilon}_{i}$$
-
-```{r, echo=FALSE, results='asis', warning=FALSE, error=FALSE, message=FALSE}
-stargazer::stargazer(F1, F2, F3, covariate.labels = labelsF,
-  title = 'Regression Estimates of GitHub Collaborative Activity',
-  digits = 2, type ='latex', single.row=TRUE)
-```
-
-
-Here *P* is the patent intensity expected in a given city *i*. As seen in the regression output Table 3, a positive relationship between patent data and GitHub data is observed (at a significance level of p<0.01), though most significantly between patent data and those with high numbers of followers on GitHub. In the full model specification, a 1 percent increase in GitHub users with more than 25 followers (per 10,000 population) corresponds with a 1.76 percent increase in PCT patents (per 10,000 population). Additionally, Employment seems also to be positively correlated with patents, supporting the initial hypothesis that the significance of a city in a national context is strongly related to patent activities. Pollution is negatively correlated with patent data at a high significance level, while the variables GDP, Population and Greenspace do not seem to have a significant effect on patent activity.
-
-
-The findings endorse the implicit hypothesis of the study that open data sources seem to show innovation in a similar but perhaps distinct manner to patent data and could hence enrich the measurement of innovation. These found relationships offer a glimps into the 'throughput' of open innovation (in the form of collaboration) rather than the 'output' which patent data reflects (in the form of commercialization of knowledge).  While significant relationships are found with innovation, other unaccounted for variables can be expected to contribute but are not currently accounted for in the model.
-
-# Discussion
-
-
-# Outlook
-
-From this analysis it becomes apparent that the introduction of various dummy controls could help explain the spurious relationsbetween patent and network data. This could also help to find the more fundamental factors influencing innovation activity. Hence, to better answer the stated research question, it seems sensible to control for English speaking countries, as one would suspect the spread of GitHub to be greatest there. Also, one could introduce dummy controls for the overall economic development of the country, assuming that software development is clustered in these locations. In addition, including a map visualization with information on location of the cities in the sample could improve this work.
+The inferential statistics do not support our initial hypothesis that there is a direct link between open and closed innovation. Still we can see from the analysis that both patents and GitHub users innovative activities require similar conditions, which indicates that there is an indirect link between the two variables of interest. When interpreting our findings, one needs to aware that there might be other unaccounted for variables to contribute to patents and user couts but are not currently accounted for in the model.  
 
 # Conclusions
 
-The findings endorse the implicit hypothesis of the study that open data sources seem to show innovation in a similar but perhaps distinct manner to patent data and could hence enrich the measurement of innovation. While no relationship was found between patent data and follower data, it remains an open question whether this means that follower data is a poor measurement for innovation while patent data is, or whether potentially they measure a different type of innovation. It seems plausible that github data offers a glimps into the 'throughput' of open innovation (in the form of collaboration) rather than the 'output' which patent data reflects (in the form of commercialization of knowledge). It could be that patent data better takes into account the exact moment and type of innovation, as it is tied to the patent application itself, whereas someone could choose to follow someone based upon other reasoning than their level of innovation. 
+The findings endorse the implicit hypothesis of the study that open data sources seem to show innovation in a similar but perhaps distinct manner to patent data and could hence enrich the measurement of innovation. While no direct correlation was found between patent data and GitHub user data, it remains an open question whether this means that follower data is a poor measurement for innovation, or whether potentially they measure a different type of innovation. It seems plausible that GitHub data offers a glimps into the 'throughput' of open innovation (in the form of collaboration) rather than the 'output' which patent data reflects (in the form of commercialization of knowledge). It could be that patent data better takes into account the exact moment and type of innovation, as it is tied to the patent application itself, whereas someone could choose to follow someone based upon other reasoning than their level of innovation.  
 
-Interestingly, as the strongest relationships were found not between patent and follower data, but rather between these two variables and the city related control variables, that many of the conditions which foster both open and closed innovation, in this case industrialization and city importance, both positively affect the drive of innovation in a city. Due to these parallels, it seems plausible that policy makers could institute similar reforms to positively affect both.
+Interestingly, as the strongest relationships were found not between patent and follower data, but rather between these two variables and the city related control variables, that many of the conditions which foster both open and closed innovation, in this case GDP and city importance, both positively affect the drive of innovation in a city. Due to these parallels, it seems plausible that policy makers could institute similar reforms to positively affect both.  
 
-[^IUS]: For the latest edition see [http://ec.europa.eu/enterprise/policies/innovation/policy/innovation-scoreboard/index_en.htm].
-[^STI]: For the latest edition see [http://www.oecd.org/sti/scoreboard.htm].
-[^OECD]: Online accessible on [http://stats.oecd.org].
-[^GIT]: Online accessilbe on [https://github.com/].
+Clearly our research approach relying solely on GitHub user data as a measure of open innovation is far from exhaustive. Further research could include other, similarly impotant collaborative research plattforms. The fast diffusion of such research platforms could mean that similar analytical approaches could lead to much different findings.
+
+[^IUS]: For the latest edition see [http://ec.europa.eu/enterprise/policies/innovation/policy/innovation-scoreboard/index_en.htm](http://ec.europa.eu/enterprise/policies/innovation/policy/innovation-scoreboard/index_en.htm).
+[^STI]: For the latest edition see [http://www.oecd.org/sti/scoreboard.htm](http://www.oecd.org/sti/scoreboard.htm).
+[^OECD]: Online accessible on [http://stats.oecd.org](http://stats.oecd.org).
+[^GIT]: Online accessilbe on [https://github.com/](https://github.com/).
 
 # References
