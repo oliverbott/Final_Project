@@ -13,16 +13,12 @@ The full assignment and repository include three main elements:
 2. A website offering for public consumption and understanding
 3. A presentation of the full project
 
-These elements are included over a number of files and folders.  The full table of contents of the repository includes:
+These elements are included over a number of files and folders.  The repository includes:
 
-- **Data Folder**: includes the files used for data gathering and merging as well as the full dataset of the project in Dataset.csv. Our final paper is dynamically linked to the .csv file to keep processing times to a minimum.
-- **Presentation folder**: includes the presentation with our most important findings.
-- **FinalProject.Rmd**: this is the final paper version of our project.
-- **Main.bib**: contains our main bibliography file.
-- **Packages.bib**: contains our is a bibliographic with citations for R and R packages used in our project.
+- **Data Folder**, including the files used for data gathering and merging as well as the full dataset of the project in Dataset.csv. Our final paper is dynamically linked to the .csv file to keep processing times to a minimum.
+- **Presentation folder**,  including the presentation with our most important findings.
+- **FinalProject.Rmd and .html**, the final version of our project.
+- **Main.bib** and **Packages.bib**, containing our main bibliography files.
 
-#### Paper Outline and Sections
-
-
-#### Contact
+### Contact
 Comments and feedback are encouraged, and can be sent to [Benjamin Snow](mailto: benjamin.aaron.snow@gmail.com(benjamin.aaron.snow@gmail.com)) or [Oliver Bott](mailto:o.bott@mpp.hertie-school.org(o.bott@mpp.hertie-school.org)).
