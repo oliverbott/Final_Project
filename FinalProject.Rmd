@@ -106,7 +106,7 @@ To examine open network data against patent data, this study relies on two key d
 
 **API network data**  
 
-The first data set is obtained by using the Application Programming Interface (API) data for open networks. To examine open innovation, data is obtained from the the git repository web-based hosting service GitHub[^GIT]. Its use of source code management makes it a commonly used software development collaboration tool. Since most of the repositories are openly accessible one can use API tools to track the popularity of contributors through a process called following. The *R* [@CiteR] packages *httr* [@R-httr], *dplyr* [@R-dplyr] and *rjson* [@R-rjson] allow for compiling data on the follower counts and locations associated with different users and online reponsitories.  
+The first data set is obtained by using the Application Programming Interface (API) data for open networks. To examine open innovation, data is obtained from the the git repository web-based hosting service GitHub[^GIT]. Its use of source code management makes it a commonly used software development collaboration tool. Since most of the repositories are openly accessible one can use API tools to track the popularity of contributors through a process called following. The *R* [@CiteR] packages *httr* [@R-httr], *dplyr* [@R-dplyr] and *rjson* [@R-rjson] allow for compiling data on the follower counts and locations associated with different users and online repositories.  
 
 **Closed innovation OECD patent data**  
 
