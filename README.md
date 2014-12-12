@@ -18,7 +18,7 @@ These elements are included over a number of files and folders.  The repository 
 - **Data folder**, including the files used for data gathering and merging as well as the full dataset of the project in Dataset.csv. Our final paper is dynamically linked to the .csv file to keep processing times to a minimum.
 - **Presentation folder**,  including the presentation with our most important findings.
 - **Website folder**, including our website files (website accessible via [this link](http://oliverbott.github.io/Final_Project/))
-- **FinalProject.Rmd and .html**, the final version of our project.
+- **FinalProject.Rmd**, **.pdf** and **.html**, the final version of our project.
 - **Main.bib** and **Packages.bib**, containing our main bibliography files.
 
 ### Contact
